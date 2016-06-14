@@ -1,0 +1,171 @@
+\documentclass{report}
+\usepackage{latexsym,newlfont,amsmath,amssymb,amscd}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pdfsync}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\sq{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+\newcommand\qed{\ifmmode\sq\else{\unskip\nobreak\hfil
+\penalty100\hskip1em\null\nobreak\hfil\sq
+\parfillskip=0pt\finalhyphendemerits=0\endgraf}\fi}
+\pagestyle{headings} \setlength{\oddsidemargin}{0cm}
+\setlength{\topmargin}{0cm} \setlength{\textwidth}{17cm}
+\setlength{\textheight}{22cm} \setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+\overfullrule 10pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{defn}{Definition}[section]
+\newcommand\C{\mathbb C}  % Complex Numbers
+\newcommand\PP{\mathbb P^2_\C} % Projective Plane
+\newcommand\Z{\mathbb Z} % Integers
+\newcommand\R{\mathbb R} % Real Numbers
+\newcommand\Q{\mathbb Q} % Rational Numbers
+\newcommand\N{\mathbb N} % Natural Numbers
+\newcommand\A{\mathbb A} % Algebraic Integers
+\newcommand\ZP{\mathbb Z_p} %p-adic integers
+\newcommand\QP{\mathbb Q_p} %p-adic fractions
+\newcommand\FP{\mathbb F_p}%finite group with p elements
+\newcommand\sha{\underline{|||}} %tate-shaf group  
+\newcommand\rhogn{\overline{\rho_{G,n}}} 
+\newcommand\detrhogn{det(\overline{\rho_{G,n}})} 
+\newcommand\bgn{B_{G,n}} 
+\newcommand\E{\mathbb E} 
+\newcommand\Lb{\mathbb L} 
+\newcommand\ong{\leq_o} %open normal subgroup  
+\newcommand\ccl{\text{ccl(}} %conj class
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\frontmatter
+
+\title{Hochschild Homology of Completed Group Rings}
+\author{James Cooper}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\mainmatter
+
+\chapter{Introduction\label{Introduction}}
+ My favourite book is \cite{gowers2008pcm}, or perhaps \cite{neukirchalgebraic}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{1Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Background\label{Background}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Uniform Groups}
+\input{17analytic}
+
+\section{Iwasawa Algebras}
+\input{2OldIwasawaAlgebras}
+
+\section{Logarithms}
+\input{19Logarithms}
+
+\section{Integral Logarithms}
+\input{18schneiderdiagram}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Homology\label{Homology}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hochschild Homology of Group Rings}
+\input{3OldHochschildHomology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Novikov Rings}
+\input{4OldNovikovRings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Completion of Hochschild Homology}
+\input{5OldCompletionHochschild}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Trace Maps\label{TraceMaps}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{K-theory and semi-local Rings}
+\input{6OldKTheory}
+
+\section{Dennis Trace Map}
+\input{7OldDennisTraceMap}
+
+\section{Zeta Functions for Novikov Rings}
+\input{8OldGradientFlows}
+
+\section{Dennis Trace Map on $K_1(\Lambda_G)$}
+\input{9OldDefiningDTM}
+
+\section{Factoring Dennis Trace Map using adjusted Logarithms}
+
+\section{Classical Case and calculations of Bentzen-Madsen}
+\input{10OldClassicalCase}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Connections\label{Connections}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dennis Trace Map and Integral Logarithms}
+
+\section{Kernel and Cokernel of Dennis Trace Map}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Extensions\label{Extensions}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Localizations}
+\input{11OldLocalization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\appendix
+\begin{appendix}\label{Appendices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Derived Functors and Homology of Groups}
+\input{12OldDerivedFunctors}
+\input{13OldGroupCohomology}
+
+\chapter{Homology of Profinite Groups}
+\input{14OldHomologyProfinteGroups}
+
+\chapter{Lie Groups and Lie Algebras}
+\input{15OldLieGroupsAlgebras}
+
+\chapter{Lie Algebra Cohomology and Spectral Sequences}
+\input{16OldLieAlgebraCohomology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}	% (uses file "plain.bst")
+\bibliography{THESISREFSdec} % expects file "THESISREFS.bib"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document} 

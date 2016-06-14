@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+I consider 2 different completions of the group ring $kG$. 
+
+The first, forming the Novikov ring is used in the study of Dynamical Systems, see \cite{S}, where the Dennis Trace Map is used to define a noncommutative zeta function for a closed 1-form on a manifold M, this lies in the first Hochschild Homology of a Novikov ring, and gives information on the orbit structure of gradient flows. Secondly, I try to mimic this construction to give the Hochschild Homology of an Iwasawa algebra as a completion of the Hochschild Homology of group algebras. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definition of Novikov Rings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let $G$ be a group and $\chi:G\rightarrow \R$ be a homomorphism. 
+
+Let $\widehat{\widehat{\Z G}}$  denote the abelian group of all functions $G\rightarrow \Z$. Given $\lambda\in \widehat{\widehat{\Z G}}$ pick out the nonvanishing, interesting elements - those in the support of $\lambda$, writing $\text{supp }\lambda = \{g\in G|\lambda(g)\neq 0\}$.
+
+Elements in Novikov ring (for the homomorphism $\chi$) are defined by a finiteness condition on the support:
+$$\widehat{\Z G}_\chi = \{\lambda\in \widehat{\widehat{\Z G}}|\, \forall r\in \R\,\,\, \# \text{ supp } \lambda \cap \chi^{-1} ([r,\infty))<\infty\}$$
+where ring multiplication for $\lambda_1, \lambda_2\in \widehat{\Z G}_\chi$ gives a well defined element in $\widehat{\Z G}_\chi$:
+$$(\lambda_1.\lambda_2)(g) = \sum_{h_1,h_2\in G |h_1h_2 = g} \lambda_1(h_1) \lambda_2(h_2)$$
+
+The usual group ring is contained in the Novikov ring as finitely supported maps, and $\Z G = \widehat{\Z G}_\chi$ if and only if $\chi$ is the zero homomorphism.
+
+The Novikov ring arises as the completion of the group ring with respect to the following non-Archimedian norm:
+
+\subsubsection{Definition (Novikov Norm):}
+\emph{The \textit{norm } of $\lambda\in \Z G_\chi$ is defined to be
+$$\parallel \lambda \parallel_\chi = inf \{t\in (0,\infty)| \text{supp } \lambda\subset  \chi^{-1}((-\infty, \text{log }t])\},$$}
+
+We may avoid use of "log" by giving an equivalent norm arising from a filtration of ideals. Let $\Z G_{\chi\geq 0}$ be the linear span on the elements $g$ such that $\chi (g)\geq 0$, similiarly for all $n\in\Z$, take
+$$J_{n} = \Z G_{\chi\geq n} = <\{g|\chi(g)\geq n\}>$$ This leads to the filtration 
+$$\dots\geq J_{-1}\geq F_{0}\geq J_1\geq \dots\geq J_n\geq J_{n+1}\geq \dots$$
+corresponding to 
+$$\Z G\geq \dots \geq{\Z G}_{\chi\geq -1} \dots \geq{\Z G}_{\chi\geq 0} \dots \geq{\Z G}_{\chi\geq 1} \geq\dots$$
+Defining a norm $\parallel \lambda \parallel$ on $\ZP[G]$ by
+\begin{eqnarray}
+\nonumber \parallel \lambda\parallel &=& p^{-k} \text{    if }\lambda \in J^k-J^{k+1}\\
+\nonumber \parallel 0\parallel &=& 0
+\end{eqnarray}
+we recover the Novikov ring by completing the group ring with respect to $\parallel \lambda\parallel$.
+
+\subsubsection{Example (Laurent Polynomials):}
+Let $G$ be the infinte cyclic group, $G = <g>$, identifying $g$ with the indeterminant $T$ the group algebra becomes the Laurent polynomials: $\Z G = \Z[T,T^{-1}]$.
+
+Define the homomorphism to the integers,
+\begin{eqnarray}
+\nonumber \chi: G &\rightarrow& \Z\\
+\nonumber       \chi:  T &\rightarrow& 1\\
+\nonumber   ( \chi:T^{-1} &\rightarrow& -1)
+\end{eqnarray}
+Then $J_n = \Z G_{\chi\geq n} = T^n \Z [T]$, and the filtration becomes 
+$$\dots\geq T^{-1} \Z [T] \geq  \Z [T] \geq  T\Z [T] \geq T^{2} \Z [T] \geq \dots$$
+The completion with respect to  the norm coming from this filtration are the power series in $T,T^{-1}$ with a finite number of terms of positive index: $\overline{\Z G}_\chi = \bigcup_n  T^n\Z [T^{-1}]$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Decomposition of Novikov Complex in Calculation of Hochschild Homology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The Hochschild homology of the finite group ring, \ref{DSD} is well understood. In this section, following \cite{S}, section 4.1, I show how the Hochschild homology of a Novikov ring lies in the completion of the direct product over conjugacy classes of group homology.
+
+Describing the elements in $\widehat{\Z G}_\chi$ as formal linear combinations of elements, an n-chain used to calculate \\ $HH_n(\widehat{\Z G}_\chi)$ has the form:
+
+$$\sum_{g_1\in G}n_{g_1} g_{1} \otimes\dots\otimes \sum_{g_{n+1}\in G}n_{g_{n+1}}g_{n+1}$$
+
+For finite elements, in $\Z G$, this may be simplified to an element of $C_n({\Z G},{\Z G})$, a finite sum:
+
+$$(\star)\,\,\,\,\, \sum_{g_1,\dots, g_{n+1}\in G} n_{g_1}\dots n_{g_{n+1}} g_1\otimes \dots \otimes g_{n+1}$$
+
+Although a general element taken from $\widehat{\Z G}_\chi$ would be an infinite sum of tensors which does not give a well defined element of $C_n({\Z G},{\Z G})$ (the process of breaking down an n-chain in $C_n(\widehat{\Z G},\widehat{\Z G})$ into form $\star$ may not give a well defined n-chain in $C_n({\Z G},{\Z G})$). The following restrictive fact allows us to proceed:
+
+\subsubsection{Claim (Finiteness of Conjugacy Classes):}
+\emph{Given a conjugacy class $\gamma\in \Gamma$ there are only finitely many nonzero summands in $(\star)$ with marker in $\gamma$: such that $g_1\dots g_{n+1}\in \gamma$.}
+
+\subsubsection*{Proof}
+The constructive proof given in \cite{S} relies on $\chi$ being well defined on a conjugacy class. This allows us to write  $\chi(\gamma)=\chi(g_1)+\dots \chi(g_{n+1})$, and we may interpret the Novikov completion as allowing elements to only support a finite number of "large" group members, where "large" means $\chi(g)>r$ for any given $r\in \R$. 
+
+Thus given the $n+1$ elements of Hochschild Novikov chain, $\sum_{g_1\in G}n_{g_1} g_{1},\dots, \sum_{g_{n+1}\in G}n_{g_{n+1}}g_{n+1}$, for the union of nonzero terms, $S=\bigcup_{1}^{n+1} \text{Supp }(\sum_{g_k\in G}n_{g_k} g_{k})$, $\chi ( S)$ is bounded above, by M say, giving $\sum_{k\neq i} g_{k} <n.M$, hence if $\chi(\gamma)=\chi(g_1)+\dots \chi(g_{n+1})$, then for all $i$, $\chi(g_i)> \chi(\gamma) - n.M$ giving a finite number of combinations.
+
+Moreover, Schutz gives an explicit map giving which terms in an element of the Novikov ring may be involved in a product giving an element in $\gamma$, and then decomposing into conjugacy classes as in the proof of \ref{DSD} gives a chain homomorphism $\theta_\gamma: C_n(\widehat{\Z G},\widehat{\Z G})\rightarrow C_n(\Z G, \Z G)_\gamma$, and joining them gives,
+$$\theta_*: C_n(\widehat{\Z G},\widehat{\Z G})\rightarrow C_n(\Z G, \Z G)$$
+
+Notice, that to only prove the finiteness of markers in conjugacy classes, it is sufficient to show this holds for a single element $\lambda\in \widehat{\Z G}_\chi$ (that the "markers" - single elements in this case - have only finite support in a conjugacy class), and (n+1)-degree product, giving markers, follows from considering the formal product $\prod \lambda_i$ which is also in the Novikov Ring. But this is immediate because for a conjugacy class $\gamma\in\Gamma$,  $\chi(\gamma) = r$ is well defined, and by definition of the Novikov ring there is only finite support for $\lambda$ in $\chi^{-1} ([r,\infty))$. The same argument is used to consider the case of Iwasawa Algebras in \ref{COC}.
+
+Defining,
+$$C_*(\Z G)_\chi = \{(c_\gamma)\in \prod_{\gamma\in \Gamma} C_*(\Z G, \Z G)_\gamma |\,\forall r\in \R,\,\,\, \#\{c_\gamma\neq 0|\chi(\gamma)\geq r\}<\infty\}$$
+and $\widehat{HH}_*(\Z G)_\chi = H_*(C_*(\Z G)_\chi)$. Then,
+$$\bigoplus_{\gamma\in \Gamma} H_*(C_*(\Z G, \Z G)_\gamma)\subset \widehat{HH}_*(\Z G)_\chi \subset\prod_{\gamma\in \Gamma} H_*(C_*(\Z G, \Z G)_\gamma)$$
+
+Then, $\theta_*$ factors through $\widehat{HH}_*(\Z G)_\chi$, and is onto, hence $\widehat{HH}_*(\Z G)_\chi$ a completion of the hochschild homology of a group algebra is the hochschild homology of the Novikov ring. Writing $\theta$ for the restriction of $HH_n(\widehat{\Z G},\widehat{\Z G})$ to $\widehat{HH}_*(\Z G)_\chi$:
+
+$$\begin{array}{ccc}
+ HH_*(\Z G)  &  \xrightarrow{\cong} & \bigoplus_{\gamma\in \Gamma} H_*(C_*(\Z G, \Z G)_\gamma) \\
+ \downarrow  &&  \downarrow \\
+ HH_*(\widehat{\Z G}_\chi )& \xrightarrow{\theta}& \widehat{HH}_*(\Z G)_\chi \\\end{array}$$
+

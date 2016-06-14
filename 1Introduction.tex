@@ -1,0 +1,605 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Methods\label{Methods}}
+
+In this survey I give the key tools in an attempt to understand $K_1$ of the completed group rings of a two dimension $p$-adic Lie group.
+
+Following, \cite{CFKSV}, in non-commutative Iwasawa theory, $K_1$ of the (Iwasawa) completed group rings of the Galois group $G$ of $p$-adic Lie extensions of number fields (the projective limit of the group rings $\ZP[G/U]$ for open normal subgroups $U$ of $G$), and $K_1$ of localizations of these rings play key roles, and so it becomes important to study the structure of these $K_1$-groups. 
+
+For any odd prime $p$, I aim to understand the $K_1$-group, $K_1(\ZP[[G]])$ where G is the $p$-adic Lie group, arising from the "False Tate Curve",
+$$G = \left( \begin{array}{cc}
+\ZP^* & \ZP\\
+0 & 1\\ \end{array}\right)$$
+This semi-direct product of two copies of $\ZP$ is the simplest non-commutative example, with no commutative subgroup of finite index. Although $K_1(\ZP[[G]])$ is explicitly calculated in \cite{K}, the aim is to understand some of the group substructure.
+
+
+
+The strategy of this survey is to establish the machinery to define a map, the Dennis Trace Map, from the $K$-groups of group rings to a simpler set of groups, the Hochschild homologies. I then concentrate on interpreting the first Hochschild homology in terms of more familiar objects, the usual group homologies.
+
+I attempt to pass to completions of the Group ring, and hope to see their Hochschild homology lying in a completion of the Hochschild homology of the Group ring. Combining this with the Dennis Trace Map would give information on $K_1$ of the completion of the Group ring.
+
+I explain how a useful theory may be constructed for Novikov rings where decomposition over conjugacy classes recovers elements in Hochschild Homology of finite group rings, but that the Iwasawa Completion does not Decompose Over Conjugacy Classes of a profinite group. However I show this group exists as an inverse limit of direct sums over conjugacy classes and begin to understand the connecting maps, and in particular how conjugacy classes of a group may fuse when passing to a quotient group.
+
+I then investigate the Hochschild Homologies of localizations of these Iwasawa algebras and explain conditions for vanishing limiting the usefulness of this generalised Dennis Trace Map to study characteristic elements.
+
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Notation\label{Notation}}
+
+Let $R$ be a ring with a unit element, and $R^*$ denote the group of units of $R$, and $M_n(R)$ the ring of $n$ x $n$ matrices with entries in $R$.
+
+Let G be a pro-p, p-adic, compact Lie group containing no element of order p. Define the Iwawawa algebra,  $\Lambda(G)$ to be
+$$\Lambda(G) = \underleftarrow{\text{Lim}}_{H<_o G}\,\ZP [G/H]$$
+
+
+Moreover, unless otherwise stated assume in addition that $G$ has a closed normal subgroup $H$ such that $G/H = \Gamma$ is isomorphic to $\ZP$, thus fixing a topological generator of $\Gamma$ and identifying this with $1+T$ we have the correspondence $\Lambda(\Gamma) \cong \ZP[[T]]$.
+
+
+Throughout $p$ represents an odd prime, and  $G$ is an open subgroup of the $p$-adic Lie group 
+$$L = \left( \begin{array}{cc}
+\ZP^* & \ZP\\
+0 & 1\\ \end{array}\right)$$
+
+For $n\geq 0$, let $U^{(n)} = ker (\ZP^* \rightarrow (\Z / p^n \Z) ^*) = 1+ P^n \ZP$. 
+
+Write 
+$$t(a,b) =  \left( \begin{array}{cc}
+a & b\\
+0 & 1\\ \end{array}\right)   \text{  (so }G=L=t(\ZP^*, \ZP))$$
+
+With 
+$$\epsilon = t(1,1) =  \left( \begin{array}{cc}
+1 & 1\\
+0 & 1\\ \end{array}\right) \in L$$
+$$< u > = t(u,0) =  \left( \begin{array}{cc}
+u & 0\\
+0 & 1\\ \end{array}\right) \in L\text{ for }u\in\ZP^*$$
+
+I write out theorems for $\QP$ and it's valuation ring under p-adic norm, $\ZP$, but the sam holds for all $K$, a complete discrete valuation field of characterisitc $0$ with perfect residue field $k$ of characteristic $p$ such that $p$ is a prime element of the valuation ring $O_K$ of $K$.
+
+Write the fraction field of $\Lambda(\Gamma)$ as $Q(\Gamma)$, and denote $\Lambda_O (\Gamma) = O[[T]]$ for the $O$-Iwasawa algebra of $\Gamma$, and $Q_O(\Gamma)$ for its quotient field.
+
+Finally, following \cite{CFKSV} we define for such a $G$ a set $S$ in $\Lambda(G)$ which turns out to be an Ore set and hence we can localize  $\Lambda(G)$ with respect to $S$.
+
+\subsection{Definition (Canonical Ore Set):}
+\emph{Let $S$ be the set of all $f$ in $\Lambda(G)$ such that $\Lambda(G) / \Lambda(G) f $ is a finitely generated $\Lambda(H)$-module.}
+
+\subsection{Remarks (Properties of Canonical Ore Set):}
+\begin{enumerate}
+\item For any open subgroup $H$, M is finitely generated over $\Lambda(H)$ if and only if for any open subgroup $H'$ of $H$, $M$ is finitely generated over $\Lambda(H')$. So for such a pro-$p$ $H' = J$ (when $\Lambda(J)$ is a local ring, the maximal ideal is the kernal of the augmentation map from $\Lambda(J)$ to $\FP$). Moreover, we may assume it to be normal in $G$ (since set of $G$ conjugates of such a $J$ is finite). Then we may consider the natural surjections $\phi_J:\Lambda(G) \rightarrow \Lambda(G/J)$ and $\psi_J:\Lambda(G) \rightarrow \Omega (G/J)$ (or equivalently with right modules).
+\begin{itemize}
+\item $S$ is the set of $f\in \Lambda(G)$ such that $\Omega(G/J) / \Omega(G/J)\psi_J$ is finite.
+\item $S$ is the set of $f\in \Lambda(G)$ such that $\Omega(G/J) / \Omega(G/J)\phi_J$ is a finitely generated $\ZP$-module.
+\item $S$ is the set of $f\in \Lambda(G)$ such that right multipication by $\psi_J(f)$ on $\Omega(G/J)$ is injective (we may also consider right actions throughout).
+\end{itemize}
+\item For $M$ a left $\Lambda(G)$-module, $M$ is $S$-torsion if for each $x\in M$ there exists an $s\in S$ such that $s.x =0$. For $M$ a finitely generated left $\Lambda(G)$-module, \emph{$M$ is finitely generated over $\Lambda(H)$ if and only if $M$ is $S$-torsion.}
+\item The set $S$ is multiplicatively closed and is a left and right Ore set in $\Lambda(G)$. The elements of $S$ are non-zero divisors in $\Lambda(G)$
+\end{enumerate}
+
+Also define $S^* = \bigcup_{n\geq 0 }p^n S$. As $p$ lies in the centre of $\Lambda(G)$, $S^*$ is again a multiplicatively closed left Ore set in $\Lambda(G)$ all of whose elements are non-zero divisors. Writing $M(p)$ for the submodule of $M$ consisting of elements of finite order. $M$ is $S^*$-torsion if and only if $M / M(p)$ is finitely generated over $\Lambda(H)$. Write $\mathfrak M_H(G)$  for the category of all finitely generated $\Lambda(G)$-modules which are $S^*$-torsion (so  $M / M(p)$ is finitely generated over $\Lambda(H)$), and within this let $\Lambda(G) - \text{mod}^H$ be full subcategory of $\Lambda(G) - \text{mod}$ consisting of  finitely generated $\Lambda(G)$-modules which are  finitely generated over $\Lambda(H)$.
+
+We write $\Lambda(G)_S$, $\Lambda(G)_{S^*}$ for localizations and observe
+$$\Lambda(G)_{S^*} = \Lambda(G)_S [ \frac{1}{p}]$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Classical Iwasawa Theory}
+
+Let G be a pro-p, p-adic, compact Lie group containing no element of order p. Define the Iwawawa algebra, 
+$\Lambda(G)$ to be
+$$\Lambda(G) = \underleftarrow{Lim}_{H<_o G}\,\ZP [G/H]$$
+Euler Characteristics can be used to give information on the structure of modules which are finitely generated 
+over $\Lambda(G)$. We see in \ref{selmergroups} below that the rank of such Iwasawa modules is interesting, and Euler 
+Characteristics can be used to calculate these:
+
+\subsection{Theorem (Iwasawa Ranks and Homology - \cite{howson3}, 1.1):}
+\emph{Assume G is a pro-p, p-adic Lie group which contains no element of order p. Let M be a finitely 
+generated $\Lambda(G)$-module. Then the $\Lambda(G)$-rank of M is given by the following "Euler characteristic" 
+formula:}
+
+$$rank_{\Lambda(G)}(M)=\sum_{i\geq 0}{(-1)}^i rank_{\ZP}(H_i(G,M))$$
+
+The aim of this introduction is to explain how twisting gives rise to Generalised Euler Characterisitcs 
+and how these fit into a larger programme in number theory connecting the algebraic and analytic theory of elliptic curves.
+
+I now describe one of the main results of Classical Iwasawa Theory, before introducing the Selmer group of an
+ Elliptic Curve as a way to study the Mordell-Weil group. I describe important invariants associated with field extensions and show the clever algebraic to analytic interplay between them. Then I introduce Euler Characterisitics and Generalised Euler Characterisitics as clever invariants 
+which classify modules (up to pseudo-isomorphism).  Finally I show how these calculations fit into a much larger programme of deducing information on the rank of the 
+Mordell-Weil group from analytic L-functions. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Consider the cyclotomic extension $\Q_\infty$ of $\Q$. This is formed by considering $\Q(\mu_{p^\infty})$ - 
+adjoining all p power roots - 
+there exists a homomorphism from the Galois group of this extension to $\Z_p^*$ and hence there exists a unique 
+subextension whose Galois 
+group over $\Q$ is $\Gamma = \ZP$.
+
+We then define subfields $\Q_n$ as invariants of the normal subgroups 
+
+
+ie.
+$$\begin{array}{ccccc}
+               &| &\Q_\infty &|&                   \\
+               &| &|         &|&\Gamma_n = p^n \ZP \\
+\Gamma = \ZP   &| &\Q_n      &|&                   \\
+               &| &|         & &                   \\
+               &| &\Q        & &                   \\
+\end{array}$$
+
+
+
+Let $p^{e_n}$ be the highest power of p dividing the class number of $\Q_n$. Then Iwasawa's amazingly simple 
+control theorem on $e_n$ states:
+
+\subsection{Theorem (Growth of Class Numbers - \cite{N}, 5.3.17):}
+\emph{There exist integers $\lambda, \mu, \nu$ such that}
+$$\mathbf{e_n = \lambda n + \mu p^n +\nu}$$ 
+\emph{for all sufficiently large n.}
+
+This can be proved using the general philosophy of Iwasawa to study the Galois group $\Gamma$ acting on it's normal subgroups (called $X$) 
+by inner automorphism.
+
+Serre made this method more transparent by viewing $X$ as a module over the ring $\Lambda = \ZP[[T]]$, where for $\gamma$ some topological generator of $\Gamma$, T acts on the $\ZP$-module X 
+as $\gamma - 1$. This gives that the action of $T$ on $X$ is ``Topologically Nilpotent'' 
+- $T^nX$ gets arbitrarily small with $n$ - so the power series action is well defined.
+
+Key Point to this new approach is that there exists a simple structure theorem for such $\Lambda$-modules, see \cite{N}, 5.3.8:
+
+\subsection{Theorem (Structure Theorem of Cohen):\label{cohen}}
+\emph{Let $X$ be a finitely generated Iwasawa module. Then there exist irreducible Weierstrass polynomials $F_j$, and natural numbers $r, m_i, n_j$ and a homomorphim with finite kernel and cokernel:
+$$X\sim \Lambda^r \oplus \bigoplus_{i=1}^s \Lambda / p^{m_i} \oplus \bigoplus_{j=1}^t \Lambda / F_j^{n_j}$$ where $r, m_i, n_j$ and the prime ideals $F_j\Lambda$ are unique.}
+
+We may then associate an invariant, the $\Lambda$-rank to $X$, $r(X) = \text{rank}_\Lambda (M) = r$. We may specialise this structure theorem to the torsion case: 
+
+\subsection{Theorem (Torsion Structure Theorem):\label{stth}}
+\emph{ Let X be a finitely generated, torsion, $\Lambda$-module, then there exists a pseudo-isomorphism (a $\Lambda$-module homomorphism 
+with finite kernel and cokernel):
+$$X\longrightarrow \bigoplus_{i=1}^{t} \Lambda / (f_i(T)^{a_i})$$
+where the $f_i$ are irreducible elements of $\Lambda$ and the constants are defined up to reordering.}
+
+Given this Structure Theorem we can now define associated invariants:
+
+\subsection*{Definition (Characteristic Polynomial):}
+\emph{The Characteristic Polynomial of $X$, is defined to be
+$$f_X (T) = \prod_{i=1}^t f_i (T)^{a_i}$$
+which is determined up to a unit in $\Lambda(G)$. Let,}
+\begin{enumerate}
+\item $\lambda$ = deg$(f_X (T))$
+\item $\mu =$ largest $\mu$ such that $p^\mu$ divides $f_X$ in the Iwasawa algebra $\Lambda$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Selmer Groups}\label{selmergroups}
+
+In this section I will justify the suggestive notation above.
+
+Suppose K is an algebraic extension of $\Q$.
+
+By considering purely local conditions we define a subgroup $Sel_E (K)$ of $H^1 (G_K , E ( \overline{\Q})_{tors})$ 
+which fits into the exact sequence:
+
+$$0\longrightarrow E(K) \otimes_{\Z} (\Q / \Z )\longrightarrow Sel_E (K) \longrightarrow \sha_E (K) \longrightarrow 0$$
+
+where the group $ \sha_E(K)$, a subgroup of $H^1(K, E( \overline{K}))$ is conjectured to be finite.
+
+Studying the image of $E(K) / nE(K)$ under the Kummer mapping we may deduce the Mordell-Weil Theorem which gives the structure for $E(K)$, 
+points lying on the curve over a field $K$ having form
+
+$$E(K) \cong \Z^r \text{ X }T$$
+
+where $T$ is a finite group and r, the rank of the elliptic curve, a non-negative integer.
+
+Although it is possible to calculate the rank of an elliptic curve in some cases by considering dual isogenies and descent, there is no 
+algorithm for this, and in general it is difficult to prove results about it directly.
+
+Given our construction, notice
+
+$$\text{rank}(Sel_E(K)) \geq r$$
+with equality when $\sha_E (K)$ is finite.
+
+So it is natural to study the rank through the Selmer group.
+
+Since $Sel_E(\Q_\infty)_p$ is a subset of a Galois cohomology group, we may study the Pontajagin dual of it's p-part, 
+$X= \widehat{Sel_E(\Q_\infty)_p}$ as an Iwasawa module. A theorem of Kato gives that the Selmer group is cotorsion - it's dual is torsion, 
+and so the Strurcture Theorem applies. Iwasawa's construction gives that the invariants $\lambda, \mu$ controlling class group growth may be 
+recovered explicitly as the structural invariants, $\lambda, \mu$ of $X$.
+
+This elegant idea is only part of the programme as it is conjectured that the whole characterisitc polynomial $f_X$ can also be obtained by 
+purely analytic means from the elliptic curve.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\subsection{Euler Characteristics}\label{EC}
+
+From the definitions we have injections  
+
+$$\begin{array}{cccc}
+                Sel(E/\Q_\infty)_p &\hookrightarrow & H^1(\Q_\infty, E_{p^\infty})  &                \\
+                 & &            \uparrow    & \text{induced from RESTRICTING elements of galois group}  \\
+                Sel(E/\Q_n)_p      &\hookrightarrow & H^1(\Q_n, E_{p^\infty})    &              \\
+\end{array}$$
+
+The Hochschild-Serre spectral sequence gives that the image of the induced map actually lies in \\ 
+$H^0(\Gamma_n,H^1(\Q_n, E_{p^\infty}))$ - 
+the $\Gamma_n$-invariants.
+
+We may translate back to induce a map $Sel(E/\Q_n)_p\rightarrow {Sel(E/\Q_\infty)_p}^{\Gamma_n}$. Mazur's Control 
+Theorem (see \textbf{[Ge1]} Chapter4) gives 
+that this map has ``nice'' (finite) kernel and cokernel, moreover the orders of these groups is bounded independently of n.
+
+ie.
+
+$$\begin{array}{cccc}
+                \text{finite}&&&\\
+                \uparrow &&&\\
+                Sel(E/\Q_\infty)_p &\hookrightarrow & H^1(\Q_\infty, E_{p^\infty})  &                \\
+                 & &            \uparrow    & \text{induced from RESTRICTING elements of galois group}  \\
+                Sel(E/\Q_n)_p      &\hookrightarrow & H^1(\Q_n, E_{p^\infty})    &              \\
+                \uparrow &&&\\
+                \text{finite}&&&      \\
+                     
+\end{array}$$
+
+
+
+But instead of studying ${Sel(E/\Q_\infty}^{\Gamma_n})$ we consider it's dual, the torsion group $\widehat{Sel(E/ \Q_\infty)}_{\Gamma_n}$.
+The coinvariants behave well with respect to Iwasawa algebra: $\Lambda_{\Gamma_n} = \ZP[ \Gamma / \Gamma_n]$, a cyclic group with $p^n$ 
+elements, hence $\Lambda_{\Gamma_n} = \ZP^{p^n}$, so we can recover structure of original module, leading to information on $Sel(E/\Q_n)_p$.
+
+We must be careful studying invariants, $Z^G$, or equivalently $H^0(G, Z)$, since it is not an exact functor, and is not well defined up 
+to pseudo-Isomorphism, since the $G$ invariants of a finite group are not necessarily Zero.
+
+Instead we study the structure indirectly using Euler Characteristics, these are well defined up to pseudo isomorphism 
+(ie. $\chi(G, \text{finite}) = 1$). Explicitly, in the 1-dimensional $\Gamma = \ZP$ case:
+
+\bigskip
+
+\emph{Let $\gamma$ be a topological generator for $\Gamma$. Let $A$ be finite, then we have the exact sequence:
+$$0\longrightarrow A^\Gamma = \text{ ``invariants'' } = H^0(\Gamma, A) \longrightarrow A \xrightarrow{\gamma - 1} A \longrightarrow 
+A_\Gamma = \text{ ``coinvariants'' } = H^1(\Gamma, A) \longrightarrow 0$$
+(Higher cohomolgy groups vanish since, cohomological dimension = topological dimension = 1)
+Rank-Nullity gives:
+$$\frac{|A^\Gamma|}{|A|}. \frac{|A|}{|A_\Gamma|} = 1\,\,\,\, \Longrightarrow\,\,\,\, \chi(\Gamma, \text{ finite }) = 1$$
+So Euler Characterisitc is well defined up to pseudo isomorphism.}
+
+\bigskip
+
+
+Denoting the characteristic polynomial of a module $X$ by $z(X)$, we have for a short exact sequence of $\Lambda$-torsion modules
+$$0\longrightarrow A\longrightarrow B \longrightarrow B \longrightarrow C\longrightarrow 0$$
+that
+$$<z(B)> \,=\, <z(A) \text{ x } z(C)>$$
+
+Hence we can build a characteristic polynomial from it's factors. Thus to show that \emph{the Euler Characteristic 
+defines modules up to pseudo isomorphism}, it remains to show this is true for modules of the form 
+$M = \Lambda / (f)$ (and then extend using the structure theorem).
+
+The following result from \textbf{[Ho3]} gives a connection between the Euler characteristic $\chi(G, \Lambda/ (f))$ 
+and the evaluation of the annihilator (a polynomial over the Iwasawa algebra) at 0.
+
+\subsection{Theorem (Euler Characteristics and Characteristic Elements - \cite{howson3}):\label{susaneuler}}
+$$\mathbf{\text{ord}_p(\chi(G, \Lambda/ (f))) = \text{ord}_p (f_M(0))}$$
+
+We can get more information on the annihilator twisting by a character and working with ``Generalised Euler 
+Characteristics''. 
+I describe the procedure below:
+
+\begin{enumerate}
+\item Let $V$ be a finite dimensional vector space on which $G$ acts via $\rho$:
+$$\rho:G\longrightarrow GL(V)$$
+\item Suppose T is a $\ZP$-lattice of $V$ (ie. a $\ZP$ module of the same dimension as the space) fixed by $G$,
+ then T is a right 
+$\Gamma = \ZP[G]$ module.
+\item For a finitely generated torsion $\Lambda$-module $M$, and for V as above, choosing a lattice T, define the 
+generalised Euler characteristic, twisiting by $\rho$ to be
+
+$$\chi(G,V,M) = \prod_{i\geq 0} \# (Ext_i^{\Gamma} (T,M))^{(-1)^i}$$
+
+provided this is defined - all $Ext$ groups are finite, and zero for $n$ sufficiently large.
+
+\item \subsection*{Claim: (see \cite{howson4} Lemma 3.1)}
+\emph{$\chi(G,V,M)$ is independent of the choice of $T$, provided $M$ is $\Lambda$-torsion.}
+
+Hence Kato's work gives $\chi(G,V,M)$ is well defined independent of $T$ for $M = X$
+\end{enumerate}
+
+This construction leads to the more generalised result connecting E.C.s with an infinite number of valuations 
+of the annihilator:
+
+\subsection{Theorem (see \cite{howson4}  Proposition 3.2)\label{work1.3.7}}
+$$\text{ord}_p(\chi(G,V,M)) = \text{ord}_p (\text{det}\rho(f_M))$$
+
+Recall the construction of the Iwasawa algebra, for a topological generator $\gamma$ of the Galois group $\Gamma$:
+
+$$\begin{array}{cc}
+\ZP[[\Gamma]]   & \gamma - 1\\
+ \downarrow               & \downarrow\\
+\ZP[[T]]                 &T \\
+\end{array}$$
+
+Thus the first case, Theorem 1 corresponds to $\gamma$ acting trivially on $\ZP$: 
+$(\gamma-1)(x) = 0\,\forall x\in\ZP$.
+
+Then, considering these twisted Euler characterisitcs corresponds to representations $\phi: \Gamma \rightarrow \ZP^*$.
+
+Thus we can identify the zeros of $f_M$, which determines $f_M$ up to a unit, and hence module $\Lambda/ f_M$ is 
+well defined just by understanding these twisted (generalised) Euler Characteristics.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\subsection{$p$-adic L-functions}
+
+Let $p$ be a prime of good reduction of the elliptic curve $E$. 
+
+Dualling a module swaps it's zeroth and first cohomology groups:
+
+\emph{For a $\Gamma_n$-module $D$:
+$$\widehat{H^0(\Gamma_n, D)} = \widehat{D^{\Gamma_n}} = \widehat{D}_{\Gamma_n} = H^1 (\Gamma_n, \widehat{D})$$
+So for $\Gamma_n$ of cohomological dimension 1, 
+$$\chi(\Gamma_n, D) = {\chi(\Gamma_n, \widehat D)}^{-1}$$}
+
+Hence calculating the Euler characteristic of it's module and it's dual are equivalent.
+
+But we can approach these calculations from an entirely different angle, using the p-adic L-function constructed 
+by Mazur and Swinnerton-Dyer.
+
+Let E be a modular elliptic curve over $\Q$, fo $\rho$ a Dirichlet character let $L(E/\Q, \rho, s)$ be the Hasse-Weil 
+L-series for E twisted by the character $\rho$. Fix an embeddding $\overline \Q \subset \overline \QP$.
+
+They can be constructed in many different ways, but all give an interpolation of this twisted L-function 
+to $\QP$.
+
+Explicitly there exists an element, $\mathbf L (E/\Q, \overline{T}) \in \Lambda \otimes \QP$. Using the Weierstrass 
+Preparation Theorem we may factorise this as,
+
+$$\mathbf L (E/\Q, \overline{T}) = p^{\mu_E^{anal.}} . u(T). f(T)$$
+where $U(T)$ is an invertible power series and $f(T)$ a distinguished polynomial.
+
+\bigskip
+
+Define, $\mathbf{f(T) = f_E^{anal.} (T)}$\textbf{ the Analytic Characteristic Polynomial.}
+
+\bigskip
+
+We now have the bridge between the algebraic and analytic sides, the Iwasawa Main Conjecture (I.M.C.):
+
+\section{Conjecture (Analytic and Algebraic Characteristic Elements -Mazur):}
+$$\mathbf{f_{anal} = f_{alg.}}$$
+
+If true, this gives an analytic way to compute the growth invariants $\lambda, \mu$.
+
+However, Kato has shown that in this classical setting, $f_{alg} | f_{anal}$ in $\QP[T]$. Hence, if the analytic 
+invariants $\lambda_{anal}, \mu_{anal}$ agree with the algebraic structual invariants, $\lambda_{alg}, \mu_{alg}$, 
+then $f_{anal} = f_{alg.}$ and the main conjecture is verified in this case.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\section{Non-Commutative Iwasawa Theory}
+
+What if the Galois group of the extension is no longer $\ZP$ but a more general $G$? Then the best strucuture theory (for $G$ $p$-valued) says there exists an exact sequence:
+$$0\rightarrow \bigoplus_{i=1}^r \Lambda(G) / L_i \rightarrow M/ M_0 \rightarrow  D \rightarrow 0$$
+
+for $L_i$ non-zero reflexive ideals of $\Lambda(G)$, $M_0$ the max. pseudo-null submodule of $M$, and $D$ some pseudo-null $\Lambda(G)$-module.
+
+Unfortunately the method then collapses - reflexive ideas need not be principal, and it is no longer the case that the Euer characterisitc $\chi(G,D)$ is finite implies $\chi(G,D)=1$ for $D$ pseudo-null.
+
+QUESTION: How can the Euler Characteristic be modified to give a handle on the non-commutative case? An appropriate definition would overcome problems with pseudo-null modules not vanishing, be consistent with $G=\ZP$ to recover the classical case, behave well under exact sequences, and a result of the form of \ref{susaneuler} would suggest a definition for a suitable characteristic element.
+
+\subsection{Motivation}
+
+Following \cite{CSS} we now use the well understood structure theory in the classical case {\ref{stth}), where characteristic elements are defined up to units in $\Lambda(\Gamma)$ to associate an element to $M\in \mathfrak M_H (G)$.
+
+The long exact sequence of $H$-homology gives that since $M$ is a finitely generated over $\Lambda(G)$, and $M/M(p)$ is finitely generated over $\Lambda(H)$ that $H_i(H,M)$ is a torsion $\Lambda(H)$-module for $i\geq 0$. Hence these homology groups, viewed as $\Lambda(H)$-modules have an associated characteristic element: $g_i\in \Lambda(H)$ say.
+
+\subsection{Definition (Akashi Series):}
+\emph{For $M\in \mathfrak M_H (G)$ let,
+$$Ak(M) = \prod_{i\geq 0} g_i ^{(-1)^i} \,(\text{mod }\Lambda(H)^*) \in Q(H)$$}
+
+I quote a few properties showing how this invariant behaves well - killing $p$-power order, and is multiplicative in exact sequences.
+
+\subsection*{Lemma (Akashi Multiplicative over Exact Sequences - \cite{CSS} 4.1):}
+\begin{itemize}
+\item If $M(p)$ is the submodule of $M$ in $\mathfrak M_H(G)$ consisting of all elements of $p$-power order then $Ak(M) = Ak(M/M(p))  \, (\text{mod }\Lambda(H)^*)$. 
+\item If we have an exact sequence of modules in $\mathfrak M_H(G)$, $0\rightarrow M_1\rightarrow M_2 \rightarrow M_3\rightarrow 0$, then $Ak(M_2)= Ak(M_1). Ak(M_3) \, (\text{mod }\Lambda(H)^*)$.
+\end{itemize}
+
+
+\subsection*{Lemma (Euler Characteristics and Akashi Series - \cite{CSS} 4.2):\label{ecandas}}
+\emph{Assume that $M\in \mathfrak M_H(G)$ has finite $G$-Euler Characteristic. Then $[Ak(M)](0)$ is defined and non-zero and we have
+$$\chi(G,M) = \vert [Ak(M)](0)\vert_p^{-1} $$}
+
+This follows from the Hochschild-serre spectral sequence giving the exact sequence:
+$$0\rightarrow H_0(H,H_i(H,M))\rightarrow H_i(G,M)\rightarrow H_1(H, H_{i-1}(H,M))\rightarrow 0$$
+
+Let $\pi_H$ denote the natural projection $\Lambda(G)\rightarrow \Lambda(H)$, a ring homomorphism.
+
+\subsection*{Lemma ( - see \cite{CSS} 4.3):}}
+\emph{Let $g$ be a non-zero element of $\Lambda(G)$ such that $N=\Lambda(G)/\Lambda(G) g \in \mathfrak M_H(G)$ - $N$ is principal. Then $H_i(H,N)=0\, \forall\, i>0$. Moreover $Ak(N) = \pi_H (g)\in Q(H)$ is in $\Lambda(H)$ (easy to calculate), and $[Ak(N)](0) \neq 0$ if and only if $f$ has finite $G$-Euler Characterisitic (consistent with above).}
+
+\smallskip
+
+This Akashi series also gives a good test for pseudo-null elements:
+
+\subsection*{Lemma (Akashi Series of Pseudo-null modules - see \cite{CSS} 4.4):}
+\emph{Let $M$ be a module in $\mathfrak M_H(G)$. If $G\cong \ZP^r$ for some $r\geq1$ then $Ak(M) = 1 \, (\text{mod }\Lambda(H)^*)$ if and only if $M$ is pseudo-null as a $\Lambda(G)$-module.}
+
+\smallskip
+
+An example is given in \cite{CSS} to show despite this result suggesting that the invariant $Ak(M)$ is a unit for all pseudo-null modules $M\in \mathfrak M_H(G)$ it is not the case.
+
+Thinking of the Akashi series as a virtual object - a difference of 2 sums of characteristic elements triggers the connection with Grothendieck Groups, and thus with K-theory. In \cite{V}, Venjakob describes the details connecting these ideas to K-theory, and uses the standard theory in this area to build a characteristic element.
+
+For $M\in\mathfrak M_H(G)$, the Aksahi series : $Ak_G(H,M) = \prod_{i\geq 0} \text{char}_H (H_i(H,M))^{(-1)^i}$, thought of as an element in $Q(H)^* / \Lambda(H)^*$ induces a map of K-groups:
+
+$$Ak_G(H,-): K_0(\Lambda(G) - \text{mod}^H)\rightarrow K_0(\Lambda(H), Q(H)) \cong Q(H)^* / \Lambda(H)^*,$$
+the Swan relative $K$-group of ring homomorphism $\Lambda(H)\rightarrow Q(H)$.
+\smallskip
+$K$-theory then gives a long exact sequence of Localisation for Ore set $S^*$:
+$$\dots \rightarrow K_1(\Lambda(G))\rightarrow K_1(\Lambda(G)_{S^*})\xrightarrow{\delta_G} K_0(\mathfrak M_H(G))\rightarrow K_0(\Lambda(G))\rightarrow K_0(\Lambda(G)_{S^*})\rightarrow 0$$
+
+\subsection{Definition (Characteristic Element):}
+\emph{It is known that $\delta_G$ is surjective, and we now define for each $M\in \mathfrak M_H(G)$, a characteristic element of $M$ is any $\xi_M$ in $K_1(\Lambda(G)_{S^*})$ such that,
+$$\delta_G(\xi_M) = [M]$$}
+
+\subsection*{Proposition (Akashi Series and Characterisitc Element - see \cite{V} 8.1):}
+\emph{Let $M\in \mathfrak M_H(G)$. Then the following holds:
+$$Ak_G(H,M) = \pi_H(\text{char}_G (M)) = \pi_H(F_M) (\text{mod } \Lambda(G)^*)$$}
+
+This connection with Akashi series now yields a good understanding of the Euler Characterisitics. Since twisting preserves exact sequences we may generalise results of the form \ref{ecandas} to cover all twists of a module.
+
+\subsection*{Theorem (Non-commutative Characteristic Elements and Euler Characteristics - see \cite{CFKSV} 3.6):}
+\emph{For a continuous homomorphism $\rho: G\rightarrow GL_n(O)$, where $m_\rho = [L:\QP]$, $L$ the quotient field of $O$, and $\hat \rho$ the contragradient representation of $G$: $\hat \rho (g) = \rho (g^{-1})^t$. Then, assuming $G$ has no element of order $p$. For $M\in \mathfrak M_H(G)$ let $\xi_M$ be a characteristic element of $M$. Then, if $\chi(G, tw_{\hat \rho }(M))$ is finite we have
+\begin{itemize}
+\item $\xi_M(0)\neq 0,\infty$
+\item $\chi(G, tw_{\hat \rho} (M)) = \vert \xi(0) \vert_{\rho}^{-m_\rho}$
+\end{itemize}}
+
+This Theorem shows how all $G$-Euler characterisitcs may be recovered from the characteristic element, and following \ref{susaneuler} suggests it is a good theory to study.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Machinery}
+
+I end this section by giving results from \cite{AW} on how one goes about calculating these Characteristic elements. By restricting to $p$-torsion modules we may write a closed form for the characteristic element.
+
+Let $\mathfrak D$ denote the category of finitely generated $p$-torsion $\Lambda_G$-modules, then $T = \{ 1, p, p^2, \dots\}$ plays the role of the central Ore set giving the exact sequence:
+
+$$\dots \rightarrow K_1(\Lambda(G))\rightarrow K_1((\Lambda(G))_T)\xrightarrow{\delta_G} K_0(\mathfrak D) \rightarrow K_0(\Lambda(G))\rightarrow K_0((\Lambda(G))_T)\rightarrow 0$$
+
+Then $\delta_G$ is again surjective, and a characteristic element $\xi_M$ is such that $\delta_G (\xi_M) = [M]\in K_0(\mathfrak D)$.
+
+$T$ is always contained in $S^*$ so there exists a natural commutative diagram of K-groups:
+
+$$\begin{array}{ccc}\label{commutingdiagramcool}
+ K_1((\Lambda_G)_T) &  \xrightarrow{\delta_G} &  K_0(\mathfrak D) \\
+ \downarrow &   &  \downarrow \\
+ K_1((\Lambda_G)_{S^*}) & \xrightarrow{\delta_G}  &   K_0(\mathfrak M_H(G))
+\end{array}$$
+
+This shows compatibility of characteristic elements, and allows us to study  $K_1((\Lambda_G)_{S^*})$ through $K_1((\Lambda_G)_T)$.
+
+
+We may define the $i$-th twisted $\mu$-invariant of $M$ for $i=1, \dots , s$ (running through the $s$ (finite) simple modules $V_1, \dots , V_s$ of $\Lambda(G)$ up to Isomorphism):
+
+$$\mu_i(M) = \frac{\text{log}_p (G, (gr_pM)\otimes_{\FP} V_i^*)}{\text{dim}_{\FP}\text{End}_{\Omega(G)}(V_i)},$$
+
+where the grading is with respect to the $p$-adic filtration on $M$, giving a finitely generated $\Omega(G)$-module.
+
+It is shown that this number is an integer and moreover we can build up the characteristic element from these:
+
+\subsection{Theorem (Closed Form for Characteristic Element - see \cite{AW} 1.5):}
+\emph{Let $\theta: (\Lambda(G))_T^* \rightarrow K_1((\Lambda(G)_T)$ be the canonical homomorphism, and let $M$ be a finitely generated $p$-torsion $\Lambda(G)$-module. Then,
+$$\xi_M = \theta (\prod_{i=1}^s f_i^{\mu_i(M) }),$$
+where $f_i = 1+ (p-1)e_i$ for $e_i$ an idempotent in $\Lambda(G)$ such that $V_i$ is the unique simple quotient module of $e_i  \Lambda(G)$.}
+
+We may write out each map in the Localisation Sequence:
+
+For $R$ a ring, and $T$ an Ore Set in $R$ consisting of regular elements we know a localisation $R_T$ exists. The canonical map $\phi:R\rightarrow R_T$ gives rise to the exact sequence:
+
+$$K_1(R)\rightarrow K_1(R_T)\rightarrow K_0(R, \phi) \rightarrow K_0(R)\rightarrow K_0(R_T)$$
+
+If the ring $R$ is also Noetherian and Regular (meaning every finitely generated $R$-module has finite projective dimension). This is true for rings of finite global dimension. Then it is known $K_0(R,\phi)$ may be identified with the Grothendieck group $K_0(\mathfrak C)$, $\mathfrak C$ the category of all finitely generated $S$-torsion $R$-modules, by the invertible map $m$ given below.
+
+Moreover, when $R$ is regular Noetherian, there exists an isomorphism $\gamma:G_0(R)\rightarrow K_o(R)$ giving the exact sequence,
+
+$$  \begin{array}{cccccc}
+    K_1(R)\rightarrow & K_1(R_S) & \xrightarrow{\delta}& K_0(\mathfrak C) & \xrightarrow{\alpha} & K_0(R)\xrightarrow{\beta} K_0(R_S)\rightarrow 0 \\ 
+    ¥ & \theta \uparrow & l \searrow &m\downarrow || &\nearrow n& \\ 
+    ¥ & R_S^* & &K_0(R,\phi)&& \\ 
+  \end{array}$$
+  
+  Then we have the following descriptions, denoting by  $\theta$ the canonical embedding of the units, $R_S^*\rightarrow K_1(R_S)$.
+  
+  \begin{itemize}
+  \item $\alpha([M]) = \gamma ([M]) \text{ for all } M\in \mathfrak C$.
+  \item $\beta([M]) = [M\otimes_R R_S]$.
+  \item $\gamma([M]) = \sum_{j=0}^n (-1)^j [X_j]$ for any choice of finite Projective Resolution of the $R$-module $M$,  $$0\rightarrow X_n\rightarrow \dots \rightarrow X_0 \rightarrow M\rightarrow 0$$.
+  \item $\delta (\theta(x)) = [R/xR]\in \mathfrak C, \text{ for all }x\in R\cap R_S^*$. This means that $\theta(x)\in K_1(R_S)$ is a characteristic element for the principal module $R/xR$ when $x\in R\cap R_S^*$.
+  \item The Relative K-group, $K_0(R,\phi)$ is identified with triples $(M,N,f)$, where $M$ and $N$ are $\Lambda_G$-modules and $f$ gives an Isomorphism between the induced modules $f:M\uparrow_{\Lambda_G}^{(\Lambda_G)_S} \cong N\uparrow_{\Lambda_G}^{(\Lambda_G)_S}$ modulo obvious commuting squares.
+  \item For $M$ a $\Lambda_G$-module, $m(M)\in K_0(R,\phi)$ is defined as follows. Let $\dots\rightarrow F_2\rightarrow F_1\rightarrow F_0\rightarrow M\rightarrow 0$ be a finite projective resolution of $M$ by $\Lambda_G$-modules. Projectivity allows us to choose a section at each stage $F_{2m}\rightarrow F_{2m+1}$, and gluing together a map between even and odd sums, $\psi$:
+  $$F^+ = \bigoplus_{i\text{ even}}, \,\,\, F^- = \bigoplus_{i\text{ odd}}$$
+  Take $m(M) = [F^+, F^-, \psi]$. This is independent of the choices of resolution and sections, and is additive on short exact sequences.
+ \item For an element of $K_1[(\Lambda_G)_T]$ represented by $g\in GL_n(\Lambda_G)$, thought of as an invertible linear map $g: [(\Lambda_G)_T]^n \rightarrow  [(\Lambda_G)_T]^n$. Let,
+ $$l(g) = ((\Lambda_G)^n, (\Lambda_G)^n, g)\in K_0(R, \phi) $$.
+When $g$ is already an isomorphism before inducing, the triple is trivial and we see the inclusion of $K_1(R)$ in $K_1(R_T)$ followed by $l:K_1(R_T)\rightarrow K_0(R,\phi)$ is trivial (necessary for Exact Sequence).
+\item F0r $(M,N,f)\in K_0(R,\phi)$, 
+$$n(M,N,f) = [M] - [N] \in K_0(R)$$
+Then it is easily seen $n\circ l (g) = [(\Lambda_G)^n] - [(\Lambda_G)^n] = 0$.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example (False Tate Curve):}
+The case we will look at to illustrate these techniques comes from picking a field $k$ (assumed to contain the group $\mu_p$ of $p$-th power roots of unity) by adjoining to $k_{cyc}$ the $p$-power roots of an element in $k^*$ which is not just a root of unity itself. Their union $k_\infty$ is by Kummer theory a Galois extension with Gaois group, $G\cong \ZP(1)  \rtimes \ZP$ - a semi-direct product where the action is given by the cyclotomic character.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

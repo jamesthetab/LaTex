@@ -1,0 +1,94 @@
+In this section we consider the extension for $G=\ZP$, look at the Hochschild homology, and following methods of \cite{S} we calculate the image of representatives of $K_1(\Lambda_G)$ under the Dennis Trace Map, and ask if this carries significant information.
+
+\subsection{Calculation of Image of D.T.M. in $HH_1(\Lambda_G)$} 
+
+						
+Any Iwasawa module may be written (up to pseudo-isomorphism) as $\Lambda^r\oplus \bigoplus_{i=1}^s \Lambda / p^{m_i} \oplus \bigoplus_{j=1}^t \Lambda/ F_j^{n_j}$, see \cite{N}, the corresponding characteristic element from \cite{CFKSV} is just image under the natural inclusion 
+\begin{eqnarray}
+\nonumber (\Lambda(G))^*    &\hookrightarrow&   K_1(\Lambda(G))\\
+ \nonumber u & \rightarrow &     \left( \begin{array}{ccc} u & ¥ & ¥ \\ 
+    ¥ & 1 & ¥ \\ 
+    ¥ & ¥ & \ddots \\   
+  \end{array}  \right)
+ \end{eqnarray}
+
+\ref{work1.3.7} tells us that $\Lambda_G \cong \ZP[[T]]$, a power series in 1-varibale, and hence units,
+
+$$(\Lambda_G)^* \cong \{a_0 + a_1T + \dots | a_0\in \ZP^*, a_i\in \ZP\,\, \forall i\geq 1\}$$
+
+Since $G$ is pro-$p$, $\Lambda_G$ is local, hence semi-local, and the above map is onto. So to understand the image of $K_1(\Lambda_G)$ in $HH_1(\Lambda_G)$ under the Dennis Trace Map homomorphism, it is sufficient to understand where a power series, $F = a_0 +a_1T+\dots | a_0\in \ZP^*$, gets mapped. I will freely interchange between the 2-different interpretations of Kahler differentials, see \ref{EQ}. \\ From \ref{DTM}, $\delta:K_1(kG)\rightarrow HH_1(kG):M\rightarrow Tr(M^{-1}\otimes M)$, and after the natural inculsion above, the D.T.M. reduces to
+$$F\rightarrow F^{-1} \mathfrak d F$$
+Denoting the inverse of $F$ in the power series ring, $\ZP[[T]]$ by $G = b_0 +b_1 T + b_2 T^2 +\dots = a_0^{-1} - a_1 a_0^{-2}. T + \dots$  we have $F\xrightarrow{\delta} G\mathfrak d F$. We now simplify this using the derivative property:
+\begin{eqnarray}
+\nonumber T^2\mathfrak d (-) & = & T\mathfrak d T (-) +T \mathfrak d (-) T\\
+\nonumber			&=& T \mathfrak d 2T (-) \,\,(\ZP \text{ commutative})
+			\end{eqnarray}
+			
+More generally $T^n\mathfrak d (-) = nT \mathfrak d T^{n-1} (-) $
+
+We see, 
+$$\delta F = (\sum a_i T^i) \mathfrak d (\sum b_j T^j) = \sum_{j\geq 0, i\geq 1} T \mathfrak d (ia_i) b_j T^{i-1} T^j + a_0 \mathfrak d \sum b_jT^j =  \sum_{j\geq 0, i\geq 1} T \mathfrak d (ia_i b_j) T^{i+j-1}$$
+
+Recall, $T= \gamma - 1$ for $\gamma$ a generator of $G=\ZP$. 
+
+\begin{eqnarray}
+\nonumber \delta F &=& (\gamma - 1)  \mathfrak d \sum_{i+j-1 = n, i\geq 0, j\geq 0} (i a_i b_j) (\gamma - 1)^n\\
+\nonumber 		&=& (\gamma )  \mathfrak d \sum_{i+j-1 = n, i\geq 0, j\geq 0} (i a_i b_j) \sum_{k=0}^n (-1)^k \gamma ^k \left(   \begin{array}{c}
+    n \\ 
+    k \\ 
+  \end{array}\right)
+  \end{eqnarray}
+		
+The coefficient of $\gamma^m$ on RHS, corresponding to coordinate of $\gamma^{m+1}$ (once we have included contribution of $\gamma$ from LHS to marker):
+\begin{eqnarray}
+\nonumber &=& a_1+ (b_m -  \left(\begin{array}{c} m+1 \\ m \\ \end{array}\right) 
+b_{m+1} + \left(\begin{array}{c} m+2 \\ m \\ \end{array}\right) 
+b_{m+2} - \left(\begin{array}{c} m+3 \\ m \\ \end{array}\right)
+b_{m+3} +\dots ) + 2a_2\dots \\
+\nonumber &=& 1/(m!) . a_1[(m).(m-1)\dots  1. b_m - (m+1).(m)\dots  2. b_{m+1} +(m+2).(m+1)\dots  3. b_{m+2}+\dots ] + \dots \\
+\nonumber &=& 1/(m!) [a_1 . [F]^{(m)}\vert_{-1} +2a_2. [F]^{(m)}\vert_{-1} +\dots]\\
+\nonumber &=& 1/(m!) (a_1. [F^{(m)}]\vert_{-1}+2a_2 [T.F^{(m)}]\vert_{-1} +3a_3 [T^2.F^{(m)}]\vert_{-1}+\dots)\\
+\nonumber &=& 1/(m!) [(a_1+2a_2T +3a_3T^2+\dots ) F ]^{(m)}\vert_{-1}\\
+\nonumber &=& 1/(m!) [G' .F ]^{(m)}\vert_{-1}\\
+\nonumber &=& 1/(m!) [F'/F .F ]^{(m)}\vert_{-1}\\
+\nonumber &=& 1/(m!) [(\text{ln }F)' ]^{(m)}\vert_{-1}\\
+\nonumber &=& 1/(m!) [\text{ln }F]^{(m+1)}\vert_{-1}\\
+\end{eqnarray}
+
+So the coordinate of $\gamma^{m+1}$ is simply given by $ [\text{ln }F]^{(m+1)}\vert_{-1}$, where $(-)^{(m)}$ denotes the $m$-th derivative with respect to $T$.
+		
+		We now may rewrite the image, taking places corresponding to $0, 1,  m\in\ZP$ as:
+		$$\delta F = (0, (F(-1)/F'(G(-1)) , \dots, [\text{ln }F]^{(m+1)}\vert_{-1}, \dots) \in \prod_{\gamma \in \ZP} (\ZP)$$
+		
+		It is now natural to ask about the kernel and image of this map as a way to deduce information on the structure of $K_1(\Lambda_G)$.
+		
+\subsubsection*{What is the Kernel of Dennis Trace Map, $\delta: K_1(\Lambda_G)\rightarrow HH_1(\Lambda_G)$ in the Classical Case?}
+Suppose $G'F^{(m)}=0$ for all $m$, then analyticity gives $G'F = \text{ const. } = G'F(0) = -a_1 a_0^{-2} a_0 = -a_0^{-1} a_1$
+
+Hence, $G' = -a_0^{-1} a_1/ F = -a_0^{-1} a_1 . G$, and so $(\text{ln }G)' = -a_0^{-1} a_1$. Thus, for constants $K,K'$,
+
+\begin{eqnarray}
+\nonumber G &=&  K' . e^{-a_0^{-1} a_1 T}\\
+\nonumber F &=&  K' . e^{a_0^{-1} a_1 T}\\
+\nonumber \text{ Considering } &T& = 0,\\
+\nonumber F &=&  a_0 e^{a_0^{-1} a_1 T}\\
+\nonumber   &=&  a_0+ a_1T +\dots + a_0 . (a_1 a_0^{-1})^n / (n!). T^n + \dots
+\end{eqnarray}
+
+So we have free choice over $a_0,a_1$ but then all other coefficients (and hence the power series itself) are determined. Thus kernel is isomorphic to $\ZP^* \text{ x } \ZP$ as sets.
+
+"ln" surjects $1+T\ZP[[T]]$ onto  $T\ZP[[T]]$, and differentiating, $(\text{ln }F)'$ surjects onto $\ZP[[T]]$ (we may factor out $a_0\in \ZP^*$ constant term from each coefficient, since it cancels in $F' / F$ and it is absorbed into the kernel, see above). So $\delta$ surjects onto $\prod_{\gamma\neq 0} (\ZP)$. This recovers the structure of the units in $\Lambda_G$, or equivalently of $K_1(\Lambda_G)$ in this commutative case as $\ZP^* \text{ x } \ZP \text{ x } \ZP \text{ x }\dots$ where the group of units corresponds to the constant term of the power series representing elements in Iwasawa Algebra being invertible.
+  
+		
+		
+		
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

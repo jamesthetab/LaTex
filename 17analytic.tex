@@ -1,0 +1,628 @@
+\subsection{Profinite Groups and Pro-p Groups}
+\textbf{pro-p group special type of profinite group}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Powerful p-groups}
+
+\textbf{The key to understanding the structure of analytic pro-p groups lies in the properties of a special class of finite groups}
+
+
+\subsubsection*{2.1 Definition}
+\emph{\begin{enumerate}
+\item A finite p-group $G$ is powerful if $p$ is odd and $G/G^p$ is abelian.
+\item A subgroup $N$ of a finite p-group $G$ is powerfully embedded in $G$, written N p.e. G if p is odd and $[N,G]\leq N^p$.
+\end{enumerate}}
+
+
+\textbf{Think of G powerful as G almost abelian.}
+
+
+
+\subsubsection*{2.3 Proposition}
+\emph{Let G be a finite p-group and $N\leq G$. If N p.e. in G then $N^p$ p.e G}
+
+Define lower central series for G a finite p-group:
+$$P_i(G) = G,\,\,P_{i+1}=p_i(G)^p[P_i(G),G]\text{ for }\geq 1$$
+
+Notation
+$$G_i = P_i(G)$$
+
+\subsubsection*{2.4 Lemma}
+\emph{Let G be a powerful p-group.
+\begin{enumerate}
+\item For each $i$, $G_i$ p.e. G and $G_{i+1} = G_i^p = \Psi (G_i)$
+\item For each i, the map $x\mapsto x^p$ induces a homomorphism from $G_i/g_{i+1}$ onto $G_{i+1}/G_{i+2}$
+\end{enumerate}}
+
+
+\subsubsection*{2.5 Lemma}
+\emph{If $G=<a_1, \dots, a_d>$ is a powerful p-group, then $G^p = <a_1^p, \dots, a_d^p>$}
+
+\subsubsection*{2.6 Proposition}
+\emph{If G is a powerful p-group then every element of $G^p$ is a p-th power in G}
+
+\subsubsection*{2.8 Corollary}
+\emph{If $G=<a_1, \dots, a_d>$ is a powerful p-group, then $G= <a_1>\dots <a_d>$ i.e. G is the product of its cyclic subgroups $<a_i>$.}
+
+\subsubsection*{2.9 Theorem}
+\emph{If G is a powerful p-group and $H\leq G$ then $d(H)\leq d(G)$.}
+
+\subsubsection*{2.13 Theorem}
+\emph{Let G be a finite p-group of rank r. Then G has a powerful characteristic subgroup of index at most $p^{r \lambda (r)}$ if p is odd.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Pro-p groups of finite rank}
+
+\textbf{Characterise the pro-p groups of finite rank as exactly those which contain a finitely generated powerful open subgroup}
+
+\subsubsection*{3.1 Definition}
+Let G be a pro-p group
+\begin{enumerate}
+\item G is powerful if p is odd and $G/ \overline{G^p}$ is abelian.
+\item  Let $N {\leq}o G$. Then N is powerfully embedded in G if p is odd and $[N,G] \leq \overline{N^p}$.
+\end{enumerate}
+
+\subsubsection*{3.2 Proposition}
+Let G be a pro-p group and $N\leq_o G$. Then N p.e G if and only if $NK/K$ p.e in $G/K$ for every K open normal in G.
+
+\subsubsection*{3.3 Corollary}
+A topological group G is a powerful pro-p group if and only if G is the inverse limit of an inverse system of powerful finite p-groups in which all the maps are surjective.
+
+\textbf{Now carry over result from previous chapters, but need that the lower central series is well behaved - consists of open subgroups. True in case of finitely generated pro-p groups.}
+
+\subsubsection*{3.4 Lemma}
+Let G be a powerful finitely generated pro-p group. Then every element of $G^p$ is a p-th power in G, and $G^p = \Psi (G)$ is open in G.
+
+\subsubsection*{3.5 Corollary}
+As above, for each i we have
+$${G^p}^i = ({G^p}^{i-1})^p = \{{x^p}^i | x\in G\} \text{ p.e. } {G^p}^{i-1}$$
+
+\subsubsection*{3.6 Theorem}
+Let $G=\overline{<a_1, \dots , a_n>}$ be a finitely generated powerful pro-p group, and put $G_i = P_i(G)$ for each $i$.
+\begin{itemize}
+\item $G_i$ p.e. $G$
+\item $G_{i+k} = P_{k+1}(G_i) = {G_i^p}^k$ for each $k\geq o$, and in particular $G_{i+1} = \Psi(G_i)$
+\item  $G_{i} = {G^p}^{i-1} = \overline{<a_1^{p^{i-1}}\dots a_d^{p^{i-1}}>}$
+\item the map $x \mapsto {x^p}^k$ induces a homomorphism from   $G_i/g_{i+1}$ onto $G_{i+1}/G_{i+2}$
+\end{itemize}
+
+\subsubsection*{3.7 Proposition}
+If $G=\overline{<a_1, \dots, a_d>}$ is a powerful pro-p group, then $G= \overline{<a_1>}\dots\overline{ <a_d>}$ i.e. G is the product of its procyclic subgroups $\overline{<a_i>}$.
+
+\textbf{For any topological subgroup G, $d(G)$ denotes the minimal cardinality of a topological generating set for G. If G is a finitely generated pro-p group, we thus have
+$$d(G) = dim_{\FP} (G / \Psi(G))$$}
+
+Thus
+
+\subsubsection*{3.8 Theorem}
+Let G be a powerful finitely generated pro-p group and H a closed subgroup. Then $d(H)\leq d(G)$.
+
+\subsubsection*{3.13 Theorem}
+Let G be a pro-p group. Then G has finite rank if and only if G is finitely generated and G has a powerful open subgroup; in that case, G has a powerful open characteristic subgroup.
+
+\subsubsection*{3.17 Theorem}
+Let G be a pro-p group. Then the following are equivalent:
+\begin{enumerate}
+\item G is the product of finitely many procyclic subgroups;
+\item G is the product of finitely many closed subgroups of finite rank;
+\item G has finite rank;
+\item G is finitely generated as a $\ZP$-powered group. i.e. G has a finite subset X such that every element of G is equal to a product of the form $x_1^{\lambda_1} \dots x_s^{\lambda_s}$ with $x_j\in X$ and $\lambda_j \in \ZP$.
+\item G is countably generated as a "$\ZP$-powered group".
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Uniformly powerful groups}
+
+\textbf{ Shown every pro-p group of finite rank has an open normal subgroup which is powerful. show can satisfy a stronger condition - uniformaly powerful. plus in these groups the group operation can be smoothed out to give a new, abelian group structure, and that this new group is naturally a finitely generated free $\ZP$-module.}
+
+\subsubsection*{4.1 Definition}
+A pro-p group G is uniformaly powerful if
+\begin{enumerate}
+\item G is finitely generated
+\item G is powerful, and
+\item for all i,$|P_i(G):P_{i+1}(G)|  = |G:P_2(G)|$
+\end{enumerate}
+
+
+\textbf{Usually abbreviate uniformally powerful to uniform.}
+
+\emph{Then homo $x\mapsto x^p$ is actually an isomorphism $P_i / P_{i+1} \rightarrow P_{i+1} / P_{i+2}$.}
+
+\subsubsection*{4.2 Theorem}
+Let G be a finitely generated powerful pro-p group. Then $P_k(G)$ is uniform for all sufficiently large k.
+
+\subsubsection*{4.3 Corollary}
+A pro-p group of finite rank has a characteristic open uniform subgroup.
+
+\textbf{ G is uniform if and only if $d(G_i / G_{i+1}) = d(G_1 / G_2) = d$ for all i.}
+
+\subsubsection*{4.4 Proposition}
+Let G be a powerful finitely generated pro-p group. TFAE:
+\begin{enumerate}
+\item G is uniform;
+\item $d(P_i(G)) = d(G)$ for all $i\geq 1$;
+\item $d(H) = d(G)$ for every powerful open subgroup H of G.
+\end{enumerate}
+
+\textbf{Simplest characterisation of uniform groups:}
+
+\subsubsection*{4.5 Theorem}
+A powerfully finitely generated pro-p group is uniform if and only if it is \textbf{torsion free}.
+
+\subsubsection*{4.6 Lemma}
+If A and B are open uniform subgroups of some pro-p group then $d(A) = d(B)$
+
+\subsubsection*{4.7 Definition}
+Let G be a pro-p group of finite rank. The dimension of G is
+$$dim(G) = d(H)$$ where H is any open uniform subgroup of G (unambiguous).
+
+\textbf{Later show dim(G) dimension of G as a p-adic analytic group. Here set up homos between uniform group and ${\ZP}^d$. Definition makes sense:}
+
+\subsubsection*{4.8 Theorem}
+Let G be a pro-p group of finite rank and N a closed normal subgroup of G. Then 
+$$dim(G) = dim (N) +dim(G/N)$$
+
+Recall $G=\overline{<a_1>}\dots \overline{<a_d>}$ thus for each a in G,
+$$a = a_1^{\lambda_1}\dots a_d^{\lambda_d}$$ with $\lambda_1 \dots \lambda_d \in \ZP$, moreover:
+
+\subsubsection*{4.9 Theorem}
+Let G be a uniform pro-p group and $\{a_1, \dots , a_d\}$ a topological generating set for G, where $d=d(G)$. Then the mapping
+$$(\lambda_1,\dots , \lambda_d)\rightarrow a_1^{\lambda_1}\dots a_d^{\lambda_d}$$ from ${\ZP}^d$ to G is a \textbf{homeomorphism}.
+
+The following Lemmas set up an additive structure, using IM coming from uiniformity.
+
+\subsubsection*{4.10 Lemma}
+Let $n\in \N$. The mapping $x\mapsto x^{p^n}$ is a homeomorphism from $G$ onto $G_{n+1}$. For each k and m, it restricts to a bijection $G_k\rightarrow G_{k+n}$ and induces a bijection $G_k/G_{k+m} \rightarrow G_{n+k} / G_{n+k+m}$
+
+4.10 shows that each element $x\in G_{n+1}$ has a unique $p^n$-th root in G, denoted $x^{P^{-n}}$. Use this bijection to TRANSFER THE GROUP OPERATION FROM $G_{n+1}$ to $G$, to define a new structure on G:
+
+\emph{For $x,y\in G$ we define
+$$x+_n y = (x^{p^n}y^{p^n})^{p^{-n}}$$The map $x\mapsto x^{p^{-n}}$ is an IM from $G_{n+1}$ onto the group $(G, +_n)$.}
+
+\subsubsection*{4.11 Lemma}
+For $n>1$, $x,y \in G$, $u,v\in G_n$
+$$xu+_n yv \cong x+_n y \cong x +_{n-1} y \,\,(mod\, G_{n+1})$$
+and for all $m>n$
+$$x+_m y \cong x+_n y \,\, (mod\,G_{n+1})$$
+
+\textbf{So this mean that for a given pair $(x,y)$ the sequence $(x+_n y)$ is a CAUCHY SEQUENCE, define:}
+
+\subsubsection*{4.12 Definition}
+For $x,y\in G$,
+$$x+y = Lim_{n\rightarrow\infty} x+_n y$$
+
+\subsubsection*{4.13 Proposition}
+The set G with the operation + is an abelain group, with identity element 1 and inversion given by $x\rightarrow x^{-1}$. 
+
+Using additive notation we have.
+
+\subsubsection*{4.14 Lemma}
+\begin{enumerate}
+\item If $xy=yx$ then $x+y = xy$
+\item For each integer m, $mx = x^m$
+\item For each $n\geq 1$, $p^{n-1}G = G_n$.
+\item If $x,y\in G_n$ then $x+y \cong xy \,\, (mod\, G_{n+1})$
+\end{enumerate}
+
+
+\subsubsection*{4.15 Corollary}
+For each n, $G_n$ is an additive subgroup of G; the additive cosets of $G_n$ in G are the same as the multiplicative cosets of $G_n$ in $G$. Also the identity map $G_n / G_{n+1} \rightarrow G_n / G_{n+1}$ is an isomorphism of the additive group $G_n / G_{n+1}$ onto the multiplicative group $G_n/ G_{n+1}$, and the index of $G_n$ in the additive group $(G, +)$ is equal to $|G: G_n|$.
+
+\subsubsection*{4.16 Proposition}
+With the origional topology of $G,\,(G,+)$ is a uniform pro-p group of dimension $d=d(G)$. Moreover, any set of topological generators for G is a set of topological generators for $(G,+)$.
+
+As $(G,+)$ is a pro-p group, it admits a natural action by $\ZP$. Since $(G, +)$ is abelain we make it into a $\ZP$-module. Structure of module givenby
+
+\subsubsection*{4.17 Theorem}
+Let G be a uniform pro-p group of dimension d, and let $\{a_1, \\dots a_d\}$ be a topological generating set for G. Then, with the operations defined above, $(G,+)$ is a free $\ZP$-module on the basis $\{a_1, \\dots a_d\}$.
+
+\subsubsection{4.18 Corollary}
+Let G be a uniform pro-p group of dimension d. Then the action of $Aut(G)$ on G is $\ZP$-linear with respect to the $\ZP$-module structure on $(G,+)$. Hence, $Aut(G)$ may be identified with a subgroup of $GL_d(\ZP)$.
+
+There is a nice structure theorem for such groups:
+
+\subsubsection*{4.22 Corollary}
+Let G be a finitely generated powerful pro-p group of dimension d. Then $Aut(G)$ is isomorphic to a subgroup of $GL_d(\ZP)\, X\, F$ for some finite group F. In particular $Aut(G)$ is isomorphic to a linear group over $\ZP$.
+
+Passing from the uniform pro-p group G to the $\ZP$-module $(G,+)$ described above means forgetting a lot of information about the structure of G, since all free $\ZP$-modules of a given rank are IM!!!
+
+Save information by using lie operation:
+
+\textbf{Definition of lie bracket}
+
+For $x,y\in G$ and $n\in \N$
+$$(x,y)_n = [x^{p^n} , y^{p^n}]^{p^{-2n}}$$
+
+\subsubsection{4.28 Lemma}
+If $n > 1,\,x,y\in G$ and $u,v\in G_n$, then
+$$(xu,yv)_n\cong (x,y)_n\cong (x,y)_{n-1}\,(mod\,G_{n+1})$$
+and for all $m>n$ we have 
+$$(x,y)_m\cong (x,y)_n\,(mod\,G_{n+2})$$
+
+Thus for given $x$ and $y$, $((x,y)_n)$ is a Cauchy sequence and we may define:
+
+\subsubsection{4.29 Definition}
+For $x,y\in G$,
+$$(x,y) = lim_{n\rightarrow \infty} (x,y)_n$$
+
+\subsubsection{4.30 Theorem}
+With the operation $(-,-)$ the $\ZP$-module $(G,+)$ becomes a Lie algebra over $\ZP$.
+
+
+log is equivalent to passing to the Lie algebra, and the C-H formula shows that $xy$ can be recovered from the Lie algebra structure of $(G,+)$ so don't loose as much information.
+
+\textbf{Uniformally powerful pro-p groups is a new idea, and loosely corresponds to Lazard's class of "groupes p-saturables" - he views the situation in terms of filtrations.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Automorphism Groups}
+Here we show that the automorphism group of a pro-p group of finite rank is itself virtuallya pro-p group of finite rank. 
+
+Special case for $\ZP^d$ when we study the Aut group $\Gamma = GL_d (\ZP)$.
+
+A base for the neighbourhoods of 1 in $\Gamma$ is given by the congruence subgroups:
+$$\Gamma_i = \{ \gamma\in \Gamma | \gamma \cong 1_d\, (mod\, p^i)\}$$
+
+It follows that $\Gamma$ is profinite and that $\Gamma_1$ is a pro-p group.
+
+$\Gamma$ is a compact p-adic analytic group; a fundamental property of such groups is that they contain an open powerful finitely generated pro-p subgroujp, and  verify directly:
+
+\subsubsection*{5.1 Lemma}
+If p is odd and $n\geq 2$ then every element of $\Gamma_n$ is the p-th power of an element of $\Gamma_{n-1}$.
+
+In general $Aut(G)$ will not itself be a profinite group, however,
+
+\subsubsection*{5.3 Theorem}
+If G is a finitely generated profinite group then $Aut(G)$ is a profinite group.
+
+\subsubsection{5.5 Proposition}
+Let G be a finitely generated pro-p group. Then $\Gamma(\Phi(G))$ is a pro-p group.
+
+A profinite group G is said to have a property \textbf virtually if G has an open normal subgroup H such that H has the property.
+
+\subsubsection{5.6 Theorem}
+Let G be a finitely generated profinite group. If G is virtually a pro-p group then $Aut(G)$ is also a virtually pro-p group.
+
+\subsubsection{5.7 Theorem}
+Let G be a profinite group. If G is virtually a pro-p group of finite rank, then so is $Aut(G)$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Normed algebras}
+
+Work towards the Campbell-Hausdorff formula.
+
+\subsubsection*{6.1 Definition}
+A norm on a ring R is a function $||-||:R\rightarrow \R$ such that for all $a,b\in R$
+\begin{enumerate}
+\item $||a||\geq 0$; $||a||=0$ if and only if $a=0$.
+\item $||1_R||=1$ and $||ab||\leq||a||.||b||$;
+\item $||a\pm b||\leq max\{||a||,||b||\}$.
+\end{enumerate}
+If these hold then R is said to be a normed ring.
+
+\subsubsection*{6.2 Definition}
+\begin{itemize}
+\item The normed ring $(R,||-||)$ is complete if every Cauchy sequence in R converges to an element in R.
+\item A normed ring $(\hat R, ||-||)$ is called a completion of R if R is a dense subring of $\hat R$, and the norm on $\hat R$ extends the norm on $R$, and $\hat R$ is complete.
+\item \textbf{For any normed ring such a completion exists and is unique up to norm preserving IM which restricts to the identity on $R$}
+\end{itemize}
+
+This can also be approached via filtrations:
+
+\subsubsection*{6.5 Lemma}
+Let R be a ring and 
+$$R=R_0\supset R_1 \supset \dots \supset R_i\supset\dots$$
+a chain of ideals such that
+\begin{itemize}
+\item $\bigcap_{i\in\N} R_i = 0$
+\item for all $i,j\in\N$, $R_i R_j\subset R_{i+j}$
+\end{itemize}
+
+Fix a real number $c>1$ and define $||-||:R\rightarrow \R$ by
+$$||0||=0;\,\,\,\,||a|| = c^{-k}\text{ if }a \in R_k - R_{k+1}$$
+Then $(R,||-||)$ is a normed ring.
+
+\subsubsection*{6.6 Definition}
+Let $A$ be a $\QP$-algebra. Then $(A, ||-||)$ is a normed $\QP$-algebra if $||-||$ is a norm on the ring $A$ and the following holds:
+$$||\lambda a|| = |\lambda|.||a||\text{ for all }a\in A \text{ and }\lambda\in\QP$$
+
+\textbf{Introduce general notion of convergence}
+
+\subsubsection*{6.8 Definition}
+Let T be a countably infinite set and let $n\rightarrow a_n$ be a map of T into R. Let $a,s\in R$.
+\begin{enumerate}
+\item The family $(a_n)_{n\in T}$ converges to a, if, for each $\epsilon>0$ there exists a finite subset $T'$ of $T$ such that $||a-a_n||<\epsilon$ for all $n\in T -T'$.
+
+\item The series $\sum_{n\in T} a_n$ converges with sum s if for each $\epsilon > 0$ there exists a finite subset $T'$ of $T$ such that for all finite sets $T''$ for which $T'\subset T''\subset T$ we have $||s-\sum_{n\in T} a_n||<\epsilon$
+\end{enumerate}
+
+\subsubsection*{6.9 Proposition}
+Let T be a ccountably infinte set and let $n\mapsto a_n$ be a map from T into R. Let $i\mapsto n(i)$ be a bijection from $\N$ to T.
+\begin{enumerate}
+\item $lim_{n\in T} a_n = a$ if and only if $lim_{i\rightarrow \infty} a_{n(i)} = a $.
+\item The series $\sum_{n\in T} a_n$ converges in R if and only if $lim_{n\in T}a_n = 0$.
+\item $\sum_{n\in T} a_n = s $ if and only if $\sum_{i=0}^\infty a_{n(i)} =  s$.
+\item If $\sum_{n\in T}a_n = s$ then $||s||\leq sup \{ ||a_n||\, | n\in T\}$
+\item If  $\sum_{n\in T}a_n = s$ and for some $m\in T$, $||a_m||>|a_n||$ for all $n\in T - \{m\}$, then $||s|| = ||a_m||$.
+\end{enumerate}
+
+
+\subsubsection*{6.10 Proposition}
+Let T be the disjoint union of a countable family $\{T_\lambda |\lambda\in\Lambda\}$ of countable sets $T_\lambda$. Suppose that $\sum_{n\in T}a_n$ is a convergent series in R, with sum s. Then each of the series $\sum_{n\in T_\lambda} a_n$ converges in R with sum $s_\lambda$ say, and $\sum_{\lambda\in \Lambda} s_\lambda = s$.
+
+\subsubsection*{6.11 Corollary - DOUBLE SERIES}
+Let $S_1$ and $S_2$ be countable sets. Suppose that for each $(m,n)\in S_1\, x\, S_2$, $a_{mn}$ is an element of R, and that $lim_{(m,n)\in S_1\, x \, S_2}a_{mn} = 0$. Then the double series $\sum_{m\in S_1}(\sum_{n\in S_2}a_mn)$ and  $\sum_{n\in S_2}(\sum_{m\in S_1}a_mn)$ both converge and their common sum equals $\sum_{(m,n)\in S_1\, x S_2} a_{mn}$.
+
+\subsubsection*{6.12 Corollary - CAUCHY MULTIPLICATION OF SERIES}
+Suppose that $(T, *)$ is a countable set with a binary operation $*$, and that $\sum_{n\in T} a_n$ and $\sum_{n\in T}b_n$ are convergent series in R. Then, for each $n\in T$, the series 
+$$\sum_{(r,s)\,s.t.\, r*s - n} a_rb_s$$
+converges with sum $c_n$ say, and the series $\sum_{n\in T}c_n$ converges with 
+$$\sum_{n\in T}c_n = (\sum_{n\in T}a_n)(\sum_{n\in T}b_n)$$
+
+\textbf{Result on uniqueness of power series:}
+
+\subsubsection*{6.13 Proposition}
+Let A be a complete normed $\QP$-algebra and let $a_n$ $(n\in\N)$ be elements of A. Suppose there exists a neighbourhood V of 0 in $\QP$ such that 
+$$\sum_{n\in \N} \lambda^n a_n = 0 \text{ for all } \lambda\in V$$
+Then $a_n = 0$ for all $n\in \N$
+
+For $(A,||-||)$ a complete normed $\QP$-algebra, we define non-commutative power series, considering elements of $W(X_1,\dots, x_n)$ as WORDS. Concateate mutliples, and recall empty word, of degree 0 is the identity.
+
+\subsubsection*{ 6.14 Definition}
+The ring of formal power series in the non-comm variables $X_1, \dots , X_n$ denoted
+$$\QP<<X_1, \dots , X_n>>$$
+is the set of all formal sums
+$$F(\mathbf{X}) = \sum_{w\in Words}a_ww\,(a_w\in \QP \text{ for all } w)$$
+made into a $\QP$-algebra with componentwise addition and scalar multiplication:
+
+$$\sum_{w\in W}a_w w \sum_{w\in W} b_w w = \sum_{w\in W} c_w w $$
+where $c_w = \sum_{uv=w}a_u b_v$.
+
+$\QP <<\mathbf X >>$ is indeed a $\QP$-algebra.
+
+The set of all power series where the power series converges upon substituting the coordinate $\mathbf X$ is denoted $E_{\mathbf X}$.
+
+\subsubsection*{6.16 Lemma}
+Let $x= (x_1,\dots , x_n)\in A^n$
+\begin{enumerate}
+\item The subset $E_X$ is a subalgebra of $\QP<<X>>$.
+\item The mapping $F(X)\rightarrow F(x)$ of $E(X)$ into A is a $\QP$-algebra homomorphism.
+\end{enumerate}
+
+MAIN DEFINITION - $A^n$ given the product topology. Write $w(||x||) = w(||x_1||,\dots , ||x_n||)$
+
+\subsubsection*{Definition}
+Let $f:D\rightarrow A$ be a mapping, where D is a non-empty open subset of $A^n$. Then f is STRICTLY ANALYTIC on D if there exists $f(X) = \sum_{w\in W}a_w w\in \QP<<X>>$ such that, for each $x=(x_1,\dots , x_n)\in D$,
+\begin{enumerate}
+\item $lim_{w\in W} |a_w| w(||x||) = 0$, and
+\item $f(x) = F(x)$
+\item first condition is a kind of absolute convergence since $||a_w w(x)||\leq |a_w| w(||x||)$.
+\end{enumerate}
+
+Now show how coefficients in power series must be well behaved if it is to have a nice representation:
+
+\subsubsection{6.18 Lemma}
+Suppose that f is strictl analytic on a non-empty open set $D\subset A^n$ and that f is represented by $F(X) = \sum_{w\in W}a_w w \in \QP<<X>>$. Then there exists $k\in \N$ such that $p^{k\, deg\, w}a_w\in \ZP$ for all $w\in W - \{ 1 \}$
+
+\subsubsection*{6.19 Proposition}
+Let D be a non-empty open subset of $A^n$. If f is a strictly analytic function on $D$ then f is continuous on D.
+
+\textbf{Now we define exponential and logorithm functions:}
+
+\subsubsection*{6.20 Lemma}
+For each positive integer n,
+$$v(n!)\leq (n-1) / (p-1)$$
+
+\subsubsection*{6.21 Definition}
+Power series in $\QP<<X>>$:
+$$\mathbb E (X) = \sum_{n=0}^\infty \frac {1}{n!} X^n$$
+$$\mathbb L(X) = \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} X^n$$
+
+Let $A_0 = \{x\in A |\, ||x||\leq p^{-1}\}$ if $p\neq 2$.
+
+\subsubsection*{6.22 Proposition}
+There exist strictly analytic functions,
+$$exp:A_0\rightarrow 1+A_0$$
+$$log:1+A_0\rightarrow A_o$$
+such that
+$$exp(x) = \mathbb E(x)$$
+$$log(x) = \mathbb L(x)$$
+
+Reference, $||\frac{(-1)^{n+1}x^n}{n}||\leq||\frac{x^n}{n!}||\leq||x||$.
+
+We now explore composition of power series.
+
+\subsubsection*{6.23 Definition}
+Let
+$$ G(Y) = \sum_{v\in W(Y)}b_vw\in\QP<<Y>>$$
+$$F_i(X) = \sum_{w\in W(X)} a_{iw}w\in\QP <<X>> for i=1,\dots , m$$
+where $X=(X_1\dots x_n)$ and $Y=(Y_1,\dots Y_n)$.
+Assume that for $i=1,\dots , m$ the constant term $a_{i1}$ is equal to zero. For $v(Y)=Y_{i_1}\dots Y_{i_d}\in W(Y)$, define the coefficients $c_{vw}\in\QP$ by
+$$v(F_1(X),\dots , F_m(X)) = F_{i_1}(X)\dots F_{i+d}(X)=\sum_{w\in W(X)}c_{vw} w(X)$$
+The composite of G and $F=(F_1,\dots F_m)$ is defined to be the formal power series
+$$(G\circ F)(X) = \sum_{w\in W(X)} . (\sum_{v\in W(Y)} b_v c_{vw})w(X)$$
+
+Now show that under certain conditions the operations of composition and evaluation commute.
+\subsubsection*{6.24 Theorem}
+Let $(A,||-||)$ be a complete normed $]QP$-algebra, and suppose that $F_1(X),\dots , F_m(X)$ and $G(Y)$ are formal power series satisfying the conditions above. Suppose that $F_1(X),\dots F_m(X)$ can all be evaluated at some point $x\in A^n$. For each i put $\tau_i = sup\{||a_{iw}w(x)||\, |w\in W(X)\}$, and suppose that
+$$lim_{v\in W(Y)} |b_v| v(\tau_1, \dots , \tau_m ) = 0$$
+Then $G(F_1(x),\dots , F_m(X))$ and $(G\circ F)(x)$ both exist and are equal.
+
+\subsubsection*{6.25 Corollary}
+Let $x\in A_0$. Then
+\begin{enumerate}
+\item $log(exp(x)) = x$;
+\item $exp(log(1+x)) = 1+x$;
+\item $log((1+x)^n) = n\, log(1+x)$ for each $n\in \Z$;
+\item $\exp(nx) = (exp(x))^n$ for each $n\in \Z$
+\end{enumerate}
+
+now introduce campbell-hausdorff series - provides a link between an analytic pro-p group and its associated lie algebra.
+
+\subsubsection*{6.26 Definition}
+Let
+\begin{eqnarray}
+\nonumber P(X,Y) &= \E(X) \E(Y) - 1 \in \QP<<X,Y>> 
+\nonumber C(X,Y) &= \E(-X) \E(-Y) \E (X) \E (Y) -1 \in \QP<< X,Y>>
+\end{eqnarray}
+The C-H formula is defined by
+$$\Phi(X,Y) = (\Lb\circ P)(X,Y)$$
+and the commutator series by
+$$\Psi(X,Y) = (\Lb \circ C)(X,Y)$$
+
+Moreover it can be shown they can both be evaluated at $x,y\in A_0$:
+$$\phi(x,y) = log(exp(x).exp(y))$$
+$$\psi(x,y) = log(exp(-x) . exp(-y) . exp(x) . exp(y)$$
+
+Remarkably C-H may be expressed as a sum of Lie elements!!!
+
+Notation: for $e = (e_1,\dots e_n)$ of positive integers we write
+$$<e> = e_1 + \dots +e_n$$
+$$(X,Y)_e = (X, Y, Y, ... , Y, X, ,... X, ...)$$ $e_1$ times X, $e_2$ times Y ....
+
+
+\subsubsection*{C-H formula 6.28 Theorem}
+Let $\phi(X,Y) = \sum_{n\in \N} u_n (X,Y)$ where $u_n (X,Y)$ is the sum of terms of degree n. Then
+$$u_0(X,Y) = 0$$
+$$u_1(X,Y) = X+Y$$
+$$u_2(X,Y) = \frac 1 2 (XY-YX)$$
+and for each n,
+$$u_n(X,Y) = \sum q_e (X,Y)_e$$
+
+Similarly,
+$$\psi(X,Y) = XY-YX + \text{ higher degree terms}$$
+
+Now associativity gives a neat composition:
+
+Write
+\begin{eqnarray}
+\nonumber H_i(X_1 , X_2 , X_3) = X_i\\
+\nonumber H_{ij}(X_1, X_2, X_3) = (X_1, X_2)
+\end{eqnarray}
+Then
+$$\mathbf{\Phi\circ (H_1, \Phi\circ H_{23}) = \Phi\circ(\Phi \circ H_{12}, H_3)}$$
+
+
+The following is an important consequence of this!!!!
+
+\subsubsection{6.38 Corollary}
+Let $L\cong {\ZP}^d$ be a Lie algebra over $\ZP$, and suppose that $(L,L)\subset p^\epsilon L$. Let $x,y\in L$, and for $n\in\N$ define the element $u_n(x,y)\in\QP L$ by $u_n(x,y) = \sum_{<e>=n-1}q_e (x,y)_e$. Then
+\begin{enumerate}
+\item $u_n(x,Y)\in L$ for all $n\in \N$;
+\item the series 
+$$\overline{\Phi}(x,y) = \sum_{n\in \N} u_n (x,y)$$ converges in L
+\item $\overline \phi (x,y) - (x+y) \in pL$
+
+\end{enumerate}
+So in some sense this $\overline \Phi$ picks out the unit part of $x+y$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Group Algebra}
+We saw how to endow the underlying set of a uniform pro-p group with an additive structure.. G made into a lie algebra over $\ZP$. Make a new lie algebra as subablgebra of commutation lie algebra on an associative algebra which we get by  COMPLETING THE GROUP ALGEBRA $\QP [G]$ wrt to a norm which is hard to set up!!!  Then show how log gives a map between the group and it's associated lie algebra.
+
+\subsubsection*{Definition of norm}
+\begin{itemize}
+\item G finitely generated pro-p group
+\item for $M\leq N$, M and N normal subgroups of G get map $G / M\rightarrow G/N$ induces epi:
+$$\ZP[G/M]\rightarrow \ZP [G/N]$$
+\item inverse limit of $\ZP$ algebras:
+$$\ZP[[G]]=\underleftarrow{Lim}_{N\text{ open normal } G}(\ZP [G/N])$$
+known as COMPLETED GROUP ALGEBRA.
+\item will view CGA as completion of GA wrt some norm.
+\item for G uniform can even extend this to a norm on the larger group algebra $\QP[G]$.
+\end{itemize}
+
+Let's write R for the Group algebra, $\ZP [G]$, and $G_k$ for it's lower central series ( which of course takes a wwonderfully simple form for G uniform), and take $I_k$ to be the kernel of the natural epimorphism.
+
+\begin{eqnarray}
+\nonumber R &=\ZP [G]\\
+\nonumber G_k &= P_k(G)\\
+\nonumber I_k &= (G_k - 1)R = ker(R\rightarrow \ZP[G/G_k])
+\end{eqnarray}
+
+\subsubsection*{Definition of cofinal}
+\emph{of finite index so define same inverse limit}
+
+
+
+
+\subsubsection*{Lemma}
+Since the family $(G_k)$ is cofinal with the family of all open normal subgroups in G, identify $\ZP[[G]]$ with
+$$\underleftarrow{Lim}_{k\in\N}(\Z / p^k\Z)[G / G_k] \cong \underleftarrow{Lin} (R/ (I_k + p^k R))$$
+
+\subsubsection*{Introduce chain of ideals}
+Cofinal with chain $(I_k+p^kR)$ but better for norms: POWERS OF IDEAL,
+$$J = I_1+pR$$
+since $I_1 = (G-1)R = \sum_{x\in G} (x-1)R$ augmentation ideal. So J is kernel of epi $$R\rightarrow \FP$$ sending all to 1.
+
+\subsubsection{7.1 Proves $(J^k)$ and $(I_k+p^k R)$ are cofinal}
+\emph{Let $k\geq 1$. Then
+\begin{enumerate}
+\item $J^k\supset I_k+p^kR$
+\item for each $j\geq 1$, $I_k+p^j R\supset J^{m(k,j)}$ for $m(k,j) = j.|G/G_k|$
+\end{enumerate}}
+
+
+\subsubsection*{7.2 Corollary}
+$$\bigcap_{l=1}^{\infty} J^l = 0$$
+
+\subsubsection*{7.3 Definition}
+Since clearly $J^i J^j = J^{i+j}$ invoke Lemma 6.5 to give a norm, $||-||$ on $\ZP[G]$ defomed by
+\begin{eqnarray}
+\nonumber ||c|| &=& p^{-k}\text{   if }c\in J^k - J^{k+1}\\
+\nonumber ||0|| &=& 0
+\end{eqnarray}
+From Lemma 7.1 the topology on R given by this norm induces on G the origional topology of G.
+
+Now complete R, written,
+
+$\hat(R) = \text{completion of }(R,||-||)$
+\subsubsection*{Useful Theorem}
+In this setup, $\hat R$ identified with $\underleftarrow{Lim}_k R / J^k$ thus combining gives,
+
+$$\hat R \cong \underleftarrow{Lim}_k (\Z / p^k \Z)[G / G_k] \cong \ZP[[G]]$$
+
+IN UNIFORM CASE TRY TO EXTEND THIS COOL NORM ON GROUP ALGEBRA TO NORM ON THE G.A. $\QP[G]$
+
+\subsubsection*{Notation}
+\begin{itemize}
+\item $\{a_1,\dots , a_d\}$ is a top gen set for G
+\item $d=d(G)$
+\item set $b_i = a_i - 1$ for $i=1, \dots d$.
+\item For $\alpha = (\alpha_1,\dots , \alpha_d)\in \N^d$, and d-tuple vector $v=(v_1,\dots , v_d)$, we write
+\begin{eqnarray}
+\nonumber <\alpha> &= \alpha_1 +\dots + \alpha_d\\
+\nonumber v^\alpha &= v_1^{\alpha_1}\dots v_d^{\alpha_d}
+\end{eqnarray}
+\end{itemize}
+
+STATEMENT OF MAIN RESULTS:
+\subsubsection*{7.4 Theorem}
+\begin{enumerate}
+\item If G is POWERFUL then every element of $\ZP[G]$ is equal to the sum of a convergent series, with $\lambda_\alpha\in\ZP$ for each $\alpha$.
+$$\sum_{\alpha\in\N^d} \lambda_\alpha b^\alpha$$
+\item If G is UNIFORM then the series above is uniquely determined by its sum!!!
+\end{enumerate}

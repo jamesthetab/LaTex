@@ -1,0 +1,268 @@
+%section on integral logarithms, organized as follows:
+\textbf{$\star$ Finite G $\star$}
+\subsection{Introduction of Integral Logarithm following Kakde}
+The Integral Logarithm is the composition of the usual $p$-adic logarithm with a linear endomorphism to make it integer valued. Taylor has used these to ger additive descriptions of $K_1$ of group rings of finite groups, as well as dealing with Class groups, and in particular the Frohlich Conjectures - \cite{roggenkamp1992gra}.
+
+\subsection{Motivation in the Commutative Case}
+
+When $G$ is abelian, the $p$-th power map $\Phi$ is a ring endomorphism and so we may re-arrange,
+
+\begin{eqnarray}
+\nonumber \Lambda: K_1(\ZP[G]) &\rightarrow& \ZP[\ccl G)]\\
+\nonumber [u]                                    &\rightarrow& log(u)-\frac{1}{p}. log(\Phi(u)) = \frac{1}{p} . log (u^p / \Phi(u))
+\end{eqnarray}
+
+converges for $u\in 1+J(\ZP[G])$ where $J$ denotes the Jacobson radical: $J(\ZP[G]) = ker(\ZP[G] \xrightarrow{\text{aug}} \ZP \rightarrow \FP)$.
+
+Observe that 
+
+\begin{eqnarray} 
+\nonumber   	u^p &\cong& \Phi(u) (\text{mod }p\ZP [G]), \text{ or in other words,}\\
+\nonumber        u^p/ \Phi(u) & \cong& 1 (\text{mod }p\ZP [G]), \text{ thus,}\\
+\nonumber        u^p/ \Phi(u)  &\in&  1 + p\ZP [G], \text{ so it's image},\\
+\nonumber        log(u^p/ \Phi(u)) &\in& p\ZP[G], \\
+\nonumber        \Gamma(u) &\in&  \ZP[G].
+\end{eqnarray}
+
+\subsection{Re-interpretation in terms of determinant following Taylor, using Adams operator}
+\subsection{Tactic of Kakde/Kato to calculate $K_1(\ZP[G])$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Calculation of Kernel and Cokernel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The following calculation is taken from Oliver's book, \cite{oliverwhitehead}. He uses the Isomorphism, $H_0(G;\ZP[G])\cong \ZP [\ccl G)]$, where action of $G$ on $\ZP [G]$ is by conjugation.
+
+\subsubsection*{Lemma (p-th powers of Group Elements - \cite{oliverwhitehead} 6.3):}
+
+\emph{For any group $G$ and any element $g\in G$,}
+
+$$(1-g)^p \cong (1-g^p) - p (1-g) \, (\text{mod } p(1-g)^2\ZP[G]).$$
+
+The main technique used to study the image of $\Gamma$ is to work inductively and compare $K_1(\ZP[G])$ and $[K_1(\ZP[G]/z)$, where $z\in Z(G)$  is central of order p, in particular when $z$ itself is a commutator, $z=[g,h]$.
+
+\subsubsection*{Theorem (Image of Integral Logarithm):}
+\emph{Let $p$ be an odd prime. Define
+\begin{eqnarray}
+\nonumber 	\omega: \ZP [ \ccl G) ]   	&\rightarrow&		G^{\text{ab}}\\
+\nonumber   	\sum a_i [g_i] 			&\rightarrow& 		\prod {\overline{[g_i]}}^{a_i}
+\end{eqnarray}
+Then the sequence 
+ $$1\rightarrow K_1(\ZP[G])/ \text{torsion} \xrightarrow{\Gamma}  \ZP [\ccl G)] \xrightarrow{\omega} G^{\text{ab}} \rightarrow 1$$
+is exact}
+
+\subsubsection*{Proof:}
+The mapping $\omega$ is well defined since each coset $a[G,G]$ is a normal subgroup of $G$, so is made up as a union of conjugacy classes.
+
+Consider first $G=1$. Since torsion (roots of unity) vanish - 
+
+$$log(\ZP^*) = log(1+p\ZP) = p\ZP = p . \text{ker }\omega$$
+
+Since $log(1+p\ZP)$ is $\phi$-invariant, 
+
+$$\Gamma (\ZP^*) = (1-\frac{1}{p}.\phi) (log(\ZP^*)) = \frac{p-1}{p} log (\ZP^*)$$
+
+So $Im(\Gamma) = \text{ker } (\omega)$ in this case.
+
+For $G$ now a nontrivial $p$-group it is enough, by naturality to consider $G$ abelian.
+
+Let $I$ denote the augmentation ideal, $I = \{ \sum r_i g_i \in \ZP[G] : \sum r_i = 0\}$. Then for any $u = 1+ \sum r_i (1-a_i)g_i \in 1+I$, $r_i \in \ZP$, we have
+
+\begin{eqnarray}
+\nonumber u^p &\cong& 1+p\sum r_i (1-a_i) g_i + \sum r_i^p (1-a_i)^pg_i^p \text{ (mod }pI^2)\\
+\nonumber 	&\cong& 1+p\sum r_i (1-a_i) g_i +\sum r_i[(1-a_i^p)-p(1-a_i)]g_i^p \text{ (using above Lemma)}\\
+\nonumber        &\cong& \Phi(u) + p\sum r_i(1-a_i)(g_i - g_i^p) \cong \Phi(u)
+\end{eqnarray}
+
+This shows that $u^p/\Phi(u)\in 1+pI^2$, and hence that 
+
+$$\Gamma(u) = \frac{1}{p} . log (u^p / \Phi(u))\in I^2$$
+
+For $r\in \ZP$ and $a,b,g \in G$ we have
+
+$$\omega(r(1-a)(1-b)g) = (g)^r (as)^{-r} (bg)^{-r} (abg)^r = 1\in G^{\text{ab}}$$
+
+Thus $\Gamma(1+I) \subset I^2\subset \text{ker }\omega$ and so 
+
+$$\Gamma(K_1(\ZP [G])) = \Gamma(\ZP^* * (1+I)) = <\Gamma(\ZP^*), \Gamma(1+I)> \subset \text{ker }(\omega)$$
+
+We now have $Im(\Gamma) \subset Ker (\omega)$ but what about the other inclusion?
+
+Fix a central element $z\in Z(G)$ of order $p$. If the group is non-abelian we may take $z$ to be a commutator (see \cite{oliverwhitehead} Lemma 6.5). Set $G' = G/z$, and assume inductively that the theorem holds for $G'$, the base case $G=1$ was discussed above. Let $\alpha:G\rightarrow G'$ be the projection, then we may induce maps, and note that $K(\alpha): K_1(\ZP[G])/ \text{tors} \rightarrow K_1(\ZP[G'])/ \text{tors}$ is onto. For I an ideal in the ring R, define $K_1(R,I) = GL(R,I)/ E(R,I)$, where $GL(R,I)$ is the group of invertible matrices which are congruent to the identity modulo $I$, and elementary matrices $E(R,I) = [GL(R), GL(R,I)]$. We have the exact sequence,
+
+$$K_2(R) \rightarrow K_2(R/I) \rightarrow K_1(R,I) \rightarrow K_1(R) \rightarrow K_1(R/I)$$
+
+This gives the following commutative diagram.
+
+
+
+
+
+ 
+$$\begin{CD}
+	&&1&&1&&1&& \\
+	&&@VVV @VVV  @VVV\\
+1	@>>> K_1(\ZP[G],(1-z)\ZP[G])/\text{tors} @>{\Gamma_0}>>  H_0(G;(1-z)\ZP[G]) @>{\omega_0}>> \text{Ker}(\alpha^{ab}) @>>> 1\\
+	&&@VVV @VVV  @VVV\\
+1	@>>> K_1(\ZP[G])/\text{tors} @>{\Gamma_G}>>  H_0(G;\ZP[G]) @>{\omega_G}>> G^{ab} @>>> 1\\
+	&&@V{K(\alpha)}VV @V{H(\alpha)}VV  @V{\alpha^{ab}}VV\\
+1	@>>> K_1(\ZP[G'])/\text{tors} @>{\Gamma_{G'}}>>  H_0(G';\ZP[G']) @>{\omega_{G'}}>> G'^{ab} @>>> 1\\
+	&&@VVV @VVV  @VVV\\
+	&&1&&1&&1&& \\
+\end{CD}$$
+
+Since $K(\alpha)$ is onto the columns are all exact. By the inductive hypothesis the bottom row is exact. Also, $\omega_0$ is clearly onto and so top row is exact. Now, since $\omega_G \circ \Gamma_G = 1$, the middle row is exact by the $3*3$ Lemma.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{$\star$ Infinite G $\star$}
+
+\subsection{Schneider/Venjakob Approach}
+
+The following is taken from Schneider's ICMS talk Summer 2009.
+
+Let $p$ be a prime different from $2$, and $G$ a pro-$p$ $p$-adic Lie Group.
+
+The integral logarithm of Oliver and Taylor, \cite{taylor1984cgr}, gives a $\ZP$-homomorphism,
+
+\begin{eqnarray}
+\nonumber \Gamma: K_1(\Lambda (G)) = (\Lambda(G)^*)^{\text{ab}} &\rightarrow& \Lambda(G)^{\text{ab}}\\
+\nonumber										           &=& \Lambda(G)/(\text{additive commutators }xy-yx)\\
+\nonumber										          &=& \ZP [[\ccl G)]]\\
+\nonumber     \lambda					                                      &\rightarrow& log(\lambda) - \frac{1}{p} \Phi(log(\lambda))
+\end{eqnarray}
+
+Where $\phi:  \Lambda(G)^{\text{ab}} \rightarrow  \Lambda(G)^{\text{ab}}$, induced by 
+\begin{eqnarray}
+\nonumber \phi: G &\rightarrow& G^p\\ 
+\nonumber         g &\rightarrow& g^p
+\end{eqnarray}
+is a well defined homomorphism.
+
+We now make three additional hypotheses:
+
+\subsubsection*{Hypothesis ($\Phi$):}
+The map $\phi:G\rightarrow G$ is injective, and $\phi^n(G)$ is open in $G$ for any $n\geq 1$.
+
+\subsubsection*{Hypothesis (P):}
+The image $\phi(G)$ is a (normal) subgroup of $G$, take $p^d = \vert G : \phi(G) \vert$.
+\subsubsection*{Hypothesis (SK):}
+For any $U$ in some Fundamental System of open normal subgroups of $G$, the map
+$$K_1(\ZP[G/U]) \rightarrow K_1(\QP[G/U])$$
+is injective.
+
+Notice, for G any uniform group, Hypotheses ($\Phi$) and (P) are immediately satisfied.
+
+Then assuming $(\Phi)$ and (SK) we establish the following commutative diagrma using results from Oliver's book, \cite{oliverwhitehead}:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%$$\begin{CD} 
+%S_\Lambda \otimes T @>j>> T\\ 
+%@VVV @VV{P}V\\ 
+%(S\otimes T)/I @= (Z\otimes T)/J 
+%\end{CD}$$
+
+$$\begin{CD}
+ 			&&&&1           &    &    1\\
+			&&&&@VVV                @VVV\\
+			&&&&\mu_{p-1} * G^{ab} @= \mu_{p-1} * G^{ab} \\
+			&&&&@VVV                 @VVV\\
+0 @>>> 	 \Lambda(G)^{ab} @>{\text{exp}(p.-)}>>		K_1(\Lambda(G)) @>{\text{Proj}}>> K_1(\Omega(G)) @>>> 1\\
+			& & @| @VVV @VVV\\
+0 @>>> \Lambda(G)^{ab} @>{p-\Phi}>> \Lambda(G)^{ab} @>{(\star)}>> \Lambda(G)^{ab}/(p-\Phi)  @>>> 0 \\
+			&&&&@VVV @VVV\\
+			&&&&G^{ab} @= G^{ab}\\
+			&&&&@VVV @VVV\\
+			&&&&1 & & 1
+\end{CD}$$
+
+Where $(\star)$ is the map quotienting out by image of $\Lambda(G)^{\text{ab}}$ under $p-\Phi$. Clearly, any pre-image under $(\star)$ may have all it's $p$-th powers removed, giving that the conjugacy classes of non-$p$-th powers, $\ZP[[\ccl G-\phi(G))]] \subset \Lambda(G)^{\text{ab}}$ is a section of $(\star)$.
+
+Then the following theorem allows us to split up the complicated group $K_1(\Lambda(G))$ by pulling back the above section.
+
+\subsubsection*{Theorem (Schneider \cite{scneidericms})}
+\emph{Assuming $(\Phi)$ and (SK) we have the section
+$$K_1^{\Phi} (\Lambda(G)): = \Gamma^{-1} (\ZP[\ccl G - \phi(G))]) \cong K_{1}(\Omega(G))$$ under the map
+$$\Gamma^{-1} (\ZP[\ccl G - \phi(G))]) \subset K_{1}(\Lambda(G))\xrightarrow{\text{Proj}} K_{1}(\Omega(G))$$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+$$\begin{CD}
+1          \\
+@VVV\\
+\mu_{p-1} * G^{ab}\\
+@VVV\\
+K_1(\Lambda(G)) @>{\text{log}(-)}>> \Sigma(G) @>\Theta>> \Lambda(G) @>\text{fuse}>> \ZP[[\text{Ccl } G]]  @>>> HH_1(\Lambda(G)) @>>> 1\\
+@V{\text{log}(-)}VV \\
+\Sigma(G)\\
+@V{\text{id}-p/\Phi}VV\\
+\Lambda(G)\\
+@V{\text{fuse}}VV\\
+\ZP[[\text{Ccl } G]] @= HH_0( \Lambda(G))\\
+@VVV \\
+G^{ab} \\
+@VVV \\
+1 
+\end{CD}$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Example from Ritter and Weiss}
+\subsection{Tactic of Schneider/Venjakob to calculate $K_1(\Lambda_G)$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Filtrations and Completions}

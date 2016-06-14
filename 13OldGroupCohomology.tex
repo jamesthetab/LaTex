@@ -1,0 +1,186 @@
+\section{Group Cohomology}
+
+The next two sections study cohomology of groups and algebras. A
+reference for this is Lazards paper [Lz]. I
+recall the key points i will need for my calculations.
+
+Following the treatment in \cite{HS} I shall define, for an
+abstract group G (over the integers) the homology groups
+$H_n(G,B)$ and the cohomology groups $H^n(G,B)$, for $n\geq 0$,
+where A is a left, and B a right G-module. This follows from the
+theory of derived functors, taking the group ring $\Z G$ as the
+"ground ring" $\Lambda$".
+
+We begin by giving a precise defintion of the group ring, which we
+define by giving its underlying abelian group and specifying the
+composition of 2 elements. Note, in this chapter all groups are
+written multiplicatively.
+
+\subsection{Group Ring $\Z G$}\label{df3.1}
+\subsection{Definition}\label{df3.1.1}
+The \textbf{Integral Group Ring $\Z G$} of G has as it's
+underlying abelian group the free abelain group with basis the set
+of elements of G, and the product of 2 basis elements is induced
+from the product in G.
+
+ie.
+\begin{itemize}
+    \item Elements are of the form $\sum_{x\in G} m(x)\, x$ (where
+    $m:G\mapsto \Z$ is zero on all but a finite number of elements
+    of G).
+    \item Multiplication is given by
+    $$ \left ( \sum_{x\in G} m(x)\, x \right ). \left (\sum_{y\in G} m'(y)\,
+    y\right ) = \sum_{x,y \in G} (m(x).m'(y))xy$$
+\end{itemize}
+
+Consider the natural embedding
+$$i:G\mapsto \Z G:g\mapsto \sum
+m(x)\, x\text{ where }m(x) = 
+\begin{cases}
+  1 & \text{ if } x=g \\
+  0 & \text{ otherwise}
+\end{cases}$$
+ I now give a universal property which will be
+important when we come to generalise group cohomology to Lie
+algebras.
+
+\subsection{Proposition: Extension of Nice Multiplicative
+Functions}\label{df3.1.2} Let R be a ring. Given any function
+$f:G\mapsto R$ which interacts well with the multiplicative
+structure of the group and ring such that: $f(xy)=f(x).f(y)$ and
+$f(1_G) = 1_R$ then there exists a unique ring homomorphism $f':\Z
+G\mapsto R$ such that $f'i = f$. Clearly
+$$f'(\sum_{x\in G} m(x)\, x) = \sum_{x\in G} m(x) f(x)$$ is the
+only possible choice and this commutes.
+
+This proposition gives an interpretation of a G-module A as a $\Z
+G$-module (which is a G-module via the embedding $i$) and so we
+may use these terms interchangeably.
+
+\subsection{Augmentation Map}\label{df3.1.1}
+Consider the trivial map from G into integers $\Z$, given by $x\in
+G \mapsto 1\in\Z\,\forall\, x\in G$. \ref{df3.1.2} gives a unique
+ring homomorphism $\varepsilon: \Z G \mapsto \Z$, the augmentation
+of $\Z G$ defined by:
+$$\varepsilon \left ( \sum_{x\in G} m(x)\, x \right ) = \sum_{x\in G}
+m(x)$$
+
+Denote the kernel of $\varepsilon$, called the
+\textbf{Augmentation Ideal of G} by $IG$. It is central to the
+theory of group cohomology, see for example \ref{df3.4.3}.
+
+
+\subsection{Construction of (Co)Homology Groups}\label{df3.2}
+
+For a left G-module A, thinking of $\Z$ as a trivial G-module, we
+define the \textbf{n-th cohomology group of G with coefficients in
+A} by
+$$H^n(G,A) = Ext^n_G (\Z,A)$$
+And dually, for a right G-module B, the homology groups are
+$$H_n(G,A) = Tor^G_n (B,\Z)$$
+From now on i will concentrate on calculations relating to
+cohomology although for each of the results there is an analogous
+dual result for homology.
+
+\subsection{Explicit Calculation}\label{df3.3}
+\begin{itemize}
+    \item Take a G-progective resolution \textbf P of the trivial
+    (left) module $\Z$.
+    \item Form the complexes $Hom_G(\textbf P, A)$ and $B\otimes_G
+    \textbf P$.
+    \item Compute their homology
+\end{itemize}
+As an example i give an explicit description of a resolution of
+$\Z$ over our given group, known as the \textbf{Homogeneous Bar
+Resolution}. We need to define G-modules to form the projection:
+\begin{enumerate}
+    \item Let $\overline{B_n},\, n\geq 0$ be the free abelian
+    group on all $(n+1)$-tuples \\ $(Y_0,y_1,\dots , y_n),\, y_i\in
+    G$. Define the left G-module strucure in $\overline{B_n}$ by
+    $$y(y_0, y_1, \dots , y_n) = (yy_0, yy_1, \dots , yy_n)\,
+    y\in G$$
+    Hence $\overline{B_n}$ is a free G-module, with base
+    consisting of the $(n+1)$-tuples $(1,y_1, \dots , y_n)$.
+
+    \item Define the differential maps of the sequence
+    $$\overline{\textbf B}:\dots \rightarrow \overline{B_n}
+    \rightarrow^{\rho_n} \overline{B_{n-1}}\rightarrow
+    \dots\rightarrow \overline{B_1}\rightarrow^{\rho_1}
+    \overline{B_0}$$
+    by the boundary formula
+    $$\rho_n(y_0,y_1,\dots ,y_n) = \sum_{i=0}^n {(-1)}^i
+    (y_0,\dots , \widehat{y_i}, \dots , y_n)$$
+    \item It is easily seen that $\rho_{n-1}\rho_n = 0 \text{ for
+    } n\geq 2$ and recalling the augmentation map $\varepsilon$ we
+    also have $\varepsilon \rho_1 = 0$.
+    \item Explicit calculation, or contracting homotpoies from
+    topology give that
+    $$\dots \rightarrow \overline{B_n}\rightarrow^{\rho_n}
+    \overline{B_{n-1}}\rightarrow \dots \rightarrow
+    \overline{B_1}\rightarrow^{\rho_1}\overline{B_0}
+    \rightarrow^\varepsilon \Z\rightarrow 0$$
+    is a free G-resolution of $\Z$.
+\end{enumerate}
+
+
+\subsection{Exact Sequences}\label{df3.4}
+From the long exact sequences associated to derived functors, see
+\ref{df1.5.3} we have, for a short exact sequence
+$A'\rightarrowtail A\twoheadrightarrow A''$ of G-modules there
+exists a long exact cohomology sequence:
+\begin{eqnarray}
+\nonumber 0 \rightarrow H^0(G,A')\rightarrow H^0(G,A) \rightarrow
+H^0(G,A'')\rightarrow H^1(G,A')\rightarrow \dots\\
+\nonumber \dots \rightarrow H^n(G,A')\rightarrow H^n(G,A)
+\rightarrow H^n(G,A'')\rightarrow H^{n+1}(G,A')\rightarrow \dots
+\end{eqnarray}
+The following are other properties of Group Cohomology easily
+deduced from the theory of derived functors:
+
+\subsection{}
+If A is injective then $H^n(G,A) = 0 \text{ for all } n\geq 1$.
+
+\subsection{}
+Hence, if $A\rightarrowtail I\twoheadrightarrow A'$ is an
+injective presentation of A, then the long exact sequence
+collapses to give
+$$H^{n+1}(G,A) \cong H^n(G,A') \text{ for } n\geq 1$$
+
+\subsection{Changing the Group Acting}\label{df3.4.3}
+
+I will show $H^n(G,A) \cong Ext_g^{n-1}(IG,A)$ hence we can
+equally well work with the group or its augmentation ideal. This
+is a special case of a more general shifting technique:
+
+\subsection*{Lemma}
+\emph{Let $0\rightarrow K \rightarrow P_k \rightarrow ^\phi \dots
+\rightarrow P_0\rightarrow \Z \rightarrow 0$ be an exact sequence
+of left G-modules with $P_0, \dots , P_k$ projective. Then the
+following sequence is exact and specifies the cohomology groups of
+G:\begin{enumerate}
+    \item $Hom_G(P_k,A)\rightarrow Hom_G(K,A) \rightarrow
+    H^{k+1}(G,A) \rightarrow 0$
+    \item $H^n(G,A) \cong Ext_G^{n-k-1} (K,A) \text{ for } n\geq
+    k+2$
+\end{enumerate}}
+\subsection*{Proof}
+\begin{enumerate}
+    \item This is just the definition of $H^{k+1}$ as the coker of
+    the induced map $Hom(P_k,A)\mapsto Hom(K,A)$.
+    \item Let $\dots \rightarrow B_1 \rightarrow B_0
+    \rightarrow^\varphi K\rightarrow 0$ be a projective resolution
+    of K used to calculate $Ext_G^{n-k-1}(K,A)$. Then, since $\mathbf{Im \varphi = K = ker \phi}$ we can piece
+    together with our original resolution to get a new projective
+    resolution of $\Z$:
+    $$\dots B_{n-k-2}\rightarrow^\alpha B_{n-k-1}\rightarrow^\beta
+    B_{n-k} \rightarrow \dots \rightarrow B_0\rightarrow
+    P_k\rightarrow \dots \rightarrow P_0 \rightarrow \Z\rightarrow
+    0$$
+    Then,
+    $$Ext_G^{n-k-1}(K,A) = {ker\beta}/{im\alpha} = H^n(G,A)$$ as
+    required.
+\end{enumerate}
+In particular, using the resolution $0\rightarrow IG\rightarrow \Z
+G\rightarrow \Z\rightarrow 0$, we have, for $n\geq2$
+$$H^n(G,A) \cong Ext_G^{n-1} (IG,A)$$
+
