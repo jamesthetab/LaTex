@@ -1,0 +1,140 @@
+\documentclass{report}
+\usepackage{latexsym,newlfont,amsmath,amssymb}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%following copied from snake:
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{ matrix,  calc,  arrows}
+\usepackage{mathabx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pdfsync}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}
+%set double spacing
+\doublespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\sq{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+\newcommand\qed{\ifmmode\sq\else{\unskip\nobreak\hfil
+\penalty100\hskip1em\null\nobreak\hfil\sq
+\parfillskip=0pt\finalhyphendemerits=0\endgraf}\fi}
+\pagestyle{headings} \setlength{\oddsidemargin}{0cm}
+\setlength{\topmargin}{0cm} \setlength{\textwidth}{17cm}
+\setlength{\textheight}{22cm} \setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overfullrule 10pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\qed\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\C{\mathbb C}  % Complex Numbers
+\newcommand\PP{\mathbb P^2_\C} % Projective Plane
+\newcommand\Z{\mathbb Z} % Integers
+\newcommand\R{\mathbb R} % Real Numbers
+\newcommand\Q{\mathbb Q} % Rational Numbers
+\newcommand\N{\mathbb N} % Natural Numbers
+\newcommand\A{\mathbb A} % Algebraic Integers
+\newcommand\J{\mathbb J} % Augmentation Ideal
+\newcommand\ZP{\mathbb Z_p} %p-adic integers
+\newcommand\QP{\mathbb Q_p} %p-adic fractions
+\newcommand\FP{\mathbb F_p}%finite group with p elements
+\newcommand\sha{\underline{|||}} %tate-shaf group  
+\newcommand\rhogn{\overline{\rho_{G,n}}} 
+\newcommand\detrhogn{det(\overline{\rho_{G,n}})} 
+\newcommand\bgn{B_{G,n}} 
+\newcommand\limone{{\varprojlim}^1}
+\newcommand\ong{\leq_o} %open normal subgroup  
+\newcommand\ccl{\text{ccl(}} %conj class
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\coker}{coker}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%{\begin{titlepage}
+%    \begin{center}
+%      \vspace*{1cm}
+%        
+%        \textbf{Completions of Hochschild Homology}
+%        
+%        \vspace{0.5cm}
+%        with applications to K-Theory
+%        
+%        \vspace{1.5cm}
+%        
+%        \textbf{James Scott Cooper}
+%        
+%        \vfill
+%        
+%        A thesis presented for the degree of\\
+%        Doctor of Philosophy
+%        
+%        \vspace{0.8cm}
+%        
+%        %\includegraphics[width=0.4\textwidth]{University of Cambridge}
+%        
+%        DPMMS\\
+%        University of Cambridge\\
+%        England\\
+%        11 November 2014
+%        
+%    \end{center}
+%\end{titlepage}
+
+\title{ Completions of Hochschild Homology}
+\maketitle
+
+\tableofcontents
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+\input{1.Introduction}
+
+\chapter{Homology Background}
+\input{2.HomologyBackground}
+
+\chapter{Algebra Background}
+\input{3.AlgebraBackground}
+
+\chapter{Hochschild Homology}
+\input{4.HochschildHomology}
+
+\chapter{Completions}
+\input{5.Completions}
+
+\chapter{Free Products}
+\input{6.FreeProducts}
+
+\chapter{Function Hierarchy}
+\input{7.FunctionHierarchy}
+
+\chapter{Connection with the Integral Logarithm and Hattori-Stallings Rank}
+\input{8.Connections}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}	% (uses file "plain.bst")
+\bibliography{Refs2} % expects file "Refs2.bib"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document} 
+
+

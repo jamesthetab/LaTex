@@ -1,0 +1,156 @@
+In this chapter I discuss the homology of bi-modules known as Hochschild Homology. I begin with an opaque definition via complexes before re-interpreting in terms of more natural objects. I then use Shapiro's lemma to decompose this homology theory in the case of group rings, into a direct sum over conjugacy classes, and show how this is just group homology in disguise.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definition of Hochschild Homology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Intuition}
+Hochschild Homology is an homology theory (for some interpretation of “homology theory”) of $S$-$S$-bimodules for a ring $S$.
+
+Whenever one has a $S$-$S$-bimodule, one can think of this just as well as $S\otimes S$-module (here I’m using that $S$ is commutative, but for non-commutative rings not so much changes). And for any commutative ring $S$, there is an obvious map $S\otimes S\to S$ called “multiplication.”
+
+The extension of scalars by this ring homomorphism (which is just the annoying commutative algebra way of saying the tensor product $M\otimes_{S\otimes S}S$ is what people seem to insist on calling “coinvariants” (making that word a very overloaded operator in this field). This no help in picking a name to say for it, but the best written notation for me is the somewhat suggestive $HH_0$.
+
+Another way to think of this functor $HH_0(M)$ is as the largest quotient of $M$ on which the left and right actions coincide.
+
+Hochschild homology is what happens when we take this extension of scalars in the only proper way to do anything in homological algebra: in the derived sense.
+
+The main point is that you should take the tensor product above and replace one (or both) of its factors with a projective resolution. You then have a complex in place of your tensor product, and the extension of the short exact sequence to have right exactness gives the Hochschild homology groups $HH_i(M)$ as the homology of this complex. We recover $HH_0$ as the $0^{th}$ homology of this complex.
+
+The definition given in books is based on one particular resolution of $S$ as an $S\otimes S$-bimodule. This is ugly and hard to use for many purposes, but is completely general. It works for every ring. But polynomial rings are much nicer than just any old ring. In particular, they have a much smaller resolution as bimodules over themselves, called the Koszul resolution. This has the distinct advantage of being finite rank over $S\otimes S$, and of finite length (in fact, its length is the number of variables of $S$), neither of which are true of the more general resolution (in fact, for many rings, there is no upper bound on the $i$ for which $HH_i$ might be non-zero. In polynomial rings, we know that the number of variables gives an upper bound).
+
+So, we can calculate $HH_*(M)$ by simply tensoring with this complex, but this is not as nice as we might hope, since taking the homology of a complex whose terms are complicated modules is hard, even if the differentials are very explicit. This may be good enough for a computer, for people, it’s a bit dissatisfying.
+
+But as I mentioned before, you can resolve either side, and is useful for some purposes to do one, and for the purposes the other. For example, if one is lucky and can find a nice resolution of the module one is Hochschild homologizing, then tensoring with $S$, one has a complex whose terms are free modules over $S$ and whose differentials are easy to calculate from those of the original complex (just hit the matrices of the map with the multiplication map).
+
+If one is really lucky, then this complex will have trivial differentials after extension of scalars. This sounds like too much ask, I suppose, but in fact this is true for any modules whose Hochschild homology is free (for example, for Soergel bimodules in type A, by results of Jake Rasmussen).
+
+So, why do we care? Well, if we have a category of bimodules over $S$ which is closed under tensor product, then $HH_*$ functions as a categorical trace: We have an isomorphism $HH_*(A\otimes B)\cong HH_*(B\otimes A)$ (as vector spaces, not necessarily as  $S$ modules). It turns out that if you apply this to the category of Soergel bimodules (a categorification of the Hecke algebra), then you get back a categorification of the Jones-Ocneanu trace on the Hecke algebra.
+
+\subsection{Formal Definition}
+\begin{definition}(See \cite{rosenberg}, 6.1.1, \textbf{Definition of Hochschild Homology}\label{hochschildcomplex})
+
+Let $k$ be a commutative ring and let $R$ be a $k$-algebra. 
+
+We write $R^{\otimes n}$ for 
+$$R\otimes_k R \otimes_k \dots \otimes_k R \,(n \text{ times}).$$
+The Hochschild homology of $R$ is by definition the homology $HH_* (R)$ of the Hochschild Complex
+
+$$C_*(R): \, \dots \xrightarrow{b_{n+2}} R^{\otimes{n+2}} \xrightarrow{b_{n+1}}R^{\otimes{n+1}} \xrightarrow{b_{n}}R^{\otimes{n}} \xrightarrow{b_{n-1}}\dots \xrightarrow{b_{1}} R,$$
+where $R^{\otimes{n+1}}$ occurs in degree $n$ and the boundary map $b$ is the $k$-linear map defined by the formula 
+$$b_n(a_0 \otimes a_1 \otimes \dots \otimes a_n) = b'_n(a_0\otimes a_1\otimes \dots \otimes a_n ) + (-1)^n(a_n a_0 \otimes a_1 \otimes \dots \otimes a_{n-1},$$
+
+where
+
+$$b'_n(a_0\otimes a_1\otimes \dots \otimes a_n ) = \sum_{i=0}^{n-1} (-1)^i a_0 \otimes \dots \otimes a_i a_{i+1} \otimes \dots \otimes a_n).$$
+\end{definition}
+
+Since the differential is $k$-linear, $HH_i (R)$ is a $k$-module for each $i$ (though not usually an $R$-module). It is useful to note, however, that if $R$ is commutative, $b'$ and $b$ commute with multiplication by $R$ on the left, so $HH_i(R)$ is an $R$-module.
+
+We can make this ad-hoc definition seem more natural (and is sometimes given as the definition) by observing the following:
+
+\begin{proposition}(See \cite{rosenberg}, 6.1.4, \textbf{Presenting Hochschild Homology as a Tor Group})
+
+Let $k$ be a commutative ring and let $R$ be a $k$-algebra which is projective as a module over $k$ (automatic if $k$ is a field). The Hochschild homology $HH_*(R)$ is just $Tor_*^{R\otimes_k R^{op}} (R,R)$, where $R^{op}$ denoted $R$ with multiplication reversed, and we identify two-sided $R$-modules with left of right modules for $R\otimes_k R^{op}$.
+\end{proposition}
+
+\begin{proof}
+
+This arises from identifying the sequence as the Acyclic Resolution of the ring $R$ as $R\otimes R^{op}$-modules tensored with $R$, see \cite{benson}, 2.11.
+\end{proof}
+
+More generally, for an $R$-$R$-bimodule, $A$, we can define the Hocschild Homolgy, $HH_n(A,R)$ via the above complex, where at each level we replace the final copy of $R$ in the tensor string with a copy of $A$.
+
+Equivalently, we can seine as a $Tor$ Group:
+
+$$HH_n(A,R) = Tor_n^{R\otimes_kR^{op}} (A,R)$$
+
+From this definition we recover the case A=R, and have the notation:
+
+$$HH_n(R) \equiv HH_n(R,R).$$
+
+\section{Decomposition of Hochschild Homology for Group Rings}
+
+\begin{theorem}(see \cite{benson}, 2.11.2, \textbf{Splitting up Hochschild Homology over Conjugacy Classes}\label{splitting})
+
+The additive structure of the Hochschild Homology of a group algebra $RG$ is given by
+$$HH_n (RG) \cong \bigoplus_{g\in ccl(G)} H_n(Z_G(g),R), \,\forall \, n\geq 0$$
+where $Z_G(g)$ denotes the centraliser of the element $g$ in the group $G$.
+
+\end{theorem}
+
+\begin{proof}
+We have the natural expression, 
+$$HH_n(RG) \cong Tor^{RG \otimes RG^{op}}_n (RG,RG^*)$$
+
+Now $RG^{op} \cong RG$, via $g \rightarrow g^{-1}$, and $RG\otimes RG \cong R(G \times G)$. The $R(G\otimes G)$-module structure on $RG$ is given by the two-sided action
+$$(g_1, g_2) : g \rightarrow g_1 g g_2^{-1},$$
+and so it is just the permutation module (induced module), $R_{\Delta(G)} \uparrow^{G\times G}$ on the cosets of the diagonal group
+$$\Delta (G) = \{ (g,g) \vert g\in G \} \subseteq G \times G.$$
+
+Similarly, $RG^*$ is the conduced module $R_{\Delta(G)} \Uparrow^{G\times G}$. So by the Eckmann-Shapiro Lemma, \ref{shapiro}, we have
+\begin{eqnarray*}
+HH_n(RG) 	&\cong& Tor_n^{R(G\times G)} (R_{\Delta(G)} \uparrow^{G\times G} , R_{\Delta(G)} \Uparrow^{G\times G})\\
+		 	&\cong& Tor_n^{R \Delta (G)} (R_{\Delta(G)} , R_{\Delta(G)} \Uparrow^{G\times G}\downarrow_{\Delta(G)}).
+\end{eqnarray*}			
+By the Mackey Decomposition Theorem (see \ref{mackey}),
+
+$$\left(R_{\Delta(G)} , R_{\Delta(G)} \Uparrow^{G\times G}\downarrow_{\Delta(G)}\right) \cong \prod_{g \in ccl(G)} R_{\Delta(Z(g))}\Uparrow^{\Delta(G)}$$
+
+and so by another application of the Eckmann-Shapiro Lemmma we obtain
+
+\begin{eqnarray*}
+HH_n(RG) &\cong& \prod_{g \in ccl(G)} Tor^{RG}_n (R, R_{Z(g)}\Uparrow^G)\\
+                  &\cong& \prod_{g \in ccl(G)} Tor^{RZ(g)}_n(R,R)\\ 
+                  &\cong& \prod_{g \in ccl(G)} H_n(Z(g), R). 
+\end{eqnarray*}
+\end{proof}
+
+Moreover, an element in $a_0\otimes a_1\otimes \dots \otimes a_n \in R^{\otimes n+1}$ gives rise to a contribution in the conjugacy class of $(\prod a_n)$. The element $(\prod a_n)$ is known as the marker of $a_0\otimes a_1\otimes \dots \otimes a_n$ and it is easily seen to be preserved under boundary maps.
+
+In particular when we focus on integral group rings:
+
+\begin{corollary}(See \cite{Weibel}, 9.7.5, \textbf{Decomposition of Hochschild Homology over Conjugacy Classes\label{decomposition}})
+
+The Hochschild Homology of a group ring has a natural decomposition into a direct sum indexed by conjugacy classes of the group. Denoting the centraliser of an element $g$ in the group $G$ by $Z(g)$, and writing $H_n(G;A)$ for the group homology of $G$ with coefficients in $A$ we have:
+
+$$HH_n (\Z[G]) = \bigoplus_{g\in \text{ccl} (G)} H_n(Z(g); \Z), \, \forall \, n\geq 0$$
+\end{corollary}
+
+
+
+\begin{corollary}(Hochschild Homology of Low Degree for Group Rings\label{lowdeg})
+
+Using results on terms of Group Homology of low degree, see \ref{lowdeggroup}, we may specialise \ref{decomposition} above to give:
+\begin{eqnarray*}
+HH_0 (\Z[G]) 	&\cong& 		\bigoplus_{g\in \text{ccl} (G)} H_0(Z(g); \Z) \\
+			&\cong& \bigoplus_{g\in \text{ccl} (G)} \Z\\
+HH_1 (\Z[G]) 	&\cong& 		\bigoplus_{g\in \text{ccl} (G)} H_1(Z(g); \Z) \\
+			&\cong& \bigoplus_{g\in \text{ccl} (G)} Z(g)^{ab}
+\end{eqnarray*}
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Notation for Elements in $HH_1 (\Z [G])$\label{notation}}
+
+From above,
+\begin{eqnarray*}
+HH_1(\Z[G]) 	&\cong& \text{Ker }b_1 / \text{Im }b_2 \\
+			&\cong& \text{Ker }b: \{\Z G \otimes \Z G \rightarrow \Z G \} /
+\text{Im }b: \{ \Z G \otimes \Z G \otimes \Z G \rightarrow \Z G \otimes
+\Z G \}\\
+			&\cong& \bigoplus_{g\in \text{ccl} (G)} Z(g)^{ab}.
+\end{eqnarray*}
+
+Chasing elements through the splitting proof above, \ref{splitting}, the
+marker of the element $a\otimes b \in \Z G \otimes \Z G$, $ab\in G$, gives
+the conjugacy class which this element contributes to.
+
+Moreover, by working in the quotient, $\text{Ker }b_1 / \text{Im }b_2$ we
+may reduce to the case $b\in Z(ab)$, or equivalently $b\in Z(a)$.
+
+For $a,b \in G$, the representative $a\otimes b$ of an element in $HH_1(\Z
+[G])$ may be thought of as an element $b$ centralising $ab$, written as a
+component,
+
+$$ \begin{array}{c} a\\ \big\vert \\ ab\\ \end{array} \in \bigoplus_{g\in
+\text{ccl} (G)} Z(g)^{ab}.$$

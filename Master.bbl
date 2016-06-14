@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{benson}
+David~J Benson.
+\newblock {\em Representations and Cohomology: Volume 2, Cohomology of Groups
+  and Modules}, volume~2.
+\newblock Cambridge University Press, 1998.
+
+\bibitem{Schur}
+Ya~G Berkovich.
+\newblock On the order of the commutator subgroup and the schur multiplier of a
+  finite $p$-group.
+\newblock {\em Journal of Algebra}, 144(2):269--272, 1991.
+
+\bibitem{completed}
+Brian Conrad.
+\newblock Presentations of deformation rings.
+\newblock Stanford Lecture Notes, 2009.
+
+\bibitem{fulton}
+William Fulton and Joe Harris.
+\newblock {\em Representation theory: a first course}, volume 129.
+\newblock Springer, 1991.
+
+\bibitem{gray}
+Brayton~I Gray.
+\newblock Spaces of the same $n$-type, for all $n$.
+\newblock {\em Topology}, 5(3):241--243, 1966.
+
+\bibitem{hopf}
+Heinz Hopf.
+\newblock Fundamentalgruppe und zweite bettische gruppe.
+\newblock In {\em Selecta Heinz Hopf}, pages 186--206. Springer, 1964.
+
+\bibitem{karpilovsky}
+Gregory Karpilovsky.
+\newblock {\em Induced modules over group algebras}.
+\newblock Elsevier, 1990.
+
+\bibitem{lubkin}
+Saul Lubkin.
+\newblock {\em Cohomology of completions}, volume~42.
+\newblock Elsevier, 1980.
+
+\bibitem{melnikov}
+Oleg~Vladimirovich Mel'nikov.
+\newblock Subgroups and homology of free products of profinite groups.
+\newblock {\em Mathematics of the USSR-Izvestiya}, 34(1):97, 1990.
+
+\bibitem{profgps}
+P.~Ribes, L. &~Zalesskii.
+\newblock {\em Profinite Groups}.
+\newblock Springer Verlag., 2010.
+
+\bibitem{rosenberg}
+Jonathan Rosenberg.
+\newblock {\em Algebraic K-theory and its applications}, volume 147.
+\newblock Springer, 1994.
+
+\bibitem{rotman}
+Joseph~J Rotman.
+\newblock {\em An introduction to homological algebra}, volume~2.
+\newblock Springer, 2009.
+
+\bibitem{scho}
+Claude Schochet.
+\newblock {\em A Pext Primer, Pure Extensions and Lim1 for Infinite Abelian
+  Groups}.
+\newblock State University of New York at Albany, 2003.
+
+\bibitem{hilton}
+PJ~Hilton-U Stammbach.
+\newblock A course in homological algebra.
+\newblock {\em Graduate Texts in Mathematics}, 4, 1971.
+
+\bibitem{Weibel}
+Charles~A. Weibel.
+\newblock {\em An introduction to homological algebra}, volume~38.
+\newblock Cambridge University Press, Cambridge, 1994.
+
+\end{thebibliography}

@@ -1,0 +1,314 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Connection with Free Products}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+I now approach the question of comparing the completed Hochschold Homology of the finite quotients of the group algebra with the Hochschild Homology of the completed group algebra, the content of \ref{finitehh}, from a different angle - of course we must reach the same conclusion that the two are equivalent, but by giving the topology, under which the Hochschild homology of finite sums completes we can have an understanding of what is happening which is not dependent on the choice of a filtration.
+
+Given a family of groups, there are many different ways of combining these to get another group. In this chapter I introduce ideas of Mel'nikov, (see \cite{melnikov}), where he gives the construction $\bigstar G_\lambda$ for groups  $G_{\lambda}$ with $\{ \lambda \in \Lambda \}$, an extension of the free product, over  a not necessarily finite indexing set $\Lambda$. I follow the treatment of \cite{profgps} contained in Chapter 9, and Appendix D (where the product is instead written $\amalg^r G_{\lambda}$).
+
+\section{Cartesian Product}
+The \textbf{cartesian} (or unrestricted direct) product,
+
+$$C = \text{Cr}_{\lambda\in\Lambda} G_{\lambda}$$
+
+is the group with underlying set given by the product of the $G_{\lambda}$ as sets - vectors whose $\lambda$-component lies in $G_{\lambda}$, and where the group operation is defined by multiplication of components: $(g_\lambda)(h_\lambda) = (g_\lambda h_\lambda)$ for $g_\lambda, h_\lambda \in G_\lambda$.
+
+The cartesian product may be thought of as a universal construction of a group, $G$:
+
+Define the projections $\pi_\lambda : G \rightarrow G_\lambda$ by taking $\pi_\lambda (x)$ to be the $\lambda$-th component of $x$. $\pi_\lambda$ is a homomorphism for each $\lambda$.
+
+Given a family of homomorphisms $\phi_\lambda: H\rightarrow G_\lambda$ for some group $H$, there exists a unique homomorphism $\phi:H\rightarrow C$ such that $\phi \circ \pi_\lambda = \phi_\lambda$ for all $\lambda$.
+
+The existence of the map $\phi$ gives the following commutative diagram:
+$$\begin{array}{ccc}
+  H&   &   \\
+  \downarrow \phi&  \searrow \phi_\lambda &   \\
+  C&  \xrightarrow{\pi_\lambda} & G_\lambda   
+\end{array}$$
+
+
+\section{Direct Product}
+The subset of the $(g_\lambda) \in \text{Cr}_{\lambda\in\Lambda} G_{\lambda}$ such that $g_\lambda = i_\lambda$ for almost all $\lambda$, so that the sequence is trivial with finitely many exceptions, is called the \textbf{external direct} product,
+
+$$D = \text{Dr}_{\lambda\in\Lambda} G_{\lambda}$$
+
+The $G_\lambda$ are referred to as the direct factors. $D$ is a normal subgroup of $C$, and equal for a finite indexing set $\Lambda = \{  \lambda_1, \lambda_2, \dots, \lambda_n \}$. The products are then written,
+
+$$D = G_{\lambda_1}\, \times \, G_{\lambda_2} \, \times\, \dots \, \times \, G_{\lambda_n}$$
+
+And should the groups be abelian, then this is usually written additively as:
+
+$$D = G_{\lambda_1}\, \oplus \, G_{\lambda_2}\, \oplus \, \dots \, \oplus  \, G_{\lambda_n}$$
+
+\section{Free Products}
+
+ The \textbf{abstract free product} of the family $G_\lambda$ is a group $G$ together with a collection of homomorphisms $l_\lambda: G_\lambda \rightarrow G$ with universal property  that for another such group $H$ and set of homomorphisms  $\phi_\lambda: G_\lambda \rightarrow H$, there is a unique homomorphism of groups $\phi:G\rightarrow H$ such that $\phi \circ l_\lambda  = \phi_\lambda$, and the following diagram commutes:
+
+$$\begin{array}{ccc}
+  G_\lambda& \xrightarrow{l_\lambda}  & G  \\
+  \downarrow \phi_\lambda&  \swarrow \phi&   \\
+  H&  &   
+\end{array}$$
+
+The free product is sometimes denoted $F = \text{Fr}_{\lambda\in\Lambda} G_{\lambda} \text{ or } \Asterisk_{\lambda\in\Lambda} G_{\lambda}$ .
+
+From the category-theoretic viewpoint this free product is a coproduct in the category of groups (the product being the cartesian product defined above).
+
+For each $\lambda$, taking $H = G_\lambda$, and maps $\phi_\lambda = \text{id}$, and with the other $\phi_\mu$ trivial, we see that $\phi\circ l_\lambda = \text{id}\vert _{G_\lambda}$ and so each $l_\lambda$ is injective.
+
+Uniqueness of this construction is clear from the universal property. Existence can be shown using an explicit description on words, where letters are taken from the disjoint union of the $G_\lambda$ (we are only working up to an isomorphism of $G_\lambda$, so may assume they do not intersect), products are by juxtapostion, and the only relations are contracting/ expanding letters lying in the same group $G_\lambda$, and absorbing/inserting identity elements.
+
+If $\Lambda$ is finte, $\Lambda = \{  \lambda_1, \lambda_2, \dots, \lambda_n \}$, it is usual to write product as
+
+$$G_{\lambda_1}\, \Asterisk  \, G_{\lambda_2} \, \Asterisk \, \dots \, \Asterisk \, G_{\lambda_n}$$
+
+The free product has the following properties:
+\begin{enumerate}
+
+\item For $\lambda$ finite, there is a natural epimorphism of groups from $\Asterisk_{\lambda\in\Lambda} G_\lambda$ onto $\text{Dr}_{\lambda\in\Lambda} G_\lambda$, defined by taking only the entries in £G_{\lambda}$ in the word of an element in $\Asterisk_{\lambda\in\Lambda} G_\lambda$ , and then fuse together by taking the product. The kernel of this map consists of any elements in $G_{\alpha}$, where $\alpha \neq \lambda$, and such that the product of elements in with index $\lambda$ is trivial, $i_{\lambda} \in G_{\lambda}$.
+
+\item When we take the abelianisation of the free product we may simplify words by sliding elements past each other in the free group to clump together the $G_{\lambda}$, and furthermore by exchanging places within the $G_{\lambda}$ reduces to the abelianisation, $G_{\lambda}^{ab}$, in each component. The group law is now the same as for the Direct Product.
+
+So for abelian families $G_\lambda$, we have $(\Asterisk_{\lambda\in\Lambda} G_\lambda)_\text{ab} \cong \text{Dr}_{\lambda\in\Lambda} G_\lambda$. For a finite index we have:
+
+$$(\Asterisk_{\lambda\in\Lambda} G_\lambda )^{\text{ab}} \cong \bigoplus_{\lambda\in\Lambda} G_\lambda$$
+
+
+\item In general, 
+$$\left (\Asterisk_{\lambda\in\Lambda} G_\lambda\right )^{\text{ab}} \, \cong \, \text{Dr}_{\lambda\in\Lambda} (G_\lambda^{\text{ab}}).$$
+\end{enumerate}
+
+\section{Products of Profinite Groups}
+
+Following Melnikov, see \cite{melnikov}, I explain how the topology of profinte groups and spaces can be used to control what is happening in the inverse limits of such products, and how such products may themselves be represented as products.
+
+I will discuss $p$-groups and pro-$p$ groups in this section although the same ideas could be applied to $\mathcal C$ and pro-$\mathcal C$ groups for $\mathcal C$ any full class of finite groups (meaning it is closed under subgroups, homomorphic images and group extensions).
+
+\subsection{When the Indexing Family is Finite\label{extend}}
+
+Following \cite{profgps}, Chapter 9. Let $G_i$ for $(i=1,\dots, n)$ be a finite collection of pro-$p$ groups. A free pro-$p$ product of these groups consists of a pro-$p$ group $G$ and continuous homomorphisms $\phi_i : G_i \rightarrow G$, for $i = 1,\dots , n$ satisfying the following universal property:
+
+$$\begin{array}{ccc}
+  G &   &   \\
+  \uparrow \phi_i &  \searrow \psi&   \\
+  G_i& \xrightarrow{\psi_i} & K   
+\end{array}$$
+
+for any pro-$p$ group K and any continuous homomorphisms $\psi_i : G_i \rightarrow K$, $i=1, \dots , n$, there is a unique homomorphism induced by the $\psi_i$, and we refer to the $\phi_i$ as the canonical maps of the free pro-$p$ product.
+
+We denote a free pro-$p$ product of the groups $G_1, \dots , G_n$ by
+
+$$G =  \amalg_{i=1}^n G_i \text{ or by } G = G_1\amalg \dots \amalg G_n.$
+
+This universal property needs only be tested for finite $p$-groups $K$, as it then holds automatically for any pro-$p$ group $K$, since $K$ is an inverse limit of $p$-groups.
+
+We need the following properties,
+
+\begin{proposition}{(see \cite{profgps}, 9.1, Properties of the Free pro-$\mathcal C$ Product)}
+
+\begin{enumerate}
+\item Let $\{ G_i \vert i= 1, \dots , n\}$ be a collection of pro-$p$ groups. Then there exists a unique free pro-$p$ product
+$$G = \amalg_{i=1}^n G_i.$$
+
+\item Let $G^{abs} = G_1 \Asterisk \dots \Asterisk G_n$ be a free product of $G_1, \dots G_n$ considered as abstract groups. Denote by $\phi_i^{abs} : G_i \rightarrow G^{abs}$ the natural embeddings. Let 
+
+\vsapce
+\vsapce
+
+
+\boxed{$$\mathcal N = \left \{ N \lhd_f G^{abs} \vert (\phi_i^{abs})^{-1} (N) \lhd_o G_i \text{ for all } i = 1, \dots , n \text{ and } G^{abs} / N \in \mathcal C\right \}$$}
+
+\vspace
+\vsapce
+
+Then $\mathcal N$ is filtered from below, and we may take $G = \mathcal K_{\mathcal N} (G^{abs})$ to be the completion of $G^{abs}$ with respect to the topology determined by $\mathcal N$. Denote by $l:G^{abs} \rightarrow G$ the natural homomorphism and put $\phi_i = l \circ \phi_i^{abs}$, then each $\phi_i$ is continuous and $G$ together with these maps satisfies the universal property.
+
+\item Let $G = A \Asterisk B$ be a free product of abstract groups. Then denoting the pro-$p$ completion of a group $G$ by $G_{\hat{p}$,  
+$$G_{\hat{p}} = A_{\hat{p}} \amalg B_{\hat{p}}.$$
+
+\item Let $G_1, \dots , G_n$ be pro-$\mathcal C$ groups and let $G = G_1 \amalg \dots \amalg G_n$ be their free pro-$\mathcal C$ product.
+Then, the natural homomorphisms 
+$$\phi_j: G_j \rightarrow G = \amalg_{i=1}^n G_i\,\, (j=1,\dots , n)$$
+are monomorphisms; and $G = \overline{<\phi_i(G_i) \vert i = 1, \dots , n>}$
+
+\textbf{Thus we may think of the $G_i$ as being embedded in $G^{abs} = G_1 \Asterisk \dots \Asterisk G_n$. Then $G = G_1 \amalg \dots \amalg G_n$ is the completion of $G^{abs}$ with respect to the topology defined by the collection of all normal subgroups $N$ of findte index in $G^{abs}$ such that $N\cap G_i$ is open in $G_i$, $(i=1, \dots, n)$ and the quotient, $G^{abs}
+/ N$ is a pro-$p$ group.}
+\end{enumerate}
+
+\end{proposition}
+
+The key point of this completed construction is that it now commutes with taking inverse limits:
+
+\begin{proposition}{(see \cite{profgps}, 9.1.7, Inverse Limits and Free Pro-$\mathcal C$ Products Commute\label{commutes})}
+
+
+Let $\{G_{1i}, \mu_{1ij}, I_1\}$ and $\{G_{2i} , \mu_{2ij}, I_2 \}$ be surjective inverse systems of pro-$p$ groups over posets $I_1$ and $I_2$, respectively. Then,
+
+\begin{itemize}
+
+\item $I_1 \times I_2$ is a poset in a natural way and $\{G_{1i} \amalg G_{2k} , \mu_{1ij} \amalg \mu_{2kr}, I_1 \times I_2 \}$ is an inverse system over $I_1\times I_2$.
+
+\item In this setup Inverse Limits and Free Pro-$p$ Products Commute: 
+$$\left(\varprojlim_{I_1} G_{1i} \right ) \amalg \left (\varprojlim_{I_2} G_{2i} \right) \cong \varprojlim_{I_1\times I_2} \left (G_{1i} \amalg G_{2k} \right). $$
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}{(see \cite{profgps}, 9.1.8, Monomorphism in Completion)}
+
+Let $G_1, \dots , G_n$ be pro-$p$ groups. Let $G^{abs} = G_1 \Asterisk \dots \Asterisk G_n$ be the abstract free product of the groups. The the natural homomorphism,
+
+$$l: G^{abs} = G_1 \Asterisk \dots \Asterisk G_n \rightarrow G = G_1 \amalg \dots \amalg G_n$
+
+is a monomorphism.
+\end{proposition}
+
+\subsection{When the indexing family is a profinite space}
+
+This requires a more general concept of "free pro-$p$ product" than the one used in \ref{extend}, above.
+
+Let $ G$ be a pro-$p$ group and let $\{G_{\alpha} \vert \alpha \in A \}$ be a collection of pro-$p$ groups indexed by a set $A$. For each $\alpha \in A$, let $l_\alpha : G_\alpha \rightarrow G$ be a continuous homomorphism. One says that the family $\{ l_\alpha \vert \alpha \in A\}$ is \textbf{convergent} if whenever $U$ is an open neighbourhood of $1$ in $G$, then $U$ contains all but a finite number of the images $l_\alpha (G_\alpha)$. We say that $G$ together with the $l_\alpha$ is the free pro-$p$ product of the groups $G_\alpha$ if the following universal property is satisfied: whenever $\{ \lambda_\alpha : G_\alpha \rightarrow K \vert \alpha \in A \}$ is a convergent family of continuous homomorphisms into a pro-$p$ group $K$, then there exists a unique continuous homomorphism $\lambda: G \rightarrow K$ such that 
+
+$$\begin{array}{ccc}
+  G_\alpha & \xrightarrow{l_\alpha}  & G  \\
+   & \lambda_\alpha \searrow & \downarrow \lambda  \\
+  & & K   
+\end{array}$$
+
+
+commutes, for all $\alpha \in A$. One easily sees that if such a free product exists, then the maps $l_\alpha$ are injections.
+
+ 
+\begin{proposition}{(see \cite{profgps}, D.3.1, Construction of the Free pro-$\mathcal C$ Product)\label{comphoch}}
+The free pro-$\mathcal C$ product exists, and is denoted by
+$$G = \amalg_{\alpha \in A}^r G_\alpha .$$
+To construct the pro-$\mathcal C$ product one proceeds as follows:
+\begin{itemize}
+\item Let $G^{abs} = \Asterisk_{\alpha\in A} G_\alpa$ be the free product of the $G_\alpha$ as abstract groups (so with finite support).
+\item Consider the pro-$\mathcal C$ topology on $G^{abs}$ determined by the collection of normal subgroups $N$ of finite index in $G^{abs}$ such that $G^{abs}/ N \in \mathcal C, \, N \cap G_\alpha$ is open in $G_\alpha$, for each $\alpha \in A$, and $N\geq G_\alpha$, for all but finitely many $\alpha$.
+\item Put $$G = \varprojlim_N G/N.$$
+\item Then $G$ together with the maps $l_\alpha : G_\alpha \rightarrow G$ is the free pro-$\mathcal C$ product $ \amalg_{\alpha \in A}^r G_\alpha .$
+\item If the set $A$ is finite, the "convergence" property of the homomorphisms $l_\alpha$ is automatic; in that case, instead of $\amalg^r$, we use the symbol $\amalg$ as in \ref{extend}.
+\item As in \ref{commutes}, this extended free pro-$\mathcal C$ product commutes with taking inverse limits, and this is the key application.
+\end{itemize} 
+\end{propostion}
+
+\section{Completions of the Hoschschild Homology}
+I follow the construction of \ref{comphoch} to describe the topology giving the completion. 
+
+Since abelianization and inverse limits commute,  the abelianization of the inverse limit, $G = \varprojlim_N G^{abs}/N$, is the same as the inverse limit of the abelianisations, $(G^{abs}/N)^{ab}$. 
+
+Passing to the abelianization simplifies the quotients in the inverse limits. In the finite quotient, for $N$ of finite index in $G^{abs}$ with $G^{abs}/ N$ pro-$p$, and $N \cap G_\alpha$ open in $G_\alpha$, for each $\alpha \in A$, and $N\geq G_\alpha$, for all but finitely many $\alpha$.
+
+$$\left(G^{abs}/N\right )^{ab} \cong \left(\Asterisk_ {\alpha \in Ccl (G)} H_\alpha / N\right)^{ab} \cong \left ( \bigoplus_ {\alpha \in Ccl (G)} {H_\alpha}^{ab} \right) / M$$ 
+where $H_{\alpha}$ is the component of homology in the decomposition over conjugacy classes. Since $H_{\alpha}$ is already abelian we have 
+
+$$(G^{abs}/N)^{ab} \cong \left( \bigoplus_ {\alpha \in Ccl (G)} {H_\alpha} \right) / M$$
+
+Where the component of $M$ in each summand is of finite index in $H_\alpha$, and moreover the component is equal in all but finitely many $\alpha$. We thus see that the abelianisation of the free product is a completion of the direct sum.
+
+\subsection{Case n=0}
+
+Following, \ref{lowdeg}, the components $H_\alpha$ in each conjugacy class are copies of $\ZP$.
+
+\subsection{Case n=1}
+
+Similarly, the components $H_\alpha$ in each conjugacy class are the abelianisations of the Centralisers of Conjugacy Class representatives, $Z(\alpha)$. More generally, we have the $n$-th group homology with trivial coefficients appearing here.
+
+This may be summarised as,
+
+\begin{eqnarray}
+\nonumber \varprojlim_n HH_1 (\ZP[G/G_n]) &=& \varprojlim_n \,\, \bigoplus_{g_n\in \text{ccl }G/G_n} Z(g G_n)^{ab}\\
+\nonumber						&=& \varprojlim_n \left[ \Asterisk_{g\in \text{ccl }G/G_n} Z(g G_n) \right]^{ab}\\		\nonumber						&=& \left[ \varprojlim_n  \Asterisk_{g\in \text{ccl }G/G_n} Z(g G_n) \right]^{ab}\\		\nonumber						&=& \left[ \amalg_{g \in \text{ccl }G}^r Z(g) \right]^{ab}\\
+\nonumber						&=& \left[ \varprojlim_{\mathcal N} (\Asterisk_{g \in \text{ccl }G} Z(g))/N\right]^{ab}\\
+\nonumber						&=& \varprojlim_{\mathcal N} \left[ (\Asterisk_{g \in \text{ccl }G} Z(g))/N\right]^{ab}\\
+\nonumber						&=& \varprojlim_{\mathcal M} \bigoplus_{g \in \text{ccl }G} Z(g)^{ab}/M
+\end{eqnarray}
+
+Where we have a clear description of the subgroups of the direct sum, $\mathcal M$. 
+
+This explains why the inverse limit of the Hochschild Homologies on the finite is just a completion of $HH_1(\ZP [G])$.
+
+Finally, I need to explain why $HH_1 (\Lambda(G))$ yields the same thing. This is clear when we compute the Hochschild Homology of the Iwasawa Algebra by replacing the usual tensor product formulation with completed tensor products.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conjugacy Classes of the False Tate Curve}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now that we can work with the full pro-$p$ and take a completion, knowing the structure of conjugacy classes and centralisers is important.
+
+We study the semi-direct product of $2$ copies of $\ZP$,
+
+\begin{eqnarray}
+\nonumber G		&=&		F \rtimes H\\
+				&=&		\{ (f,h). (f' , h') = (f+\rho(h) f' , h+h')\}
+\end{eqnarray}
+
+Where $\rho : n \rightarrow (1+p)^n$.
+
+Hence, 
+
+$$ (f,h)^{-1} = (-\rho(-h) f , -h)$$
+
+Notice, $\rho(\ZP) = (1+p)^{\ZP} = 1+p \ZP$.
+
+$$(a,b)^{(g,h)} = (\rho(-h)(a+(\rho(b)-1_g_,b)$$
+
+As we vary over all possible pairs $g$ and $h$:
+
+$$(a,b)^{(g,h)} =  ((1+p \ZP)(a+(1-\rho(b))\ZP), b)$$
+
+Since $val(\rho(b) - 1) = val(b)+1 = val (bp)
+
+$$(a,b)^{(g,h)} =  ((1+p \ZP)(a+bp\ZP), b)$$
+
+ie
+
+$$ccl(a,b) = \{(a + ap\ZP + bp\ZP, b)\} = \{( a+ p^{min(val(a),val(b))+1}.\ZP, b) \} $$
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Completions of the Hoschschild Homology of the False Tate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ratio applied to the False Tate Curve}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the process of calculating the index of the span of idempotents inside the span 
+of rows of the character table we need to consider an index:
+
+$$r = \prod_i \frac{|G|}{\chi_i (1) \sqrt{|Z(C_i)|}}$$
+
+Where $\chi_i$ run through the irreducible representations, and $C_i$ run through the conjugacy classes of $G$. Modulo the size of the group, $|G|$, this is equivalent to studying the ratio, $r$:
+
+$$\prod_i \frac{|ccl(C_i)|}{\chi_i (1)^2}$$
+
+This seems like a natural object to study given the tight relationship between the additive version of this comparison: $\sum_i |ccl(C_i)| = |G| = \sum_i \chi_i (1)^2$. Thus,
+
+$$\sum_i |ccl(C_i)| - \chi_i (1)^2 = 0.$$
+
+Given that both the conjugacy classes and the dimension of the representation will follow a growth pattern (viewed as sizes of the adjoint/coadjoint orbits respectively) we would expect the ratio to follow a pattern, and so the naturally associated zeta function to be rational:
+
+\boxed{$$\zeta (z) = \sum_{n = 1}^\infty (\text{log}_p r_n). z^n$$}
+
+I made calculations for the False Tate Curve:
+
+\begin{itemize}
+\item $p=2$
+\begin{eqnarray}
+\nonumber \zeta(z) 	&=& 0z^1 + 4 z^2 +21 z^3 +73 z^4 + \dots \\
+\nonumber 		&=& \frac{z^2 (4+z)}{(1-2z)^2 (1-z)}
+\end{eqnarray}
+\item $p=3$
+
+$$ \zeta(z) 	= \frac{9z^2 (1+z)}{(1-3z)^2 (1-z)}$$
+
+\item General $p$
+$$ \zeta_p(z) 	= \frac{p z^2 (2p+(p^2-3)z)}{2(1-pz)^2 (1-z)}$$
+\end{itemize}
+
+

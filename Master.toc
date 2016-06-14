@@ -1,0 +1,71 @@
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{\numberline {2}Homology Background}{4}
+\contentsline {section}{\numberline {2.1}Derived Functors}{4}
+\contentsline {subsection}{\numberline {2.1.1}Introduction to Derived Functors}{4}
+\contentsline {subsection}{\numberline {2.1.2}Homotopy}{5}
+\contentsline {subsection}{\numberline {2.1.3}Projective Resolutions}{6}
+\contentsline {subsection}{\numberline {2.1.4}Derived Functors}{7}
+\contentsline {section}{\numberline {2.2}Long Exact Sequences of Derived Functors}{9}
+\contentsline {subsection}{\numberline {2.2.1}Application: the functor $Ext^n_\Lambda $}{11}
+\contentsline {subsection}{\numberline {2.2.2}$Ext_\Lambda ^n\text { where }n\geq 1$ viewed as Extensions}{13}
+\contentsline {section}{\numberline {2.3}Group Homology}{14}
+\contentsline {section}{\numberline {2.4}Integral Homology of Terms of Low Degree}{16}
+\contentsline {chapter}{\numberline {3}Algebra Background}{18}
+\contentsline {section}{\numberline {3.1}Completions and Inverse Limits}{18}
+\contentsline {subsection}{\numberline {3.1.1}Graded Rings and Modules}{18}
+\contentsline {subsection}{\numberline {3.1.2}Associated Graded Rings and Modules}{19}
+\contentsline {subsection}{\numberline {3.1.3}The Completed Tensor Product}{20}
+\contentsline {subsection}{\numberline {3.1.4}Induced Filtrations}{21}
+\contentsline {subsection}{\numberline {3.1.5}Inverse Limits}{21}
+\contentsline {subsection}{\numberline {3.1.6}Definition of the Completion}{23}
+\contentsline {section}{\numberline {3.2}The Snake Lemma}{23}
+\contentsline {subsection}{\numberline {3.2.1}6 Term Exact Sequence}{23}
+\contentsline {subsection}{\numberline {3.2.2}8 Term Exact Sequence}{24}
+\contentsline {section}{\numberline {3.3}Derived Functors of the Inverse Limit}{25}
+\contentsline {section}{\numberline {3.4}Constructing Non-Liftable Elements in $\prod HH_1(\mathbb Z_p[G/G_n])$}{28}
+\contentsline {subsection}{\numberline {3.4.1}Infinite Support - Only Interested In The Tail}{29}
+\contentsline {subsection}{\numberline {3.4.2}Products May Become Trivial When We Project}{29}
+\contentsline {subsection}{\numberline {3.4.3}Being Able To Lift The Projection, $p$, Ensures Ee Can Lift Under $\Delta $}{29}
+\contentsline {subsection}{\numberline {3.4.4}Projection And Lifting Do Not Commute}{29}
+\contentsline {subsection}{\numberline {3.4.5}Element Which Is Not Simple After a Finite Number of Projections}{29}
+\contentsline {subsection}{\numberline {3.4.6}Using a Sum}{29}
+\contentsline {section}{\numberline {3.5}Mittag-Leffler Condition}{29}
+\contentsline {section}{\numberline {3.6}The Snake Lemma - lim1 Calculation}{32}
+\contentsline {subsection}{\numberline {3.6.1}The Snake Lemma - lim1 and Homology}{33}
+\contentsline {subsection}{\numberline {3.6.2}Eilenberg-Moore Filtration Sequence}{33}
+\contentsline {chapter}{\numberline {4}Hochschild Homology}{35}
+\contentsline {section}{\numberline {4.1}Definition of Hochschild Homology}{35}
+\contentsline {subsection}{\numberline {4.1.1}Intuition}{35}
+\contentsline {subsection}{\numberline {4.1.2}Formal Definition}{36}
+\contentsline {section}{\numberline {4.2}Decomposition of Hochschild Homology for Group Rings}{38}
+\contentsline {section}{\numberline {4.3}Notation for Elements in $HH_1 (\mathbb Z[G])$}{40}
+\contentsline {chapter}{\numberline {5}Completions}{41}
+\contentsline {section}{\numberline {5.1}Finiteness}{41}
+\contentsline {section}{\numberline {5.2}Complete Resolution for Calculating the Hochschild Homology of an Iwasawa Algebra}{43}
+\contentsline {section}{\numberline {5.3}Cofinal Completions}{48}
+\contentsline {section}{\numberline {5.4}Interpreting as Commutivity of Inverse Limits and Lie Commutator Bracket}{49}
+\contentsline {section}{\numberline {5.5}Interpreting vanishing of lim1 in terms of Hausdorff Property}{51}
+\contentsline {chapter}{\numberline {6}Free Products}{52}
+\contentsline {section}{\numberline {6.1}Connection with Free Products}{52}
+\contentsline {section}{\numberline {6.2}Cartesian Product}{52}
+\contentsline {section}{\numberline {6.3}Direct Product}{53}
+\contentsline {section}{\numberline {6.4}Free Products}{53}
+\contentsline {section}{\numberline {6.5}Products of Profinite Groups}{55}
+\contentsline {subsection}{\numberline {6.5.1}When the Indexing Family is Finite}{55}
+\contentsline {subsection}{\numberline {6.5.2}When the indexing family is a profinite space}{57}
+\contentsline {section}{\numberline {6.6}Completions of the Hoschschild Homology}{58}
+\contentsline {subsection}{\numberline {6.6.1}Case n=0}{59}
+\contentsline {subsection}{\numberline {6.6.2}Case n=1}{59}
+\contentsline {section}{\numberline {6.7}Conjugacy Classes of the False Tate Curve}{59}
+\contentsline {section}{\numberline {6.8}Completions of the Hoschschild Homology of the False Tate}{60}
+\contentsline {section}{\numberline {6.9}Ratio applied to the False Tate Curve}{60}
+\contentsline {chapter}{\numberline {7}Function Hierarchy}{62}
+\contentsline {section}{\numberline {7.1}Idempotents}{62}
+\contentsline {section}{\numberline {7.2}Incidence Matrices and Class Algebra Constants}{63}
+\contentsline {section}{\numberline {7.3}Patterns in Centralisers and growth of Conjugacy Classes}{63}
+\contentsline {section}{\numberline {7.4}Kirillov Orbit Method}{63}
+\contentsline {section}{\numberline {7.5}Sizes of Conjugacy Classes \& Degrees of Representations over $\mathbb C$}{63}
+\contentsline {section}{\numberline {7.6}Two types of Commutator and the Group Algebra Hierarchy}{64}
+\contentsline {section}{\numberline {7.7}The Algebra of Aardakov and Wadsley}{67}
+\contentsline {section}{\numberline {7.8}A New Completed Normed Algebra}{67}
+\contentsline {chapter}{\numberline {8}Connection with the Integral Logarithm and Hattori-Stallings Rank}{68}
