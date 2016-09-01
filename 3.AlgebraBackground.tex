@@ -1,0 +1,594 @@
+In this chapter I define the completion of a space via inverse limits, and then ask if the inverse limit preserves short exact sequences. This leads to the study of the derived functors of the inverse limit. I show how this is especially simple when the indexing set is the natural numbers. I then give a sufficient condition for the inverse limit to be exact (for the derived functors to vanish) and explain when this is necessary. Finally, I present the snake lemma and use this to combine the study of homology and inverse limits in the Eilenberg-Moore filtration sequence.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Completions and Inverse Limits}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The set $\R$ of real numbers is a complete metric space in which the set $\Q$ of rationals is dense. In fact any metric space can be embedded as a dense subset of a complete metric space. The construction is a familiar one involving equivalence classes of Cauchy sequences. We will see that under appropriate conditions, this procedure can be generalized to modules.
+
+\subsection{Graded Rings and Modules}
+
+A graded ring is a ring $R$ that is expressible as $\bigoplus_{n \geq 0}R_n$ where the $R_n$ are additive subgroups such that $R_m.R_n \subset R_{m+n}$. Sometimes, $R_n$ is referred to as the $n^{th}$ graded piece and elements of $R_n$ are said to be homogeneous of degree $n$. The prototype is a polynomial ring in several variables, with $R_d$ consisting of all homogeneous polynomials of degree $d$ (along with the zero polynomial). A graded module over a graded ring $R$ is a module $M$ expressible as $\bigoplus_{n \geq 0}M_n$, where $R_mM_n \subset M_{m+n}$.
+
+Note that the identity element of a graded ring $R$ must belong to $R_0$. For if $1$ has a component $a$ of maximum degree $n > 0$, then $1a = a$ forces the degree of a to exceed $n$, a contradiction.
+
+Now suppose that$\{R_n\}$ is a filtration of the ring $R$, in other words, the $R_n$ are additive subgroups such that
+$$R=R_0 \supset R_1 \supset \dots \supset R_n \supset \dots$$
+
+with $R_mR_n \subset R_{m+n}$. We call $R$ a filtered ring. A filtered module
+$$M =M_0 \supset M_1\supset\dots$$
+over the filtered ring $R$ may be defined similarly. In this case, each $M_n$ is a submodule and we require that $R_mM_n \subset M_{m+n}$.
+
+If $I$ is an ideal of the ring $R$ and $M$ is an $R$-module, we will be interested in the $I$-adic filtrations of $R$ and of $M$, given respectively by $R_n = I^n$ and $M_n = I^nM$. (Take $I^0 = R$, so that $M_0 = M$.)
+
+\subsection{Associated Graded Rings and Modules}
+
+If $\{R_n\}$ is a filtration of $R$, the associated graded ring of $R$ is defined as 
+
+$$ gr(R) =\bigoplus_{n\geq 0} gr_n(R)$$
+
+where $gr_n(R) = R_n/R_{n+1}$. We must be careful in defining multiplication in $gr(R)$. If $a\in R_m$ and $b\in R_n$, then $a+R_{m+1} \in R_m/R_{m+1}$ and $b+R_{n+1} \in R_n/R_{n+1}$. We take $(a + R_{m+1})(b + R_{n+1}) = ab + R_{m+n+1}$ so that the product of an element of $gr_m(R)$ and an element of $gr_n(R)$ will belong to $gr_{m+n}(R)$. If $a \in R_{m+1}$ and $b \in R_n$, then $ab \in R_{m+n+1}$, so multiplication is well-defined. If $M$ is a filtered module over a filtered ring $R$, we define the \textit{associated graded module} of M as
+
+$$gr(M) = \bigoplus_{n\geq 0} gr_n(M)$$
+
+where $gr_n(M) = M_n/M_{n+1}$. If $a \in R_m$ and $x \in M_n$, we define scalar multiplication by
+$$(a + R_{m+1})(x + M_{n+1}) = ax + M_{m+n+1}$$
+and it follows that
+$$(R_m/R_{m+1})(M_n/M_{n+1}) \subset M_{m+n}/M_{m+n+1}.$$
+
+Thus $gr(M)$ is a graded module over the graded ring $gr(R)$.
+
+\subsection{The Completed Tensor Product\label{completedtensor}}
+
+\begin{example}
+Let $R$ be a Noetherian ring, and consider $R[c] \otimes_R R[y] \cong R[x,y]$. However, $R[[x]]\otimes_T R[[y]]$ is something weird, being just a part of $R[[x,y]]$. It's easy to see that it does at least inject into $R[[x,y]]$. The idea is that $M\otimes R^I \hookrightarrow M^I$ for any free $R$-module $R^I$ (here $I$ is an arbitrary index set) but this map fails to be an isomorphism. 
+
+To check the injectivity, note that it's OK for $M$ finite free, which allows one to deduce it for $M$ finitely presented, and then pass to a direct limit to conclude the general case. Applying this to $I=\Z$ and $M = R[[x]]$ gives what we want in our case. But to see that our map $R[[x]]\otimes R[[y]] \hookrightarrow R[[x,y]]$ is not surjective, observe that $\sum x^n y^n$ is not in the image!
+\end{example}
+
+\begin{definition}
+Let $\mathcal O$ be a complete Noetherian local ring and $R,S$ complete Noetherian local $\mathcal O$-algebras (meaning the structure maps are local morphisms). Assume at least one of the residuee field extensions $\mathcal O / {\mathfrak m}_{\mathcal O}\subset R/ {\mathfrak m}_R$ and $\mathcal O / {\mathfrak m}_{\mathcal O}\subset S/ {\mathfrak m}_S$ is finite. Then the set $\mathfrak m \triangleleft R \otimes_{\mathcal O} S$ to be the ideal generated by
+$${\mathfrak m}_R \otimes_{\mathcal O} S + R \otimes_{\mathcal O} {\mathfrak m}_S.$$
+Notice that $(R\otimes_{\mathcal O} S) / {\mathfrak m} \cong \mathbb K_R \otimes_{\mathbb K_{\mathcal O}} \mathbb K_S$ is not necessarily a field, or even a local ring, but it is Artinian.
+
+Now define the completed tensor producet $R\widehat{\otimes}_{\mathcal O} S$ to be the $\mathfrak m$-adic completion of $R \otimes_{\mathcal O} S$.
+\end{definition}
+
+\begin{proposition}(See \cite{completed}, p4, Universal Property of Completed Tensor)
+
+$R\widehat{\otimes}_{\mathcal O} S$ is the coproduct in the category of complete semilocal Noetherian $\mathcal O$-algebras and continuous maps. It is thus the universal complete semilocal Noetherian $'math cal O$-algebra equipped with continuous $\mathcal O$-algebra maps from $R$ to $S$.
+\end{proposition}
+
+\begin{example}
+We have $\mathcal O [[x]] \widehat{\otimes}_{\mathcal O} \mathcal O' [[y]] \cong \mathcal O\ [[x,y]]$ when $\mathcal O'$ is any complete Noetherian local $\mathcal O$-algebra. We also have
+$$(\mathcal O [[x_1, \dots , x_r ]] / \mathbb J) \widehat{\otimes}_{\mathcal O} (\mathcal O' [[y_1, \dots , y_s]] / \mathbb J') \cong \mathcal O' [[x_1, \dots , x_r, y_1, \dots , y_s ]] / (\mathbb J , \mathbb J')$$
+in this setup.
+\end{example}
+
+\subsection{Induced Filtrations}
+
+If $\{M_n\}$ is a filtration of the $R$-module $M$, and $N$ is a submodule of $M$, then we have filtrations induced on $N$ and $M/N$, given by $N_n = N \cap M_n$ and $(M/N)_n = (M_n +N)/N$ respectively.
+
+More generally consider a short exact sequence of modules:
+
+$$0\rightarrow A \xrightarrow{f} B \xrightarrow{g} C \rightarrow 0$$
+
+Then for a filtration  $\{M_n\}$ on $B$, we have inherited filtrations, $\{A\cap f^{-1} (M_n) \}$ on A, and $\{ g(M_n)\}$ on $C$. 
+
+\begin{proposition}(see \cite{lubkin} §6, 1.1.1, Completions with respect to Induced Filtrations)
+If we complete with respect to these natural filtrations, then the sequence of completed modules is short exact:
+
+$$0\rightarrow \widehat{A} \rightarrow \widehat{B} \rightarrow \widehat{C} \rightarrow 0$$
+
+Equivalently, if we start with a filtered module $B$, and let $A$ be a submodule of $B$. Then we may regard both $A$ as $B/A$ as filtered modules with the filtration induced from $A$. In that case the induced map $\widehat{A} \rightarrow \widehat{B}$ is a morphism and there is an isomorphism
+
+$$\widehat{B} / \widehat{A} \cong\widehat{(B/A)}$$
+\end{proposition}
+
+\subsection{Inverse Limits}
+
+Suppose we have countably many $R$-modules $M_0,M_1,\dots $ with $R$-module homomorphisms $\theta_n : M_n \rightarrow M_{n - 1},\,\\ \forall n \geq 1$. (We are restricting to the countable case to simplify the notation, but the ideas carry over to an arbitrary family of modules, indexed by a directed set. If $i \leq j$, we have a homomorphism $f_{ij}$ from $M_j$ to $M_i$. We assume that the maps can be composed consistently, in other words, if $i \leq j \leq k$, then $f_{ij} \circ f_{jk} = f_{ik}$). The collection of modules and maps is called an \textit{inverse system}.
+
+A sequence $(x_i)$ in the direct product $\prod M_i$ is said to be coherent if it respects the connecting maps $\theta_n$ in the sense that for every $i$ we have $\theta_{i+1}(x_{i+1}) = x_i$. The collection $M$ of all coherent sequences is called the inverse limit of the inverse system. The inverse limit is denoted by
+$$\varprojlim{M_n}$$
+
+Note that $M$ becomes an $R$-module with component-wise addition and scalar multiplication of coherent sequences, in other words, $(x_i) + (y_i) = (x_i + y_i)$ and $r(x_i) = (rx_i)$.
+
+Now suppose that we have homomorphisms $g_i$ from an $R$-module $M'$ to $M_i,\, i = 0,1,\dots$. Call the $g_i$ coherent if $\theta_{i+1} \circ g_{i+1} = g_i$ for all $i$. Then the $g_i$ can be lifted to a homomorphism $g$ from $M'$ to $M$.
+
+Explicitly, $g(x) = (g_i(x))$, and the coherence of the $g_i$ forces the sequence $(g_i(x))$ to be coherent.
+
+An inverse limit of an inverse system of rings can be constructed in a similar fashion, as coherent sequences can be multiplied component-wise, that is, $(x_i)(y_i) = (x_iy_i)$.
+
+\begin{example}(Basic Inverse Limits)
+\begin{enumerate}
+
+\item Take $R=\Z$, and let $I$ be the ideal $(p)$ where $p$ is a fixed prime. Take $M_n =\Z/I^n$ and $\theta_{n+1}(a + I^{n+1}) = a + I^n$. The inverse limit of the $M_n$ is the ring $\Z_p$ of $p$-adic integers.
+
+
+\item Let $R = A[x_1,\dots, x_n]$ be a polynomial ring in $n$ variables, and $I$ the maximal ideal $(x_1,\dots,x_n)$. Let $M_n = R/I^n$ and $\theta_n(f +I^n) = f +I^{n?1},\, n = 1,2,\dots$. An element of $M_n$ is represented by a polynomial $f$ of degree at most $n-1$. (We take the degree of $f$ to be the maximum degree of a monomial in $f$.) The image of $f$ in $I^{n-1}$ is represented by the same polynomial with the terms of degree $n -1$ deleted. Thus the inverse limit can be identified with the ring $A[[x_1, \dots , x_n]]$ of formal power series.
+\end{enumerate}
+\end{example}
+
+Now let $M$ be a filtered $R$-module with filtration $\{M_n\}$. The filtration determines a topology on $M$, with the $M_n$ forming a base for the neighbourhoods of $0$. We have the following result:
+
+
+\begin{theorem}(Closure of Submodules\label{423})
+
+If $N$ is a submodule of $M$, then the closure of $N$ is given by $\overline{N} = \bigcap^\infty_{n=0}(N + M_n).$
+\end{theorem}
+
+\begin{proof}
+Let $x$ be an element of $M$. Then $x$ fails to belong to $\overline{N}$ if and only if some neighborhood of $x$ is disjoint from $N$, in other words, $(x+M_n)\cap N = \phi$ for some $n$. Equivalently, $x \notin N +M_n$ for some $n$, and the result follows. To justify the last step, note that if $x \in N + M_n$, then $x=y+z,\, y\in N,\, z\in M_n$. Thus $y=x - z \in (x+M_n)\cap N$. Conversely,if $y\in (x+M_n)\cap N$,then for some $z\in M_n$ we have $y=x-z$, so $x=y+z\in N+M_n$.
+\end{proof}
+
+
+\begin{corollary} (Interpretation of Hausdorff Property)
+
+The topology is Hausdorff if and only if $\bigcap^\infty_{n=0} M_n = \{0\}$.
+\end{corollary}
+
+\begin{proof}
+By \ref{423}, $\bigcap^\infty_{n=0} M_n = \overline{\{0\}}$, so we are asserting that the Hausdorff property is equivalent to points being closed, that is, the $T_1$ condition. This holds because separating distinct points $x$ and $y$ by disjoint open sets is equivalent to separating $x-y$ from $0$. 
+\end{proof}
+
+
+\subsection{Definition of the Completion}
+
+Let $\{M_n\}$ be a filtration of the $R$-module $M$. Recalling the construction of the reals from the rationals, or the process of completing an arbitrary metric space, let us try to come up with something similar in this case. If we go far out in a Cauchy sequence, the difference between terms becomes small. Thus we can define a Cauchy sequence $\{x_n\}$ in $M$ by the requirement that for every positive integer $r$ there is a positive integer $N$ such that $x_n -x_m \in M_r$ for $n,m \geq N$. We identify the Cauchy sequences $\{x_n\}$ and $\{y_n\}$ if they get close to each other for large $n$. More precisely, given a positive integer $r$ there exists a positive integer $N$ such that $x_n - y_n \in M_r$ for all $n \geq N$. Notice that the condition $x_n - x_m \in M_r$ is equivalent to $x_n + M_r = x_m + M_r$. This suggests that the essential feature of the Cauchy condition is that the sequence is coherent with respect to the maps $\theta_n : M/M_n \rightarrow M/M_{n-1}$. Motivated by this observation, we define the completion of $M$ as
+$$\widehat{M} = \varprojlim{(M/Mn)}.$$
+
+The functor that assigns the inverse limit to an inverse system of modules is left exact, and becomes exact under certain conditions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Snake Lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{6 Term Exact Sequence\label{sixterm}}
+
+Given two exact rows $A'\rightarrow B' \rightarrow C' \rightarrow 0$ and $0\rightarrow A\rightarrow B\rightarrow C$  with maps between them such that squares commutes, there exists a long exact sequence of kernels and cokernels.  
+
+Most of the maps are inherited, with the connecting map $\partial$ given by a series of lifts which are well defined in the quotient.
+
+$$\ker f \rightarrow \ker g \rightarrow \ker h \xrightarrow{\partial} \coker f \rightarrow \coker g\rightarrow \coker h,$$
+
+Arising from:
+
+\begin{tikzpicture}[>=triangle 60]
+\matrix[matrix of math nodes,column sep={60pt,between origins},row
+sep={60pt,between origins},nodes={asymmetrical rectangle}] (s)
+{
+&|[name=ka]| \ker f &|[name=kb]| \ker g &|[name=kc]| \ker h \\
+%
+&|[name=A]| A' &|[name=B]| B' &|[name=C]| C' &|[name=01]| 0 \\
+%
+|[name=02]| 0 &|[name=A']| A &|[name=B']| B &|[name=C']| C \\
+%
+&|[name=ca]| \coker f &|[name=cb]| \coker g &|[name=cc]| \coker h \\
+};
+\draw[->] (ka) edge (A)
+          (kb) edge (B)
+          (kc) edge (C)
+          (A) edge (B)
+          (B) edge node[auto] {\(p\)} (C)
+          (C) edge (01)
+          (A) edge node[auto] {\(f\)} (A')
+          (B) edge node[auto] {\(g\)} (B')
+          (C) edge node[auto] {\(h\)} (C')
+          (02) edge (A')
+          (A') edge node[auto] {\(i\)} (B')
+          (B') edge (C')
+          (A') edge (ca)
+          (B') edge (cb)
+          (C') edge (cc)
+;
+\draw[->,gray] (ka) edge (kb)
+               (kb) edge (kc)
+               (ca) edge (cb)
+               (cb) edge (cc)
+;
+\draw[->,gray,rounded corners] (kc) -| node[auto,text=black,pos=.7]
+{\(\partial\)} ($(01.east)+(.5,0)$) |- ($(B)!.35!(B')$) -|
+($(02.west)+(-.5,0)$) |- (ca);
+\end{tikzpicture}
+
+\subsection{8 Term Exact Sequence\label{eightterm}}
+This result may be strengthened if the rows are short exact sequences, $0\rightarrow A'\rightarrow B' \rightarrow C' \rightarrow 0$ and \\ $0\rightarrow A\rightarrow B\rightarrow C \rightarrow 0$ to:
+
+$$0 \rightarrow \ker f \rightarrow \ker g \rightarrow \ker h \xrightarrow{\partial} \coker f \rightarrow \coker g\rightarrow \coker h \rightarrow 0,$$
+
+Arising from:
+
+\begin{tikzpicture}[>=triangle 60]
+\matrix[matrix of math nodes,column sep={60pt,between origins},row
+sep={60pt,between origins},nodes={asymmetrical rectangle}] (s)
+{
+|[name=kw]| 0  &|[name=ka]| \ker f &|[name=kb]| \ker g &|[name=kc]| \ker h \\
+%
+|[name=kx]| 0  &|[name=A]| A' &|[name=B]| B' &|[name=C]| C' &|[name=01]| 0 \\
+%
+|[name=02]| 0 &|[name=A']| A &|[name=B']| B &|[name=C']| C & |[name=ky]| 0 \\
+%
+&|[name=ca]| \coker f &|[name=cb]| \coker g &|[name=cc]| \coker h & |[name=kz]| 0\\
+};
+\draw[->] (ka) edge (A)
+          (kb) edge (B)
+          (kc) edge (C)
+          (A) edge (B)
+          (B) edge node[auto] {\(p\)} (C)
+          (C) edge (01)
+          (A) edge node[auto] {\(f\)} (A')
+          (B) edge node[auto] {\(g\)} (B')
+          (C) edge node[auto] {\(h\)} (C')
+          (02) edge (A')
+          (A') edge node[auto] {\(i\)} (B')
+          (B') edge (C')
+          (A') edge (ca)
+          (B') edge (cb)
+          (C') edge (cc)
+;
+\draw[->,gray] (ka) edge (kb)
+               (kb) edge (kc)
+               (ca) edge (cb)
+               (cb) edge (cc)
+               (kw) edge (ka)
+               (kx) edge (A)
+               (C') edge (ky)
+               (cc) edge (kz)
+;
+\draw[->,gray,rounded corners] (kc) -| node[auto,text=black,pos=.7]
+{\(\partial\)} ($(01.east)+(.5,0)$) |- ($(B)!.35!(B')$) -|
+($(02.west)+(-.5,0)$) |- (ca);
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Derived Functors of the Inverse Limit}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We work within the category of Abelian Groups, $\mathbb{Ab}$.
+
+\begin{definition}(Definition of Derived Functors of the Inverse Limit)
+Given a tower $\{A_i\}$ in $\mathbb{Ab}$, define the map
+
+$$\Delta:  \prod \{A_i\} \rightarrow \prod \{A_i\}$$
+by the element-theoretic formula
+
+$$\Delta(\{a_i\}) \rightarrow (\{ a_i - \text{images of projections}\})$$
+
+In particular, when the indexing set is the Natural numbers, and we have a tower $\{A_i \}: \, \dots \rightarrow A_2 \rightarrow A_1 \rightarrow A_0$. Then,
+
+$$\Delta:  \prod_{i=0}^{\infty} \{A_i\} \rightarrow \prod_{i=0}^{\infty} \{A_i\}$$
+by the element-theoretic formula
+
+$$\Delta(\dots, a_i , \dots , a_0 ) = (\dots , a_i - \overline{a_{i+1}},\dots, a_1 - \overline{a_{2}}, a_0 - \overline{a_{1}}  )$$
+
+where $\overline{a_{i+1}}$ denotes the image of $a_{i+1} \in A_{i+1}$ in $A_i$. Clearly, the kernel of $\Delta$ is $\varprojlim A_i$ and we define $\limone A_i$ to be the cockerel of $\Delta$.
+
+\end{definition}
+
+\begin{theorem}(Simplification when Indexed over the Natural Numbers, $\N$\label{simplification})
+When the Indexing set is the Natural numbers, $\N$, the higher derived functors vanish (proved by showing it vanishes on enough injectives), and we have definitions of the cohomological derived functor, $\varprojlim^n A_i$:
+
+\begin{eqnarray*}
+{\varprojlim}^0 &=& \varprojlim A_i = \text{Ker}\{ \Delta\} \\
+{\varprojlim}^1 &=& \text{Coker}\{ \Delta\} \\
+{\varprojlim}^n &=& 0 \text{ for } n\neq 0,1.
+\end{eqnarray*}
+
+\end{theorem}
+
+\begin{theorem}(A Long Exact Sequence\label{longderivedinv})
+
+If $0\rightarrow \{A_i\} \rightarrow \{B_i\} \rightarrow \{C_i\} \rightarrow 0$, then in this case the Long Exact Sequence of Cohomology follows from applying the Snake Lemma (see \ref{eightterm} ) to
+
+$$\begin{array}{ccccccccc}
+0 	&	 \rightarrow &\prod\{A_i\} 	& \rightarrow & \prod\{B_i\} &\rightarrow &\prod\{C_i\} &\rightarrow &0\\
+&&\downarrow \Delta&&\downarrow \Delta&&\downarrow \Delta&&\\
+0 	&	\rightarrow &\prod\{A_i\} 	& \rightarrow & \prod\{B_i\} &\rightarrow &\prod\{C_i\} &\rightarrow &0\\
+\end{array}$$
+giving
+$$0 \rightarrow \varprojlim\{A_i\} \rightarrow \varprojlim\{B_i\} \rightarrow \varprojlim\{C_i\} \rightarrow  \limone\{A_i\} \rightarrow \limone\{B_i\} \rightarrow \limone\{C_i\} \rightarrow 0$$
+\end{theorem}
+
+
+
+\begin{example}($lim^1$ of Towers of $p^{th}$-power Factors of the Integers)
+
+Let $A_0 = \Z$ and $A_i = p^i \Z$ be the subgroup generated by $p^i$. We have the exact sequence giving by inclusion/projection which extends to a short exact sequence of towers:
+
+$$0\rightarrow \{p^i \Z \} \rightarrow \{\Z\} \rightarrow \{ \Z / p^i \Z \} \rightarrow 0.$$
+
+The long exact sequence derived from the inverse limit yields
+
+$$ 0 \rightarrow \varprojlim \{p^i \Z \} \rightarrow \varprojlim \{\Z\} \rightarrow \varprojlim \{ \Z / p^i \Z \} \rightarrow \limone \{p^i \Z \} \rightarrow \limone \{\Z\} \rightarrow \limone \{ \Z / p^i \Z \}\rightarrow 0.$$
+
+The groups ${p^i \Z}$ map by inclusion, so the inverse limit reduces to the intersection: $\cap  \{p^i \Z \} = 0$. The identity map connects the trivial tower $\{\Z\}$, hence $\varprojlim \{\Z\} = \Z$, and there is no cokernel so $\limone \{\Z\} = \Z$.  This gives,
+
+$$ 0 \rightarrow 0 \rightarrow \Z \rightarrow \ZP \rightarrow \limone \{p^i \Z \} \rightarrow 0 \rightarrow \limone \{ \Z / p^i \Z \}\rightarrow 0.$$
+
+Hence,
+
+$$ \limone \{p^i \Z \} \cong \ZP / \Z, \text{ and } \limone \{ \Z / p^i \Z \} =0$$
+\end{example}
+
+
+\begin{example}($lim^1$ of Towers of Augmentation Ideals\label{3.2.5})
+
+Similarly, we may consider the filtration of the Iwasawa Algebra by the augmentation ideals:
+
+$$0\rightarrow \{ I_n\}  \rightarrow \{\ZP[G] \}  \rightarrow \{ \ZP [G/G_n]\}  \rightarrow 0$$
+
+This yields 
+
+$$ \limone \{I_n \} \cong \Lambda_G / \ZP[G], \text{ and } \limone  \{ \ZP [G/G_n] \} = 0$$
+
+\end {example}
+
+\begin{proposition}(Interpretation of $lim^1$ in terms of Cohomology Functor, $Ext$)
+
+Let $X$ be $1$-projection in the tower of Carteisan modules.
+We may view $lim^1$ explicitly as a derived cohomology functor, by considering $\Z$ as the trivial 
+$\Z [X]$-modules, then applying to a Caretian product, $A = \{ A_i \}$:
+
+$$\limone (A) = Ext^1_{\Z[X]} (\Z, A)$$
+\end{proposition}
+
+\begin{proof}
+The trivial $\Z[x]$-module has a free resolution  $0 \rightarrow \Z[X] \xrightarrow{*(i-X)} \Z[X] \rightarrow \Z \rightarrow 0.$, and the functors agree at degree zero (inverse limit), hence on all higher derived functors. Moreover, this gives a more natural interpretation of why Higher Derived Functors vanish (because the projective resolution vanishes after just two terms).
+\end{proof}
+
+\begin{example}(Interpretations of $lim^1$ in Terms of Lifts\label{lifts})
+
+I introduce here a different way to think of $\limone$, these ideas are developed in \ref{mlifts}.
+
+We may think of elements in $\limone \cong Coker \, \Delta \cong Coker \, (i-X)$ as coming from an inability to lift all elements under $(i-X)$, or in other words find a value in the pre-image $(i-X)$.
+
+If $t = (i-X)s$ then $s\in Im \Delta$ and so $s\equiv 0$ in $Coker \Delta$. We may write $s="(i-X)^{-1}"\, t$.
+
+It is an interesting question to unite this idea with basic analysis and the two ways in which the power series of $\frac{1}{1-X}$ may converge using Geometric Progressions:
+
+\begin{eqnarray*}
+\frac{1}{1-X}	&=&Ê1+X+X^2+X^3 + \dots ,\text{ converges when } X^n \rightarrow 0 \\
+			&=&Ê-(\frac 1X+\frac 1{X^2}+\frac 1{X^3} + \dots ),\text{ converges when } \frac1{X^n} \rightarrow 0 \\
+\end{eqnarray*} 
+
+I now explain how we may use these techniques when trying to construct a non-zero element in \\
+$\limone HH_1(\ZP[G/G_n])$, or equivalently when trying to give an element in $Z(\ZP[G/G_n]^{\otimes 2})$ which cannot be lifted within the kernel (can always lift into $\ZP[G/G_n]^{\otimes 2}$).
+\end{example}
+
+\begin{example}(False Tate Curve\label{FTC})
+
+My standard source of examples for illustrating non-commutative pro-$p$ groups is the semi-direct product of two copies of $\ZP$ known as the False Tate Curve, $G \cong \ZP \ltimes \ZP$, where the twisting is by the cyclotomic character ($\rho : \ZP \rightarrow \ZP^*, \, n \rightarrow (1+p)^n$). The FTC enjoys the property of not having any commutative subgroups of finite index. We may think of $G$ as being generated by $a$ and $b$ which each generate a copy of $\ZP$ but which don't commute - rather, $ba = a^{(1+p)} b$. Using this idea we may reduce any element of $G$ to $a^m. b^n$.
+
+We may give the group law more formally as 
+
+\begin{eqnarray}
+\nonumber G &=& \ZP  \rtimes \ZP\\
+\nonumber     &=& \{(f,h)| (f,h).(f',h') = (f+\rho(h).f', h+h')\}
+\end{eqnarray}
+
+Thus $(f,h)^{-1} = (-\rho(-h).f, -h)$, and we denote the \textbf{topological generators of $G$ as $a=(1,0)$ and $b=(0,1)$}.
+
+
+
+\end{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Constructing Non-Liftable Elements in $\prod HH_1(\ZP[G/G_n])$}
+In this section I describe the process we went through in trying to
+construct an element which could not be lifted in the homology.
+Equivalently, thinking of complexes we were seeking an element in $ \prod
+Z ( \ZP[G/G_n] \otimes \ZP[G/G_n])$ which when lifted (we can always lift
+to $ \prod ( \ZP[G/G_n] \otimes \ZP[G/G_n])$ ) was no longer in the kernel
+of the boundary map.
+
+Using the FTC, with generators $a,b$, the key is that $[a,b] \in G_2
+\setminus G_3$, and more generally using $\phi$ to denote the Frobenius
+map, we may increase the exact level of commutivity:
+
+$$[\phi^m(a),\phi^n(b)] \in G_{2+a+b} \setminus G_{3+a+b}$$
+
+
+\subsection{Infinite Support - Only Interested In The Tail}
+
+\subsection{Products May Become Trivial When We Project}
+
+\subsection{Being Able To Lift The Projection, $p$, Ensures Ee Can Lift
+Under $\Delta$}
+
+\subsection{Projection And Lifting Do Not Commute}
+
+\subsection{Element Which Is Not Simple After a Finite Number of Projections}
+
+\subsection{Using a Sum}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mittag-Leffler Condition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}(Mittag-Leffler Condition\label{ML})
+
+A tower $\{A_i\}$ of abelian groups satisfies the Mittag-Leffler condition if for each $k$ there exists a $j\geq k$ such that the image of $A_i \rightarrow A_k$ equals the image of $A_j \rightarrow A_k$ for all $i\geq j$
+\end{definition}
+
+The images of the higher levels in the tower to level $k$ always form a filtration of $A_k$. What we are saying here is that filtration has a finite number of steps at each level (the images of $A_i$ in $A_k$ satisfy the defending chain condition).
+
+Clearly, this will be the case if all the maps $A_{i+1} \rightarrow A_i$ in the tower are onto. If the tower consists of finite abelian groups then each filtration must be finite and so Mittag-Leffler holds. 
+
+
+\begin{proposition} (see \cite{Weibel}, 3.5.7, Mittag-Leffler Vanishing)
+
+If $\{ A_i \}$ satisfies the Mittag-Leffler condition, then
+$$\limone A_i = 0.$$
+\end{proposition}
+
+\begin{proof}
+We say that $\{A_i\}$ satisfies the trivial Mittag-Leffler condition if for each $k$ there exists $j > k$ such that the map $A_j \rightarrow A_k$ is zero.
+
+Using this idea, if $\{A_i\}$ satisfies the trivial Mittag-Leffler condition, and $b_i \in A_i$ are given we show how to lift. Set $a_k = b_k + {\overline b}_{k+1} + \dots + {\overline b}_{j-1}$, where ${\overline b}_i$ denotes the image of $b_i$ in $A_k$. (Note that ${\overline b}_i =0$ for $i \geq j$.
+
+Then $\Delta$ maps $(\dots, a_1, a_0 ) $ to $(\dots, b_1 , b_0 )$. Thus $\Delta$ is onto and $\limone A_i = 0$ when $\{A_i\}$ satisfies the trivial Mittag-Leffler condition. 
+
+In the general case, let $B_k \subseteq A_k$ be the image of $A_i \rightarrow A_k$ for large $i$. The maps $B_{k+1} \rightarrow B_k$ are all onto, so $\limone B_k = 0$. The tower $\{ A_k / B_k \}$ satisfies the trivial Mittag-Leffler condition, so from above $\limone A_k / B_k = 0$. Considering the short exact sequence of towers,
+
+$$ 0 \rightarrow \{B_i\} \rightarrow \{A_i \} \rightarrow \{A_i / B_i \} \rightarrow 0 $$
+
+we see that $\limone A_i =0$ as required.
+\end{proof}
+
+%%%
+\begin{corollary} (Vanishing of lim1 for finite towers)
+
+If $\{A_i\}$ is a tower of finite abelian groups, or a tower of finite-dimensional vector spaces over a field, then  $$\limone A_i =0.$$
+\end{corollary}
+\begin{proof}
+This is immediate once one observes that since each level is finite, the images of the higher levels forming a filtration at level $k$ can only have a finite number of steps, satisfying the DCC, hence satisfies Mittag-Leffler.
+\end{proof}
+%%%
+\begin{theorem} (see \cite{scho}, 3.4, $lim^1$ is Cotorsion)
+
+For any inverse sequence $\{G_i \}$, the group 
+
+$$\limone G_i$$
+is a cotorsion group.
+\end{theorem}
+
+\begin{proof}
+Consider 
+$$\Delta: \prod_i G_i \rightarrow \prod_i G_i$$
+
+It is easy to see that 
+$$\bigoplus_i G_i \subseteq Im(\Delta)$$
+
+and hence there is an exact sequence
+$$\frac{\prod_i G_i}{\bigoplus G_i} \rightarrow \limone G_i \rightarrow 0.$$
+
+Now the group $\frac{\prod_i G_i}{\bigoplus G_i}$ is algebraically compact for any choice of $\{G_i\}$ , hence cotorsion, and and quotient of a cotorsion group is again cotorsion.
+\end{proof}
+
+\begin{theorem} (see \cite{gray}, Equivalence of Mittag-Leffler and Vaniching of lim1 for Countable Towers)
+
+Suppose given an inverse sequence $\{G_i\}$ with each $G_i$ finite or countable, Then the group 
+$$\limone G_i$$
+either is zero or uncountable.
+\end{theorem}
+\begin{proof}
+The proof uses the failure of M-L to abstractly construct a set of uncountable elements which give a contradiction.
+\end{proof}
+
+
+\begin{example}(Example of Vanishing of lim1 for the False Tate Curve)
+\end{example}
+.
+
+.
+
+.
+
+.
+\newpage
+
+\begin{example}(Interpretation of the Mittag-Leffler Condition in Terms of Lifting \label{mllifts})
+
+Here I develop the ideas introduced in \ref{lifts}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Snake Lemma - lim1 Calculation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem} (see \cite{Weibel}, 3.5.8, Homology and Mittag-Leffler\label{3.5.8})
+
+Let $\dots \rightarrow C_1 \rightarrow C_0$ be a tower of chain complexes of abelian groups satisfying the Mittag-Leffler condition, and set $C=\varprojlim C_i$. Then there is an exact sequence for each $q$:
+
+$$0\rightarrow \limone H_{q+1} (C_i) \rightarrow H_q(C) \rightarrow \varprojlim H_q(C_i) \rightarrow 0.$$
+
+\end{theorem}
+
+\begin{proof}
+Let $B_i\subset Z_i\subset C_i$ be the sub complexes of boundaries and cycles in the complex $C_i$, so that $Z_i/B_i$ is the chain complex $H_\star (C_i)$ with zero differentials.
+
+Applying the snake lemma to $0\rightarrow \{Z_i\} \rightarrow \{C_i \} \xrightarrow{d} \{C_i [-1]\}$ gives $0\rightarrow \varprojlim Z_i \rightarrow C \rightarrow\dots$ showing that $\varprojlim Z_i$ is a subcomplex of cycles in $C$.
+
+Let $B$ denote the subcomplex $d(C)[1]= (C/Z)[1]$ of boundaries in $C$, so that $Z/B$ is the chain complex $H_\star (C)$ with zero differentials. From the exact sequence of towers
+$$0\rightarrow \{Z_i \} \rightarrow \{C_i\} \xrightarrow{d} \{B_i[-1]\} \rightarrow 0$$
+
+We get the long exact sequence,
+$$0\rightarrow \varprojlim Z_i \rightarrow \varprojlim C_i \xrightarrow{d} \varprojlim B_i [-1] \rightarrow \limone Z_i \rightarrow \limone C_i \rightarrow \limone B_i[-1] \rightarrow 0$$
+
+Since the $C_i$s satisfy Mittag-Leffler the first derived functor of the inverse limit vanishes: $\limone C_i = 0$, thus
+
+$$0\rightarrow \varprojlim Z_i \rightarrow \varprojlim C_i \xrightarrow{d} \varprojlim B_i [-1] \rightarrow \limone Z_i \rightarrow 0\rightarrow \limone B_i[-1] \rightarrow 0$$
+
+Sandwiched, $\limone B_i[-1]=0$, and translating $\limone B_i=0$. 
+
+We also have that $0\rightarrow \varprojlim Z_i \rightarrow \varprojlim C_i \xrightarrow{d} \varprojlim B_i [-1] \rightarrow \limone Z_i \rightarrow 0$. 
+
+On the left hand side of the exact sequence we may replace $\varprojlim C_i  / \varprojlim Z_i $ by $B[-1]$ giving exact sequence, 
+
+$$ 0\rightarrow B[-1] \rightarrow \varprojlim B_i [-1] \rightarrow \limone Z_i$$
+
+Similarly, the short exact sequence of towers, $0\rightarrow \{ B_i \} \rightarrow \{ Z_i \} \rightarrow H_\star (C_i) \rightarrow 0$ yields
+
+$$0\rightarrow \varprojlim B_i \rightarrow Z \rightarrow \varprojlim H_\star(C_i) \rightarrow 0 \rightarrow \limone Z_i \rightarrow \limone H_\star  (C_i)\rightarrow 0$$
+
+Hence, $\limone Z_i \cong \limone H_\star  (C_i)$ and $0\rightarrow \varprojlim B_i \rightarrow Z \rightarrow \varprojlim H_\star(C_i) \rightarrow 0$ is exact.
+
+Finally $C$ has the filtration by sub complexes
+
+$$0\subset B \subset \varprojlim B_i \subset Z \subset C.$$
+
+From above the filtration quotients are $B$, $\limone Z_i[+1] = \limone H_\star(C_i)[+1], \varprojlim H_\star (C_i)$, and $C/Z$ respectively. By definition, $H_*(C) = Z/B$, and the theorem follows.
+\end{proof}
+
+\subsection{The Snake Lemma - lim1 and Homology}
+
+As a corollary to \ref{3.5.8} Weibel then applies this formula for complete complexes to yield the following.
+%%%
+\begin{theorem} (see \cite{Weibel}, 5.5.5, Eilenberg-Moore Filtration Sequence for complete complexes)
+
+Suppose that $C$ is complete with respect to a filtration by subcomplexes. Associated to the tower $\{C/F_p C\}$ is the sequence of \ref{3.5.8}:
+
+$$0\rightarrow \limone H_{n+1} (C/F_pC) \rightarrow H_n(C) \xrightarrow{\pi} \varprojlim H_n(C/F_pC) \rightarrow 0.$$
+
+\end{theorem}
+
+From this we can see that the finite quotients of Hochschild Homolgy, as an homology theory can also be calculated in this way:
+
+\begin{corollary} (Eilenberg-Moore Filtration Sequence applied to Hochischild Homology of Finite Quotients)
+Let G be a uniform pro-$p$ group, where $G_n$ denotes the subgroup of $p^{n-1}$st powers. Denote the Iwasawa Algebra, $\varprojlim \ZP [G/G_n]$ by $\Lambda_G$, then:
+$$0\rightarrow \limone HH_{n+1} (\ZP[G/G_n]) \rightarrow HH_n(\Lambda_G) \rightarrow \varprojlim HH_n (\ZP[G/G_n]) \rightarrow 0.$$
+ 
+\end{corollary}
+%%%
+
+%%%
+
+\subsection{Eilenberg-Moore Filtration Sequence}
+
+We had been discussing how to combine the cohomology theory of the higher derived functors of the inverse limit (the invariants under left shift), and the homology theory of bimodules. The issue being that the cohomology groups had negative homological degree, and so the classical picture of composed functors, following Grothendieck did not quite work. We introduced the idea that if the inverse limit is indexed over $\mathbb{N}$ then only the inverse limit, and $\underleftarrow{\text{lim}^1}$ (measuring how far from being surjective the projection maps between layers are) are needed with the higher derived functors vanishing. And felt that the inverse limit of $HH_1$s should have the $HH_1$ of the Iwasawa algebra, and the $\underleftarrow{\text{lim}^1}$ term of the $HH_2$s featuring.
+
+
+\begin{theorem}(see \cite{Weibel}, 5.5.5, Eilenberg-Moore Filtration Sequence for complete complexes\label{emsequences})
+
+{Suppose that $C$ is complete with respect to a filtration by subcomplexes. Associated to the tower $C/F_p C$ is the exact sequence:}
+
+$$0 \rightarrow  \underleftarrow{\text{lim}^1} H_{n+1}(C/F_pC) \rightarrow H_n(C) \rightarrow  \underleftarrow{\text{lim}}\,H_n(C/F_pC) \rightarrow 0.$$ 
+
+This sequence is associated to the filtration on $H_*(C)$ as follows. The left hand term $\underleftarrow{\text{lim}^1} H_{n+1}(C/F_pC)$ is $\cap F_pH_n(C)$, and the right-hand term is the Hausdorff quotient of $H_*(C)$:
+
+$$H_*(C)/\cap F_pH_n(C) \cong \underleftarrow{\text{lim}} H_n(C) / F_pH_n(C) \cong \underleftarrow{\text{lim}} H_n(C/F_pC).$$
+
+\end{theorem}
+
+\begin{proof}
+
+Taking the inverse limit of the exact sequences of towers 
+
+$$0 \rightarrow \{ F_pH_*(C) \} \rightarrow H_*(C) \rightarrow \{ H_*(C) / F_pH*(C) \} \rightarrow 0$$
+
+$$0 \rightarrow \{ H_*(C) / F_pH_*(C) \} \rightarrow \{ H_*(C/F_pC) \}$$
+
+shows that $H_*(C) / F_p H_*(C)$ is a sub object of $\underleftarrow{\text{lim}} H_*(C) / F_pH_*(C)$, which is in turn a subobject of 
+
+$\underleftarrow{\text{lim}} H_n(C/F_pC)$. Now combine this with the standard behaviour of  $\underleftarrow{\text{lim}^1}$.
+
+\end{proof}
+

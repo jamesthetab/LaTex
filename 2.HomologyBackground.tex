@@ -1,0 +1,723 @@
+In this chapter I introduce the idea of a derived functor. I then give an example of this using Group Homology and explain how this can be viewed as the derived functors arising from co-invariants. Finally, I explain Shapiro's lemma as an important tool in calculation and study terms of low degree.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Derived Functors\label{df1}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Introduction to Derived Functors}\label{df1.1}
+
+Derived Functors are a central tool in Homological Algebra.
+
+Given an additive functor $F:\mathbb{U} \mapsto \mathbb{B}$ from
+the abelian category $\mathbb{U}$ to the abelian category
+$\mathbb{B}$, we may form its left derived functors.
+$L_nF:\mathbb{U} \mapsto \mathbb{B}$. This is subject to the
+technical condition that $\mathbb{U}$ has enough projectives -
+that every object of $\mathbb{U}$ has a projective presentation.
+
+$L_nF(A)$ is then a function depending on the two variables F and
+A. The key property is that these give rise to 2 Exact Sequences -
+arising from varying A and F respectively.
+
+2 cases are of special interest to us:
+\begin{enumerate}
+    \item We may study F as the tensor product $F_B: \mathbb M
+    \mapsto \mathbb{Ub}$ where $F_B(A) = A\otimes_\Lambda B$, or
+    equivalently, by symmetry of the tensor product $G_A: \mathbb M
+    \mapsto \mathbb{Ub}$ where $G_A(B) = A\otimes_\Lambda B$.
+    Which leads to $L_nF_B(A) \cong L_nG_A(B)$, which are both
+    equal to the familiar functor $Tor_n^\Lambda$ which measures
+    by how much the functor $\otimes$ fails to be right exact.
+
+    \item  Similarly, provided there are enough injectives we can
+    study right derived functors. The functor $Hom$ then leads to
+    a generalisation of the Extension group to $Ext^n_\Lambda$. We
+    will see how these groups degenerate to give cohomology groups
+    of a group acting on one module, and we can then view these
+    $Ext$-groups as a natural 2-module analogue of the standard
+    cohomology groups. It is then natural ro study alternating
+    products of their orders of the type used in Euler
+    Characteristics of 1 module.
+\end{enumerate}
+I aim to give a survey of the theorems in this area and how they
+fit together to  form the machinery rather than quoting each
+proof.
+
+\subsection{Homotopy}\label{df1.2}
+\label{df1.2.1}
+Let $\varphi,\psi:\textbf{C}\mapsto \textbf{D}$ be 2 chain maps
+between chain complexes. $\varphi,\psi$ induce homomorphisms:
+$H(\textbf{C})\mapsto H(\textbf{D})$ and it is an important
+question when they are the same.
+
+Homotopy gives a sufficient relation that $\varphi_* = \psi_* :
+H(\textbf{C})\mapsto H(\textbf{D})$
+
+
+\begin{definition}(Homotopy of Chain Maps\label{df1.2.2})
+
+A homotopy $\Sigma :\varphi\mapsto \psi$ for chain maps
+$\varphi,\psi:\textbf{C}\mapsto \textbf{D}$ is a morphism of
+degree $+1$ of graded modules $\Sigma: \textbf{C}\mapsto
+\textbf{D}$ such that $\psi-\varphi = \delta\Sigma +\Sigma
+\delta$. ie. such that for all $n\in \Z$
+$$\psi_n - \varphi_n = \delta_{n+1} \Sigma_n +
+\Sigma_{n-1}\delta_n$$
+\end{definition}
+
+\begin{theorem}(Homotopy and Homology\label{df1.2.3})
+
+\emph{If two chain maps $\varphi,\psi:\textbf{C}\mapsto
+\textbf{D}$ are homotopic then
+$H(\varphi)=H(\psi):H(\textbf{C})\mapsto H(\textbf{D})$.}
+\end{theorem}
+
+\begin{proof}
+Let $z\in Ker \delta_n$ be a cycle in $C_n$. If $\Sigma
+:\varphi\mapsto \psi$, then
+$$(\psi-\varphi)z=\delta \Sigma z + \Sigma \delta z = \delta
+\Sigma z$$ since $\delta z = 0$. Hence $\psi(z)-\varphi(z)$ is a
+boundary in $D_n$, ie. $\psi(z)$ and $\varphi(z)$ are homologous.
+\end{proof}
+
+
+
+
+
+
+
+
+The homotopy relation is very powerful because its additive
+structure behaves well with respect to chain maps and additive
+functors: it is an equivalence relation, and book keeping shows
+that:
+\begin{enumerate}
+    \item If $\varphi \cong \phi:\textbf{C}\mapsto\textbf{D}$ and
+    $\varphi' \cong \phi':\textbf{D}\mapsto\textbf{E}$, then
+    $\phi'\phi\cong\varphi'\varphi: \mathbf{d}\mapsto \mathbf{E}$
+    \item Let $F: \mathbb M_\Lambda \mapsto \mathbb M_{\Lambda'}$
+    be an additive functor. If $\textbf{C}$ and $\textbf{D}$ are
+    chain complexes of $\Lambda$-modules and $\phi\cong \varphi
+    :\textbf{C} \mapsto \textbf D$, then $F\phi \cong
+    F\varphi:F\textbf C \mapsto F\textbf D$.
+    \item If $\phi \cong \varphi: \textbf C \mapsto \textbf D$ and
+    if F is an additive functor, then $H(F\phi) = H(F\varphi):
+    H(F\textbf C) \mapsto H(F \textbf D)$.
+\end{enumerate}
+However, this description is only sufficient - I now quote an
+example from \cite{hilton} to demonstrate it is not necessary:
+
+
+
+\begin{example} (Homology of the Integers\label{df1.2.4})
+
+Take ring $\Lambda = \Z$.
+\subsubsection*{C chain:}
+
+$$0\rightarrow C_1\rightarrow C_0\rightarrow 0$$
+
+$$0\rightarrow (s_1) \xrightarrow{\delta:s_1\mapsto 2s_0} (s_0)
+\rightarrow 0$$
+
+Hence, $H_1(C) = 0,\, H_0(C) = \Z/2$
+
+\subsubsection*{D chain:}
+
+$$0\rightarrow D_1 \rightarrow 0$$
+
+$$0\rightarrow (t_1) \rightarrow 0$$
+
+Hence $H_1(D) = 0$
+
+Define chain map $\varphi:C\mapsto D:s_1\mapsto t_1$. Both
+$\varphi$, and the Zero chain map $0:C\mapsto D$ induce zero maps
+in homology. But they are not homotopic using the 3rd
+compatibility condition above. Take the functor to be $-\otimes
+\Z/2$, we obtain
+$$\begin{array}{ccc}
+  H_1(\varphi\otimes \Z/2) & \neq & H_1(0\otimes \Z/2) \\
+  || &  & || \\
+  1:\Z/2 \mapsto \Z/2 &  & 0:\Z/2 \mapsto \Z/2 \\
+\end{array}$$
+\end{example}
+
+
+
+\subsection{Projective Resolutions}\label{df1.3}
+\begin{definition}(Projective Resolution\label{df1.3.1})
+
+The positive chain complex $\textbf C:\dots\rightarrow
+C_n\rightarrow C_{n-1} \rightarrow \dots \rightarrow C_1
+\rightarrow C_0 \rightarrow 0$ (with $C_n = 0$ for $n<0$) is
+\textbf{Projective} if $C_n$ is projective for all $n\geq 0$, and
+is \textbf{Acyclic} if $H_n(\textbf C) = 0 \,\forall\, n\geq 0$.
+
+Equivalently, \textbf C is acyclic if and only if
+$\dots\rightarrow C_n\rightarrow C_{n-1}\rightarrow \dots
+\rightarrow C_1\rightarrow C_0 \rightarrow H_0(\textbf C)
+\rightarrow 0$ is \textbf{exact}.
+
+A Projective Acyclic resolution \textbf P with an isomorphism
+$H_0(\textbf P) \cong A$ is a \textbf{Projective Resolution of A}.
+This is a basic tool in the construction of derived functors. The
+following lemma shows why they are so commonly used.
+
+\end{definition}
+
+\begin{lemma}(Existence of Projective Resolutions\label{df1.3.2})
+
+\emph{To every $\Lambda$-module A there exists a Projective
+Resolution.}
+\end{lemma}
+
+\begin{proof}
+Choose a projective presentation $0\rightarrow R_1\rightarrow P_0
+\rightarrow A\rightarrow 0$ of A: then a projective presentation
+$0\rightarrow R_2 \rightarrow P_1\rightarrow R_1\rightarrow 0$ of
+$R_1$, etc. Clearly, the complex
+$$\textbf P:\dots \rightarrow P_n\rightarrow^{\delta_n} P_{n-1}
+\rightarrow \dots \rightarrow P_0$$ where $\delta_n:P_n\rightarrow
+P_{n-1}$ is defined by $0\rightarrow P_n \rightarrow R_n
+\rightarrow P_{n-1}\rightarrow 0$, is a projective resolution of
+A. Since it is projective, acyclic, and $H_0(\textbf P) = A$.
+\end{proof}
+
+This proof is instructive as every projective resolution arises in
+this way - as we may collapse down at any stage to a projective
+presentation. Thus, the existence of a projective presentation and
+projective resolution for all modules are equivalent.
+
+\begin{proposition}(Projective Resolutions and Homotopy\label{df1.3.3})
+
+Two Projective Resolutions os A are canonically of the same
+homotopy type.
+\end{proposition}
+
+The proof builds on a result which, given a homomorphism between
+the zeroth homology of a projective chain complex and an acyclic
+chain complex builds a chain map, unique up to homotopy. We have
+both conditions in both chains here and we can apply the result
+twice in different directions to get uniqueness.
+
+Later on we are using these resolutions in calculations,
+uniqueness up to homotopy ensures that groups cohomology groups of
+derived functors are well defined, see \ref{df1.2.3}.
+
+
+\subsection{Derived Functors}\label{df1.4}
+As mentioned in the introduction derived functors are a
+generalisation of the much older theories of $Tor$ and $Ext$,
+
+Let $T:\mathbb M_A \mapsto \mathbb U b$ be an additive covariant
+functor(in the case of $Tor:\,T_B(A) = A\otimes B$, and
+$Ext:G_B(a) = Hom(A,B)$). I will defines a sequence of functors
+$L_nT:\mathbb M_A\mapsto \mathbb U b,\,n=0,1,2,\dots$, these are
+the "\textit{Left Derived Functors of T}".
+
+I will build up this definition in stages:
+\begin{enumerate}
+    \item For a $\Lambda$-module A, \textbf P a projective
+    resolution of A we defined the abelian groups $L^\textbf P_n
+    T(A),\, n=0,1,\dots$ by considering the homology of the following complex:
+    $$T\textbf P : \dots \rightarrow TP_n\rightarrow TP_{n-1}
+    \rightarrow \dots \rightarrow TP_0\rightarrow 0$$
+    and set
+    $$L_n^\textbf P T(A) = H_n(T \textbf P),\, n=0,1,\dots$$
+
+    \item For T an additive functor, the homotopy $\eta$ of any two
+    projective resolutions \textbf{P,Q} of A induces an isomorphism
+    $\eta: L_n^\textbf P TA\cong L_n^\textbf Q TA$,
+    $n=0,1,\dots$.
+    \item Hence, we are able to drop the superscript P and write
+    $L_nTA$ for $L_n^\textbf P TA$ - we have free choice in
+    calculations to use any projective resolution of A.
+
+    \item   Finally, given $\alpha:A\mapsto A'$, we need to define
+    induce homomorphisms $\alpha_*:L_nTA\mapsto L_nTA',\,
+    n=0,1,\dots$. To do this take projective resolutions
+    \textbf{P,P'} of $A,A'$ and extend $\alpha$ to a chain map
+    (using the same construction as in proving uniqueness of the
+    projective resolution - both complexes as acyclic and
+    projective) $\alpha(\textbf{P,P'})$. This gives directly a map
+    of derived functors, $$\alpha_*:L_n^\textbf P TA \mapsto
+    L_n^\textbf {P'} TA'$$
+\end{enumerate}
+
+\begin{example}(Functors\label{df1.4.1})
+
+I now give two examples straight from the definition.
+
+\begin{enumerate}
+    \item Recall, a covariant functor $T:\mathbb M_\Lambda \mathbb
+    U b$ is right exact if, for any sequence $A'\rightarrow
+    A\rightarrow A''\rightarrow 0$ the sequence $TA'\rightarrow
+    TA\rightarrow TA''\rightarrow 0$ is exact. Considering
+    $A\rightarrow A\oplus B\rightarrow B\rightarrow 0$ we see (using symmetry) that
+    right exact functors are additive. As an example,
+    $B\otimes_\Lambda -$ is additive.
+    \item If P is a projective $\Lambda$-module, then clearly,
+    $\textbf P: \dots \rightarrow 0\rightarrow P\rightarrow 0 $ is
+    a projective resolution of P, and taking homology of a functor
+    T applied to this resolution gives: $$L_nTP = 0 \text{ for
+    }n=1,2,\dots \text{ and }L_0TP = TP$$
+\end{enumerate}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Long Exact Sequences of Derived Functors}\label{df1.5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Firstly, I vary the object in $\mathbb M_A$ whilst keeping the functor fixed to deduce an exact sequence. 
+
+I need two preliminary lemmas for this: the Snake Lemma (see \ref{sixterm}) and a lemma on the existence of
+projective presentations.
+
+
+
+\begin{lemma}(Projective Presentations\label{df1.5.2})
+
+To a short exact sequence $ A'\rightarrowtail\varphi
+A\twoheadrightarrow^\phi A''$ and to projective presentations
+$\varepsilon':P'\twoheadrightarrow A'$ and
+$\varepsilon'':P''\twoheadrightarrow A''$ there exists a
+projective presentation $\varepsilon:P\twoheadrightarrow A$ and
+homomorphisms $\iota:P'\rightarrow P$ and $\pi:P\rightarrow P''$
+such that the following diagram is commutative with exact rows
+$$\begin{array}{ccccc}
+  P' & \rightarrowtail^{\iota} & P & \twoheadrightarrow^{\pi} & P'' \\
+  \downarrow \varepsilon' &  & \downarrow \varepsilon &  & \downarrow \varepsilon'' \\
+  A' & \rightarrowtail^\varphi & A & \twoheadrightarrow^\phi & A'' \\
+  \downarrow &                 &\downarrow &
+  &\downarrow\\
+  0 & & 0 & & 0
+\end{array}$$
+\end{lemma}
+
+The proof is constructive, taking $P = P'\oplus P''$, and uses the
+canonical injection of $P'$ into $P$ and the canonical projection
+of $P$ onto $P''$ as well as the property that $P''$ is projective
+to give the existence of a compatible function to construct
+$\varepsilon$.
+
+
+
+\begin{theorem}(L.E.S. from varying the object\label{df1.5.3})
+
+Let $T:\mathbb M_A\mapsto \mathbb U b$ be an additive
+functor and let
+$A\rightarrowtail^{\alpha'}A\twoheadrightarrow^{\alpha''}A''$ be a
+short exact sequence. Then there exist connecting homomorphisms
+$$\omega_n: L_nTA''\rightarrow L_{n-1}TA',\,n=1,2,\dots$$
+such that the following sequence is exact:
+$$\dots\rightarrow L_nTA'\rightarrow^{\alpha'_*} L_nTA
+\rightarrow^{\alpha''_*}L_nTA''\rightarrow^{\omega_n}
+L_{n-1}TA'\rightarrow\dots$$
+$$\dots \rightarrow L_1TA''\rightarrow^{\omega_1}
+L_0TA'\rightarrow^{\alpha'_*}L_0TA\rightarrow^{\alpha''_*}L_0TA''\rightarrow
+0.$$
+\end{theorem}
+
+\begin{proof}
+
+The Projective presentation Lemma, \ref{df1.5.2} is precisely what
+we need to construct the following commutative diagram with exact
+rows, where $P'_0$, $P_0$, and $P''_0$ are projective:
+$$\begin{array}{ccccc}
+  P'_0 & \rightarrowtail & P_0 & \twoheadrightarrow & P''_0 \\
+  \downarrow \varepsilon' &  & \downarrow \varepsilon &  & \downarrow \varepsilon'' \\
+  A' & \rightarrowtail ^{\alpha'} & A & \twoheadrightarrow^{\varepsilon''} & A'' \\
+  \downarrow &  & \downarrow &  & \downarrow \\
+  0 &  & 0 &  & 0 \\
+\end{array}$$
+$P_0 = P'_0 \oplus P''_0$ (by construction), and using snake lemma
+\ref{eightterm}, the kernel sequence is exact: $ker \varepsilon'
+\rightarrowtail ker \varepsilon \twoheadrightarrow ker
+\varepsilon''$. Repeat this procedure replacing S.E.S. of the
+theorem with S.E.S. of kernels. Induction gives the exact sequence
+of complexes:
+$$\textbf P \rightarrowtail^{\alpha'} \textbf P \twoheadrightarrow
+^{\alpha''} \textbf P''$$
+
+For each $n\geq 0$, $P_n = P'_n \oplus P''_n$, and $T$ is additive
+hence we get short exactness of $0\rightarrow T\textbf P'
+\rightarrow T\textbf P \rightarrow T\textbf P'' \rightarrow 0$.
+Then the construction of long exact homology sequence of complexes
+yields maps $\omega_n : H_n(T\textbf P'')\rightarrow H_{n-1}
+(T\textbf P')$ and also the exactness of the sequence. Homotopy
+considerations give independence from choice of resolution and
+chain maps.
+\end{proof}
+
+There is a similar theorem for varying the functor. To quote it
+precisely we need first a definition.
+
+\begin{definition}(Functors Exact on Projectives\label{df1.5.4})
+
+A sequence $T'\xrightarrow{\varepsilon'}
+T\xrightarrow{\varepsilon''} T''$ of additive functors
+$T',T,T'':\mathbb M_\Lambda \rightarrow \mathbb Ub$ and natural
+transformations $\varepsilon'. \varepsilon''$ is called
+\textit{exact on projectives} if, for every projective
+$\Lambda$-module P, the sequence $0\rightarrow
+T'P\xrightarrow{\varepsilon'_P}
+TP\xrightarrow{\varepsilon''_P}T''P\rightarrow 0$ is exact.
+\end{definition}
+
+\begin{theorem}(L.E.S. from Varying the Functor\label{df1.5.5}) 
+
+Let the sequence of additive functors
+$T'\xrightarrow{\varepsilon'} T\xrightarrow{\varepsilon''} T''$ of
+additive functors $T',T,T'':\mathbb M_\Lambda \rightarrow \mathbb
+Ub$ be exact on projectives. Then, for every $\Lambda$-module A,
+there are connecting homomorphisms $\omega_n:L_nT''A\rightarrow
+L_{n-1}T'A$ such that the sequence
+\begin{eqnarray}
+\nonumber  &\dots&\rightarrow
+L_nT'A\xrightarrow{\varepsilon'}L_nTA\xrightarrow{\varepsilon''}L_nT''A\xrightarrow{\omega_n}
+L_{n-1}T'A\rightarrow\dots\\
+\nonumber  &\dots&\rightarrow L_1T''A\xrightarrow{\omega_1}
+L_0T'A\xrightarrow{\varepsilon'} L_0TA\xrightarrow{\varepsilon''}
+L_0T''A\rightarrow 0
+\end{eqnarray} is exact.
+
+\end{theorem}
+
+\begin{proof}
+
+Choose a projective resolution \textbf P of A, then exactness on
+projectives gives exactness of $0\rightarrow T'\textbf
+P\xrightarrow{\varepsilon'_\textbf P} T\textbf
+P\xrightarrow{\varepsilon''_\textbf P}T''\textbf P\rightarrow 0$
+and applying Long Exact Homology Sequence of Complexes gives the
+result.
+\end{proof}
+
+\subsection{Application: the functor $Ext^n_\Lambda$}\label{df1.6}
+
+\begin{definition}(Ext Groups\label{df1.6.1})
+
+The abelain groups $Ext_\Lambda^n(A,B)$ are calculated as follows:
+\begin{itemize}
+    \item Choose a projective resolution \textbf P of A.
+    \item Form complex $Hom_\Lambda (\textbf P, B)$
+    \item Take cohomology to find $Ext^n_\Lambda$ groups
+\end{itemize}
+
+\end{definition}
+
+ie. Consider the right derived functors of the additive covariant
+functor $Hom_\Lambda(-,B)$, and define:
+$$Ext^n_\Lambda (-,B) = R^n(Hom_\Lambda (-,B)),\, n=0,1,2,\dots$$
+
+Recall, the definition of $Ext(A,B)$ of extensions of A by B as
+being the abelian group which gives exactness of 
+$$\dots \rightarrow Hom_\Lambda(P_0,B)\rightarrow
+Hom_\Lambda(R_1,B)\rightarrow Ext_\Lambda(A,B)\rightarrow 0$$
+
+where $R_1\rightarrowtail P_0\twoheadrightarrow A$ is any
+projective presentation of A.
+
+From the right derived functor analogue of L.E.S. \ref{df1.5.3} we
+have
+$$\dots \rightarrow Ext^0_\Lambda(P_0,B)\rightarrow
+Ext^0_\Lambda(R_1,B)\rightarrow Ext^1_\Lambda(A,B)\rightarrow 0$$
+
+Observing that $Ext^0_\Lambda = Hom_\Lambda (A,B)$ (since the
+functor $Hom$ is left exact) we get
+$$Ext^1_\Lambda (A,B) \cong Ext_\Lambda (A,B)$$ and the notation
+is justified.
+
+The following characterises projective modules and the functor
+$Ext^n_\Lambda$:
+
+\begin{proposition}(Exact Functors and Ext\label{1.6.2})
+
+The following are equivalent:
+\begin{enumerate}
+    \item A is a projective $\Lambda$-module.
+    \item $Hom_\Lambda (A,-)$ is an exact functor.
+    \item $Ext^i_\Lambda (A,B)$ vanishes for all $i\neq 0$ and all
+    B. In other words, A is \\ $Hom_\Lambda (-,B)$-acyclic for all
+    B.
+    \item $Ext_\Lambda^1 (A,B)$ vanishes for all B.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\textbf{$1\Longrightarrow 4$} Using equivalence of $Ext^1$ and
+$Ext$: $Ext_\Lambda(A,B)$ is in 1-1 correspondence with the set
+$E(P,B)$, consisting of classes of extensions of the form
+$B\rightarrowtail E\twoheadrightarrow A$. But from universal
+property of projective A, short exact sequences of this form
+split. Hence $E(A,B)$ consists of just one element, the zero
+element.
+
+
+ \textbf{$4\Longrightarrow 3$} The key here is that the vanishing
+ of the first Ext group applies to all modules B (if it was just a
+ particular one it is conceivable to continue the exact sequence
+ back with a series of isomorphisms). This allows us to use
+ dimension shifting, where we truncate a given projective
+ resolution so that the second cohomology group of the original
+ resolution is calculated by the first of the new one, and so by
+ induction all Ext groups ($n\geq 0$) are calculated from the
+ first.
+ Let $$\textbf P: \dots \rightarrow P_2 \rightarrow _{a_2} P_1
+ \rightarrow_{a_1} P_0 \twoheadrightarrow_{a_0}B \rightarrow 0$$
+ be a projective resolution of B. For calculations, consider
+$$\dots \rightarrow  Hom_\Lambda(A,P_2) \rightarrow _{{a_2}_*}
+Hom_\Lambda(A,P_1) \rightarrow_{{a_1}_*} Hom_\Lambda(A,P_0)
+\rightarrow 0$$ hypothesis (4) gives that
+$$H_1(\textbf P)= Ext_\Lambda^1(A,B) = \frac{ker \{ Hom(A,P_2)\rightarrow
+Hom(A,P_1)\}}{im \{ Hom(A,P_1)\rightarrow Hom(A,P_0)\}} =
+\frac{ker\,{a_1}_*}{im\,{a_2}_*}=0.$$
+
+We can amend the projective resolution to one of $P_0/B$ which
+preserves the same maps:
+$$\dots \rightarrow P_2 \rightarrow _{a_2} P_1
+ \twoheadrightarrow_{a_1} P_0/B \rightarrow 0$$
+ Then we can calculate, by hypothesis (4) the first homology of \textbf P',
+$$H_1(\textbf P')=Ext_\Lambda^1(A,P_0/B) =0 = \frac{ker\,{a_2}_*}{im\,{a_3}_*}
+= Ext_\Lambda^2(A,B).$$ 
+
+Similarly by induction, we have
+$Ext^i_\Lambda (A,B)=0\text{ for all } i\geq 0$, hence (3).
+
+\textbf{$3\Longrightarrow 2$} Apply L.E.S. \ref{df1.5.3} to
+$M'\rightarrowtail M \twoheadrightarrow M''$. All higher terms
+vanish by (3), and so L.E.S. collapses to $Hom_\Lambda
+(A,M')\rightarrowtail Hom_\Lambda (A,M)\twoheadrightarrow
+Hom_\Lambda (A,M'')$ and hence functor $Hom_\Lambda (A,-)$ is
+exact.
+
+\textbf{$2\Longrightarrow 1$} Given that $Hom_\Lambda (A,-)$ is
+exact and that we are given a surjection $g:B\rightarrowtail C$
+and a map $\gamma :A\rightarrow C$. We can lift $\gamma\in
+Hom_\Lambda (A,C)$ to $\beta \in Hom_\Lambda (A,B)$ such that
+$\gamma = g_* \beta = g \circ \beta$ because $g_*$ is onto. Thus A
+has the universal lifting property, hence A is projective.
+
+\end{proof}
+
+
+\begin{example}(Calculating Ext Groups\label{1.6.3})
+
+I now give 3 explicit calculations working over the ring $\Z$, and
+viewing abelian groups as $\Z$-modules.
+\begin{enumerate}
+    \item Let $A=\Z /p$ then we have the resolution $$0\rightarrow
+    \Z\rightarrow^{p} \Z\rightarrow \Z /p\rightarrow 0$$ Since
+    $Hom(\Z,B)\cong B$ we see that to calculate $Ext^*(\Z/p,B)$ we
+    need to take the cohomology of $0\rightarrow B\rightarrow^p
+    B\rightarrow  0$. Hence,
+    $$Ext_\Z^n =  \begin{cases}
+      pB   &   \text{ if } n=0 \\
+      B/{pB} &   \text{ if } n=1 \\
+      0    &   \text{ if } n\geq 2 
+    \end{cases}$$
+
+    \item We know, embedding B in an injective abelian group $I^0$ and
+taking its quotient $I^1$ (which is divisible, and hence again exact)
+we get that \\ \textbf{$\mathbf{Ext_\Z^n (A,B) = o}$ for $n\geq 2$
+and all abelian groups A,B}.
+
+We can calculate the small terms exactly since every finite
+abelian group may be expressed in the form $B\cong \Z^m\oplus
+\Z/p_1\oplus \dots \oplus \Z/p_n$. And hence we may calculate the
+Ext groups of any pair of abelian groups.
+
+    \item Now take $B=\Z$. We have the injective resolution
+    $0\rightarrow \Z\rightarrow \Q\rightarrow \Q /\Z \rightarrow
+    0$. This gives $Ext^0_\Z (A,\Z) = 0$ and $Ext_\Z^1 (A,\Z) =
+    A^*= Hom(A,\Q / \Z)$, the Pontrajagin dual.
+\end{enumerate}
+\end{example}
+
+\subsection{$Ext_\Lambda^n\text{ where }n\geq 1$ viewed as Extensions}\label{1.6.4}
+
+Recall, from \ref{df1.6.1} that $Ext_\Lambda (A,B) = Ext_\Lambda^1
+(A,B)$ can be interpreted as the group of equivalence classes of
+extensions. I would like to quote Yoneda's ideas on how to expand
+this idea using "n-extensions".
+
+An n-extension of A by B is an exact sequence $\textbf E :
+0\rightarrow B\rightarrow E_n \rightarrow \dots \rightarrow E_1
+\rightarrow A \rightarrow 0 $ of $\Lambda$-modules.
+
+So above, an extension is a 1-extension. We now need a notion of
+equivalence of n-extensions. We first define a non-symmetric
+relation for $n\geq 2$. We shall say that the n-extensions
+$\textbf {E,E'}$ satisfy the relation $\textbf E \rightsquigarrow
+E'$ if there is a commutative diagram:
+$$\begin{array}{cccccccccccc}
+  \textbf E :  & 0 & \rightarrow & B         & \rightarrow & E_n        & \rightarrow \dots \rightarrow & E_1        & \rightarrow & A & \rightarrow & 0 \\
+               &   &             & \parallel &             & \downarrow &                               & \downarrow &             & \parallel &  &  \\
+  \textbf E' : & 0 & \rightarrow & B         & \rightarrow & E'_n       & \rightarrow \dots \rightarrow & E'_1       & \rightarrow & A & \rightarrow & 0 \\
+\end{array}$$
+
+We now induce an equivalence relation. We say \textbf{E is
+equivalent to $E'$}:
+
+$$E \sim E' \Longleftrightarrow \exists \text{ a chain } E=E_0,
+E_1, \dots , E_k = E' \text{ with } E_0\rightsquigarrow E_1
+\leftrightsquigarrow E_2 \rightsquigarrow \dots
+\leftrightsquigarrow E_k$$
+
+Denoting [E] for the equivalence class of the n-extension E, and
+$Yext^n_\Lambda (A,B)$ for the set of such classes of n-extensions
+it can be shown that $Yext^n_\Lambda (-,-)$ is a bifunctor and
+that there is a natural equivalence of set valued bifunctors:
+$$Yext^n_\Lambda (-,-)\cong Ext^n_\Lambda (-,-)$$
+Giving a more tangible interpretation of the higher $Ext$ groups.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Group Homology} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{definition} (\textbf{Coinvariants})
+
+The coinvariants $A_G$ of a (left) $G$-module $A$, are defined as
+$$A_G  = A/\text{submodule generated by } \{ (ga-a): g\in G, a\in A\}.$$
+\end{definition}
+%%%
+
+It is the largest quotient module of $A$ that is trivial, and the so the coinvariant functor $-_G$ is left adjoint to the trivial module functor and so is right exact.
+
+%%%
+\begin{proposition} (\textbf{Coinvariants as Tensor Products\label{coinv}})
+
+Let $A$ be any $G$-module, and let $\Z$ be the trivial $G$-module. Then $A_G \cong \Z \otimes_{\Z G} A$.
+\end{proposition}
+%%%
+
+%%%
+\begin{definition} (\textbf{Group Homology})
+
+Let $A$ be a $G$-module. We write $H_\star (G;A)$ for the left derived functors $L_\star (-_g)(A)$ and call them the homology groups of $G$ with coefficients in $A$. By \ref{coinv} above, $H_\star (G;A) \cong Tor_*^{\Z G} (\Z, A)$. By definition, $H_0 (G;A) = A_G$.
+
+\end{definition}
+%%%
+
+\begin{theorem} (see \cite{rotman}, 9.76, \textbf{Eckmann-Shapiro Lemma}\label{shapiro})
+
+Let $G$ be a group, let $S \subset G$ be a subgroup, and let $A$ be an $S$-module.
+
+\begin{itemize}
+\item $H^n(S,A) \cong H^n (G, Hom_S(\Z G, A)) \text{ for all } n\geq 0.$
+
+\item $H_n(S,A) \cong H_n (G, \Z G \otimes_S A) \text{ for all } n\geq 0.$
+\end{itemize}
+\begin{proof}
+
+\end{proof}
+
+
+\end{theorem}
+
+The following result for handling double cosets will later be used in conjunction with the Eckmann-Shapiro Lemma.
+
+\begin{theorem}(see \cite{karpilovsky}, 7.1, Mackey Decomposition Theorem\label{mackey})
+
+Let $H$ and $S$ be subgroups of $G$, let $T$ be a full set of double coset representatives for $(S,H)$ in $G$ and let $V$ be an $R[H]$-module. Then
+
+$$(V^G)_S \cong \bigoplus_{t\in T}(^t V_{tHt^{-1} \cap S})^S$$
+\end{theorem}
+Equivalently, let $H,K \subseteq G$ be subgroups of $G$, $M$ be a $K$-module. Then we have an Isomorphism
+$$(kG \otimes_{kK} M) \vert_H \cong \bigoplus_{HgK} kH \otimes_{k(H \cap K^g)} M^g \vert_{H\cap K^g}$$
+of $H$-modules, where the sum is taken over the double cosets $HgK$.
+
+With the notation that given $g \in G$, we define $K^g = \{ g h g^{-1} ; h \in K \} = \{\text{$G$-Conjugacy Class closure of $K$}\}.$
+
+We may also write,
+$$(M\uparrow_{H}^{G})\downarrow^G_H \cong \bigoplus_{HgK} (M^g\uparrow_{H\cap K^g}^H)\downarrow^H_{H\cap K^g}$$  
+\begin{proof}
+
+Let $\{g_i \vert i\in I \}$ be a left transversal for $H$ in $G$. Then, by the definition of Induction:
+$$V^G = \bigoplus_{i\in I} g_i \otimes V \text{ (direct sum of $R$-modules)}$$
+and
+
+$$g_i \otimes V \cong ^{g_i}\!V \text{ (as $R(g_i H g_i^{-1})$-modules)}$$
+
+Put $X = \{g_i \otimes  V \vert i\in I\}$. Then $G$ and, in particular $S$, acts on $X$. Moreover, $g_i \otimes V$ and $g_j\otimes V$ lie in the same $S$-orbit if and only if $g_i$ and $g_j$ belong to the same double $(S,H)$-coset. For each $t\in T$, let $W_t$ denote the sum of the $g_j \otimes V$ for which $g_j \in StH$. Then each $W_t$ is an $RS$-module and 
+
+$$(V^G)_S = \bigoplus_{t\in T} W_t$$
+
+Setting $V_t$ to be the restriction $^tV$ to $R(tHt^{-1} \cap S)$, we are thus left to verify that $W_t \cong (V_t)^S$.
+
+Let $J\subseteq I$ be such that 
+
+$$StH = \bigcup_{j\in J} g_j H$$
+
+Then $S$ acts transitively on the set $\{g_j \otimes V \vert j\in J \}$ and under this action the stabiliser of $t\otimes V$ is 
+
+$$\{s\in S \vert st \otimes V = t\otimes V \} = \{s \in S \vert t^{-1} s t \in H \} = tHt^{-1} \cap S$$
+
+Hence, $W_t \cong (V_t)^S$, as required.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Integral Homology of Terms of Low Degree\label{lowdeggroup}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+\begin{definition}(\textbf{Augmentation Ideal})
+
+The augmentation ideal of $\Z G$ is the kernel $\J$ of the ring map $\Z G \xrightarrow{\epsilon} \Z$ which sends $\sum h_g g$ to $\sum h_g$. Because $\{1\} \cup \{ g-1 : g\in G, g\neq 1 \} $ is a basis for $\Z G$ as a free $\Z$-module, it follows that $\J$ is a free $\Z$-module with basis $\{g-1 : g\in G, g\neq 1\}$.
+
+\end{definition}
+%%%
+
+This allows us to calculate the zeroth homology group:
+
+%%%
+\begin{example} (\textbf{Zeroth Homology})
+
+Since the trivial $G$-module $\Z$ is $\Z G / \J$, $H_0(G;A) = A_G$ is isomorphic to $\Z \otimes_{\Z G} A = \Z G / \J \otimes_{\Z G} A \cong A/ \J A$ for every $G$-module $A$. For example, $H_0(G;\Z) = \Z / \J \Z= \Z$. 
+
+\end{example}
+%%%
+
+We now turn our attention to calculating the first homology group.
+
+%%%
+\begin{proposition}(\textbf{Map from Group to Augmentation Ideal})
+\begin{enumerate}
+\item Let $\theta: G \rightarrow \J / \J^2$ be the map given by $\theta (g) = g-1$. Then $\theta$ is a group homomorphism and the commutator subgroup $[G,G]$ of $G$ maps to zero.
+
+\item Moreover, taking $\sigma: \J \rightarrow G/ [G,G]$ by $\sigma (g-1) = \bar g$, the (left) coset of $g$, then $\sigma(\J^2) = 1$, and thus $\theta$ and $\sigma$ induce an isomorphism:
+$$\J / \J^2 \cong G/ [G,G]$$
+\end{enumerate}
+\end{proposition}
+%%%
+
+%%%
+\begin{theorem}(see \cite{Weibel}, 6.1.11, \textbf{First Homology and Abelianization})
+
+For any group $G$, $H_1(G;\Z) \cong \J / \J^2 \cong G/[G,G]\cong G_{ab}$.
+
+\end{theorem}
+
+\begin{definition} (\textbf{Presentation by Generators and Relations})
+
+A presentation of a group by generators and relations amounts to the same thing as a short exact sequence of groups $1\rightarrow R \rightarrow F \rightarrow G\rightarrow 1$, where $F$ is the free group on the generators of $G$ and $R$ is the normal subgroup of $F$ generated by the relations of $G$. Note that $R$ is also a free group, being a subgroup of the free group $F$.
+\end{definition}
+
+\begin{theorem} (see \cite{hopf}, \textbf{Hopf's Integral Homology Formula})
+.
+If $G=F/R$ with $F$ free, then $H_2(G;\Z) \cong \frac {R\cap [F,F]} {[F,R]}$.
+\end{theorem}
+
+
+
+\begin{theorem} (see \cite{Schur}, Theorem 7, \textbf{Size of Schur multiplier of $p$-group})
+
+If $G$ is a finite $p$-group of order $p^n$ and $M(G)$ is its Schur multiplier of order $p^{m(G)}$, then $m(G) \leq \frac{1}{2} n (n-1).$ If equality holds, then $G= E(p^n)$, that is, $G$ is an elementary abelian group of order $p^n$.
+\end{theorem}
+
+
